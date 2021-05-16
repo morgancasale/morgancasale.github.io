@@ -7,13 +7,9 @@ var orange_not, red_not;
 
 var red = false;
 
-function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-        currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-}  
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function getLocation() {
     var pos;
@@ -159,11 +155,14 @@ function game(map){
 
 function stop(){
     playing = false;
+    clearInterval(timeValue);
     document.getElementById("start").style.display = "block";
     document.getElementById("stop").style.display = "none";
+    document.body.style.backgroundColor = "#222735";
 }
 
-function start(){
+var timeValue = null;
+async function start(){
     playing = true;
 
     var map = get_Map(document.getElementById("select").value);
@@ -173,7 +172,7 @@ function start(){
         document.getElementById("stop").style.display = "block";
         while(playing){
             game(map);
-            sleep(30000);
+            await sleep(30000); 
         }
     }  
 }
