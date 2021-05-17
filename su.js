@@ -181,6 +181,7 @@ function stop(){
     document.getElementById("start").style.display = "block";
     document.getElementById("stop").style.display = "none";
     document.body.style.backgroundColor = "#222735";
+    document.getElementById("select").disabled = false;
 }
 
 async function start(){
