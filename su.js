@@ -44,13 +44,20 @@ function sendNotitication(text){
 }
 
 function closeNotification(text){
-    navigator.serviceWorker.ready.then(function(registration) {
-        registration.getNotifications(options).then(function(notifications) {
-            notifications.forEach(function(notification){
+    var notifications;
+    navigator.serviceWorker.ready.then(
+        function(registration) {
+            registration.getNotifications(options).then(
+                function(notifications) {
+                    notifications.forEach(
+                        function(notification){
                 
-            })
-        })
-    });
+                        }
+                    )   
+                }
+            )
+        }
+    );
 }
 
 
