@@ -47,7 +47,7 @@ function closeNotification(text){
     var notifications;
     navigator.serviceWorker.ready.then(
         function(registration) {
-            registration.getNotifications(options).then(
+            registration.getNotifications().then(
                 function(notifications) {
                     notifications.forEach(
                         function(notification){
