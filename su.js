@@ -154,8 +154,11 @@ async function game(map){
         closeNotification(map.limits[2].description); //close red notification
         closeNotification(map.limits[1].description); //close orange notification
 
-        sendNotification(map.limits[1].description, [2000]); //sends orange notification
+        
+        sendNotification(map.limits[1].description); //sends orange notification
 
+        await sleep(1000);
+        navigator.vibrate(2000);
     } else {
         document.body.style.backgroundColor = "#d50000";
         if(!red){ 
@@ -166,10 +169,16 @@ async function game(map){
             try{
                 orange_not.close();
             } catch(err){}
+            
             sendNotification(map.limits[2].description); //sends red notification
-            for(i=0; i<10; i++){ navigator.vibrate(2000);}
+            
+            await sleep(1000);
+            navigator.vibrate(19000);
+            
         } else {
-            sendNotification("SQUALIFICATO E SEGNALATO!", [3000]);
+            sendNotification("SQUALIFICATO E SEGNALATO!");
+            await sleep(1000);
+            navigator.vibrate(3000);
 
             closeNotification(map.limits[2].description); //close red notification
             closeNotification(map.limits[1].description); //close orange notification
@@ -199,13 +208,11 @@ async function start(){
         document.getElementById("stop").style.display = "block";
         while(playing){
             game(map);
-            await sleep(20000); 
+            await sleep(19000); 
         }
     }  
 }
 
 async function test(){
-    sendNotification("ciao");
-    await sleep(2000);
-    closeNotification("ciao");
+    window.close()
 }
