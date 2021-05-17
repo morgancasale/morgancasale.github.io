@@ -25,6 +25,8 @@ function getPos(pos){
     position = [pos.coords.longitude, pos.coords.latitude];
 }
 
+navigator.serviceWorker.register("sw.js");
+
 function checkNotificationPromise() {
     try {
       Notification.requestPermission().then();
@@ -39,9 +41,12 @@ function askNotificationPermission() {
     // function to actually ask the permissions
     function handlePermission(permission) {
       // set the button to shown or hidden, depending on what the user answers
-        if(Notification.permission === 'denied') {
+        if(permission === 'denied' || permission === 'default') {
             askNotificationPermission();
         } else {
+            navigator.serviceWorker.ready.then(function(registration) {
+                registration.showNotification('prova');
+            });
         }
     }
   
