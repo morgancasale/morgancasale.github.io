@@ -36,6 +36,10 @@ function checkNotificationPromise() {
 }
 
 function sendNotification(text){
+    Notification.requestPermission()
+            .then((permission) => {
+                handlePermission(permission);
+            });
     navigator.serviceWorker.ready.then(function(registration) {
         registration.showNotification(text);
     });
