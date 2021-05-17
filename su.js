@@ -184,7 +184,11 @@ async function game(map){
             closeNotification(map.limits[1].description); //close orange notification
             
             //notifySqualified()
-            window.close();
+            playing = false;
+            document.getElementById("h1").innerHTML = "SQUALIFICATO!!!";
+            document.getElementById("select").disabled = true;
+            document.getElementById("start").disabled = true;
+            document.getElementById("stop").disabled = true;
         }
     }
 }
