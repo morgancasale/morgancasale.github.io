@@ -35,7 +35,7 @@ function checkNotificationPromise() {
     return true;
 }
 
-function sendNotitication(text){
+function sendNotification(text){
     navigator.serviceWorker.ready.then(function(registration) {
         registration.showNotification(text);
     });
@@ -168,7 +168,7 @@ function game(map){
             } catch(err){}
             sendNotification(map.limits[2].description); //sends red notification
         } else {
-            sendNotitication("SQUALIFICATO E SEGNALATO!");
+            sendNotification("SQUALIFICATO E SEGNALATO!");
             //notifySqualified()
             window.close();
         }
@@ -200,7 +200,7 @@ async function start(){
 }
 
 async function test(){
-    sendNotitication("ciao");
+    sendNotification("ciao");
     await sleep(2000);
     closeNotification("ciao");
 }
