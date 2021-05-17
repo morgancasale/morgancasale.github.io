@@ -37,6 +37,12 @@ function checkNotificationPromise() {
     return true;
 }
 
+function sendNotitication(text){
+    navigator.serviceWorker.ready.then(function(registration) {
+        registration.showNotification(text);
+    });
+}
+
 function askNotificationPermission() {
     // function to actually ask the permissions
     function handlePermission(permission) {
@@ -44,9 +50,7 @@ function askNotificationPermission() {
         if(permission === 'denied' || permission === 'default') {
             askNotificationPermission();
         } else {
-            navigator.serviceWorker.ready.then(function(registration) {
-                registration.showNotification('prova');
-            });
+            sendNotitication("prova");
         }
     }
   
