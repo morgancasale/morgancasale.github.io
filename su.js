@@ -36,9 +36,11 @@ function checkNotificationPromise() {
 }
 
 function sendNotification(text){
+
+
     Notification.requestPermission().then((permission) => {});
     navigator.serviceWorker.ready.then(function(registration) {
-        registration.showNotification(text);
+        registration.showNotification({title : text, silent : true});
     });
 }
 
@@ -133,7 +135,7 @@ function in_Map(map, point){
     return result;
 }
 
-function game(map){
+async function game(map){
     getLocation();
 
     var green = in_Map(map.limits[0].coordinates, position);
@@ -155,6 +157,7 @@ function game(map){
         closeNotification(map.limits[1].description); //close orange notification
 
         sendNotification(map.limits[1].description); //sends orange notification
+        await sleep(500);
         navigator.vibrate(2000);
 
     } else {
