@@ -81,6 +81,8 @@ function init(){
     getLocation();
     askNotificationPermission();
 
+    var b = sendNotitication("prova");
+
     locs = JSON.parse(data);
     var select = document.getElementById("select");
 
