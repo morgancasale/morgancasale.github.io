@@ -93,8 +93,6 @@ function askNotificationPermission() {
     
 
 function init(){
-
-    document.getElementById("stop").style.display = "none";
     getLocation();
     askNotificationPermission();
 
