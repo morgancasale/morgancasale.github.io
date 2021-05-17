@@ -199,7 +199,7 @@ async function start(){
         document.getElementById("stop").style.display = "block";
         while(playing){
             game(map);
-            await sleep(30000); 
+            await sleep(20000); 
         }
     }  
 }
