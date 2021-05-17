@@ -181,7 +181,6 @@ function game(map){
 
 function stop(){
     playing = false;
-    clearInterval(timeValue);
     document.getElementById("start").style.display = "block";
     document.getElementById("stop").style.display = "none";
     document.body.style.backgroundColor = "#222735";
