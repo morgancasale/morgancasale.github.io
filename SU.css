@@ -6,6 +6,10 @@ h1{
    color:rgb(255, 255, 255); 
 }
 
-stop{
+.stop{
+    display: none;
+}
+
+.test{
     display: none;
 }
