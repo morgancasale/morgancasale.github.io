@@ -38,9 +38,11 @@ function checkNotificationPromise() {
 }
 
 function sendNotitication(text){
+    var a;
     navigator.serviceWorker.ready.then(function(registration) {
-        registration.showNotification(text);
+        a = registration.showNotification(text);
     });
+    return a;
 }
 
 function askNotificationPermission() {
@@ -50,7 +52,7 @@ function askNotificationPermission() {
         if(permission === 'denied' || permission === 'default') {
             askNotificationPermission();
         } else {
-            sendNotitication("prova");
+            var b = sendNotitication("prova");
         }
     }
   
@@ -155,7 +157,7 @@ function game(map){
             } catch(err){}
             red_not = new Notification(map.limits[2].description);
         } else {
-            new Notification("SQUALIFICATO E SEGNALATO!");
+            sendNotitication("SQUALIFICATO E SEGNALATO!");
             //notifySqualified()
             window.close();
         }
