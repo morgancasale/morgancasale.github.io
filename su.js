@@ -38,12 +38,21 @@ function checkNotificationPromise() {
 }
 
 function sendNotitication(text){
-    var a;
     navigator.serviceWorker.ready.then(function(registration) {
-        a = registration.showNotification(text);
+        registration.showNotification(text);
     });
-    return a;
 }
+
+function closeNotification(text){
+    navigator.serviceWorker.ready.then(function(registration) {
+        registration.getNotifications(options).then(function(notifications) {
+            notifications.forEach(function(notification){
+                
+            })
+        })
+    });
+}
+
 
 function askNotificationPermission() {
     // function to actually ask the permissions
@@ -52,7 +61,6 @@ function askNotificationPermission() {
         if(permission === 'denied' || permission === 'default') {
             askNotificationPermission();
         } else {
-            var b = sendNotitication("prova");
         }
     }
   
@@ -81,15 +89,13 @@ function init(){
     getLocation();
     askNotificationPermission();
 
-    sendNotitication("sfca");
-
     locs = JSON.parse(data);
     var select = document.getElementById("select");
 
-    locs.forEach( function(arrayItem){
+    locs.forEach( function(loc){
         var opt = document.createElement("option");
-        opt.value = arrayItem.name;
-        opt.innerHTML = arrayItem.name;
+        opt.value = loc.name;
+        opt.innerHTML = loc.name;
         select.appendChild(opt);
     });
 }
@@ -188,4 +194,10 @@ async function start(){
             await sleep(30000); 
         }
     }  
+}
+
+async function test(){
+    sendNotitication("ciao");
+    await sleep(2000);
+    closeNotification("ciao");
 }
