@@ -3,8 +3,6 @@ var position;
 var pol;
 var playing = false;
 
-var orange_not, red_not;
-
 var red = false;
 
 function sleep(ms) {
@@ -44,14 +42,12 @@ function sendNotitication(text){
 }
 
 function closeNotification(text){
-    var a;
     navigator.serviceWorker.ready.then(
         function(registration) {
             registration.getNotifications().then(
                 function(notifications) {
                     notifications.forEach(
                         function(notification){
-                            a = notification;
                             if(notification.title == text){
                                 notification.close();
                             }
@@ -61,7 +57,6 @@ function closeNotification(text){
             )
         }
     );
-    null;
 }
 
 
@@ -146,23 +141,18 @@ function game(map){
     if(green && orange){
         red = false;
         document.body.style.backgroundColor = "#8bc34a";
-        try{
-            red_not.close();
-        } catch(err){}
-        try{
-            orange_not.close();
-        } catch(err){}
+
+        closeNotification(map.limits[2].description); //close red notification
+        closeNotification(map.limits[1].description); //close orange notification
         
     } else if(!green && orange){
         red = false;
         document.body.style.backgroundColor = "#ff6f00";
-        try{
-            red_not.close();
-        } catch(err){}
-        try{
-            orange_not.close();
-        } catch(err){}
-        orange_not = new Notification(map.limits[1].description);
+
+        closeNotification(map.limits[2].description); //close red notification
+        closeNotification(map.limits[1].description); //close orange notification
+
+        sendNotification(map.limits[1].description); //sends orange notification
 
     } else {
         document.body.style.backgroundColor = "#d50000";
@@ -174,7 +164,7 @@ function game(map){
             try{
                 orange_not.close();
             } catch(err){}
-            red_not = new Notification(map.limits[2].description);
+            sendNotification(map.limits[2].description); //sends red notification
         } else {
             sendNotitication("SQUALIFICATO E SEGNALATO!");
             //notifySqualified()
@@ -193,6 +183,7 @@ function stop(){
 
 var timeValue = null;
 async function start(){
+    document.getElementById("select").disabled = true;
     playing = true;
 
     var map = get_Map(document.getElementById("select").value);
