@@ -35,12 +35,12 @@ function checkNotificationPromise() {
     return true;
 }
 
-function sendNotification(text){
-
+function sendNotification(text, vibr){
+    options = {vibrate : vibr};
 
     Notification.requestPermission().then((permission) => {});
     navigator.serviceWorker.ready.then(function(registration) {
-        registration.showNotification({title : text, silent : true});
+        registration.showNotification(title, options);
     });
 }
 
@@ -156,9 +156,7 @@ async function game(map){
         closeNotification(map.limits[2].description); //close red notification
         closeNotification(map.limits[1].description); //close orange notification
 
-        sendNotification(map.limits[1].description); //sends orange notification
-        await sleep(500);
-        navigator.vibrate(2000);
+        sendNotification(map.limits[1].description, [2000]); //sends orange notification
 
     } else {
         document.body.style.backgroundColor = "#d50000";
@@ -170,9 +168,9 @@ async function game(map){
             try{
                 orange_not.close();
             } catch(err){}
-            sendNotification(map.limits[2].description); //sends red notification
+            sendNotification(map.limits[2].description, [20000]); //sends red notification
         } else {
-            sendNotification("SQUALIFICATO E SEGNALATO!");
+            sendNotification("SQUALIFICATO E SEGNALATO!", [3000]);
 
             closeNotification(map.limits[2].description); //close red notification
             closeNotification(map.limits[1].description); //close orange notification
