@@ -44,14 +44,15 @@ function sendNotitication(text){
 }
 
 function closeNotification(text){
-    var notifications;
     navigator.serviceWorker.ready.then(
         function(registration) {
             registration.getNotifications().then(
                 function(notifications) {
                     notifications.forEach(
                         function(notification){
-                
+                            if(notification.title == text){
+                                notification.close();
+                            }
                         }
                     )   
                 }
