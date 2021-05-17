@@ -146,6 +146,7 @@ function game(map){
         closeNotification(map.limits[2].description); //close red notification
         closeNotification(map.limits[1].description); //close orange notification
         
+        
     } else if(!green && orange){
         red = false;
         document.body.style.backgroundColor = "#ff6f00";
@@ -154,6 +155,7 @@ function game(map){
         closeNotification(map.limits[1].description); //close orange notification
 
         sendNotification(map.limits[1].description); //sends orange notification
+        navigator.vibrate(2000);
 
     } else {
         document.body.style.backgroundColor = "#d50000";
