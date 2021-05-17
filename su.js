@@ -42,12 +42,14 @@ function sendNotitication(text){
 }
 
 function closeNotification(text){
+    var a;
     navigator.serviceWorker.ready.then(
         function(registration) {
             registration.getNotifications().then(
                 function(notifications) {
                     notifications.forEach(
                         function(notification){
+                            a = notification;
                             if(notification.title == text){
                                 notification.close();
                             }
@@ -181,7 +183,6 @@ function stop(){
     document.body.style.backgroundColor = "#222735";
 }
 
-var timeValue = null;
 async function start(){
     document.getElementById("select").disabled = true;
     playing = true;
