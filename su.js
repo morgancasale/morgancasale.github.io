@@ -176,6 +176,7 @@ function stop(){
 
 var timeValue = null;
 async function start(){
+    sendNotitication("ciao");
     playing = true;
 
     var map = get_Map(document.getElementById("select").value);
