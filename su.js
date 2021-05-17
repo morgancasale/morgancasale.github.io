@@ -81,7 +81,7 @@ function init(){
     getLocation();
     askNotificationPermission();
 
-    var b = sendNotitication("prova");
+    var b = sendNotitication("sfca");
 
     locs = JSON.parse(data);
     var select = document.getElementById("select");
