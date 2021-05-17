@@ -168,6 +168,10 @@ function game(map){
             sendNotification(map.limits[2].description); //sends red notification
         } else {
             sendNotification("SQUALIFICATO E SEGNALATO!");
+
+            closeNotification(map.limits[2].description); //close red notification
+            closeNotification(map.limits[1].description); //close orange notification
+            
             //notifySqualified()
             window.close();
         }
