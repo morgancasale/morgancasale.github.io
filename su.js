@@ -35,12 +35,10 @@ function checkNotificationPromise() {
     return true;
 }
 
-function sendNotification(text, vibr){
-    options = {vibrate : vibr};
-
+function sendNotification(title){
     Notification.requestPermission().then((permission) => {});
     navigator.serviceWorker.ready.then(function(registration) {
-        registration.showNotification(title, options);
+        registration.showNotification(title);
     });
 }
 
@@ -168,7 +166,8 @@ async function game(map){
             try{
                 orange_not.close();
             } catch(err){}
-            sendNotification(map.limits[2].description, [20000]); //sends red notification
+            sendNotification(map.limits[2].description); //sends red notification
+            for(i=0; i<10; i++){ navigator.vibrate(2000);}
         } else {
             sendNotification("SQUALIFICATO E SEGNALATO!", [3000]);
 
