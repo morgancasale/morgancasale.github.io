@@ -148,6 +148,7 @@ async function game(map){
         red = false;
         document.body.style.backgroundColor = "#8bc34a";
 
+        sendIosNot("no",0);
         closeNotification(map.limits[2].description); //close red notification
         closeNotification(map.limits[1].description); //close orange notification
         
