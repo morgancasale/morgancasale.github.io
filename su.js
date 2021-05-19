@@ -39,30 +39,34 @@ function checkNotificationPromise() {
 }
 
 function sendNotification(title){
-    Notification.requestPermission().then((permission) => {});
-    navigator.serviceWorker.ready.then(function(registration) {
-        registration.showNotification(title);
-    });
+    if(!ios){
+        Notification.requestPermission().then((permission) => {});
+        navigator.serviceWorker.ready.then(function(registration) {
+            registration.showNotification(title);
+        });
+    }
 }
 
 function closeNotification(text){
-    var a;
-    navigator.serviceWorker.ready.then(
-        function(registration) {
-            registration.getNotifications().then(
-                function(notifications) {
-                    notifications.forEach(
-                        function(notification){
-                            a = notification;
-                            if(notification.title == text){
-                                notification.close();
+    if(!ios){
+        var a;
+        navigator.serviceWorker.ready.then(
+            function(registration) {
+                registration.getNotifications().then(
+                    function(notifications) {
+                        notifications.forEach(
+                            function(notification){
+                                a = notification;
+                                if(notification.title == text){
+                                    notification.close();
+                                }
                             }
-                        }
-                    )   
-                }
-            )
-        }
-    );
+                        )   
+                    }
+                )
+            }
+        );
+    }
 }
 
 
