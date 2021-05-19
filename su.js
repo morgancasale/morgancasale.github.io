@@ -113,7 +113,7 @@ function init(){
     });
 
     var { userAgent } = navigator;
-    if(true/*ios*/){
+    if(ios){
         document.getElementById("id_box").style.display = "block";
         document.getElementById("id_box_label").style.display = "block";
         ios = true;
@@ -176,7 +176,7 @@ async function game(map){
         document.body.style.backgroundColor = "#d50000";
         if(!red){ 
             red = true;
-            
+
             closeNotification(map.limits[2].description); //close red notification
             closeNotification(map.limits[1].description); //close orange notification
             deleteLastTgMsg();
