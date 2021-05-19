@@ -9,4 +9,13 @@ function sendTgMsg(msg){
     }
 }
 
+function deleteLastTgMsg(){
+    if(ios){
+        var xhttp = new XMLHttpRequest();
+        url = "https://api.telegram.org/bot" + telegram_bot_id + "/deleteMessage?chat_id=" + tg_id;
+        xhttp.open("POST", url, true);
+        xhttp.send();
+    }
+}
+
 var chat_id = "145276351";

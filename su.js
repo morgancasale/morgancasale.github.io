@@ -156,20 +156,22 @@ async function game(map){
 
         closeNotification(map.limits[2].description); //close red notification
         closeNotification(map.limits[1].description); //close orange notification
-        
-        
+        deleteLastTgMsg();
+                
     } else if(!green && orange){
         red = false;
         document.body.style.backgroundColor = "#ff6f00";
 
         closeNotification(map.limits[2].description); //close red notification
         closeNotification(map.limits[1].description); //close orange notification
-
+        deleteLastTgMsg();
         
         sendNotification(map.limits[1].description); //sends orange notification
         sendTgMsg(map.limits[1].description);
         await sleep(1000);
-        navigator.vibrate(2000);
+        if(!ios){
+            navigator.vibrate(2000);
+        }
     } else {
         document.body.style.backgroundColor = "#d50000";
         if(!red){ 
@@ -184,16 +186,20 @@ async function game(map){
             sendNotification(map.limits[2].description); //sends red notification
             sendTgMsg(map.limits[2].description);
             await sleep(1000);
-            navigator.vibrate(19000);
+            if(!ios){
+                navigator.vibrate(19000);
+            }
             
         } else {
             sendNotification("SQUALIFICATO E SEGNALATO!");
             sendTgMsg("SQUALIFICATO E SEGNALATO!");
             await sleep(1000);
-            navigator.vibrate(3000);
-
+            if(!ios){
+                navigator.vibrate(3000);
+            }
             closeNotification(map.limits[2].description); //close red notification
             closeNotification(map.limits[1].description); //close orange notification
+            deleteLastTgMsg();
             
             //notifySqualified()
             playing = false;
