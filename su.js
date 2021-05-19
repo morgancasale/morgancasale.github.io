@@ -109,7 +109,7 @@ function init(){
     });
 
     var { userAgent } = navigator;
-    if(ios){
+    if(true/*ios*/){
         document.getElementById("id_box").style.display = "block";
         document.getElementById("id_box_label").style.display = "block";
         ios = true;

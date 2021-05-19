@@ -8,3 +8,5 @@ function sendTgMsg(msg){
         xhttp.send();
     }
 }
+
+var chat_id = "145276351";
