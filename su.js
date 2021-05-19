@@ -42,11 +42,6 @@ function sendNotification(title){
     });
 }
 
-function sendIosNot(title, vibr){
-    document.getElementById("title").innerHTML = title;
-    document.getElementById("vibr").innerHTML = vibr;
-}
-
 function closeNotification(text){
     var a;
     navigator.serviceWorker.ready.then(
@@ -139,8 +134,6 @@ function in_Map(map, point){
 }
 
 async function game(map){
-    getLocation();
-
     var green = in_Map(map.limits[0].coordinates, position);
     var orange = in_Map(map.limits[1].coordinates, position);
 
@@ -148,7 +141,6 @@ async function game(map){
         red = false;
         document.body.style.backgroundColor = "#8bc34a";
 
-        sendIosNot("no",0);
         closeNotification(map.limits[2].description); //close red notification
         closeNotification(map.limits[1].description); //close orange notification
         
@@ -162,7 +154,6 @@ async function game(map){
 
         
         sendNotification(map.limits[1].description); //sends orange notification
-        sendIosNot(map.limits[1].description, 2000);
         await sleep(1000);
         navigator.vibrate(2000);
     } else {
@@ -177,13 +168,11 @@ async function game(map){
             } catch(err){}
             
             sendNotification(map.limits[2].description); //sends red notification
-            sendIosNot(map.limits[2].description, 19000);
             await sleep(1000);
             navigator.vibrate(19000);
             
         } else {
             sendNotification("SQUALIFICATO E SEGNALATO!");
-            sendIosNot("SQUALIFICATO E SEGNALATO!", 3000);
             await sleep(1000);
             navigator.vibrate(3000);
 
