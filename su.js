@@ -2,6 +2,9 @@ var locs;
 var position;
 var pol;
 var playing = false;
+var ios = false;
+
+var tg_id;
 
 var red = false;
 
@@ -75,8 +78,7 @@ function askNotificationPermission() {
   
     // Let's check if the browser supports notifications
     if (!('Notification' in window)) {
-        //window.alert("Questo browser non supporta le notifiche, non puoi giocare sfigato...");
-        //window.close();
+        ios = true;
     } else {
         if(checkNotificationPromise()) {
             Notification.requestPermission()
@@ -105,6 +107,13 @@ function init(){
         opt.innerHTML = loc.name;
         select.appendChild(opt);
     });
+
+    var { userAgent } = navigator;
+    if(ios){
+        document.getElementById("id_box").style.display = "block";
+        document.getElementById("id_box_label").style.display = "block";
+        ios = true;
+    }
 }
 
 function get_Map(map_name){
@@ -154,6 +163,7 @@ async function game(map){
 
         
         sendNotification(map.limits[1].description); //sends orange notification
+        sendTgMsg(map.limits[1].description);
         await sleep(1000);
         navigator.vibrate(2000);
     } else {
@@ -168,11 +178,13 @@ async function game(map){
             } catch(err){}
             
             sendNotification(map.limits[2].description); //sends red notification
+            sendTgMsg(map.limits[2].description);
             await sleep(1000);
             navigator.vibrate(19000);
             
         } else {
             sendNotification("SQUALIFICATO E SEGNALATO!");
+            sendTgMsg("SQUALIFICATO E SEGNALATO!");
             await sleep(1000);
             navigator.vibrate(3000);
 
@@ -195,15 +207,33 @@ function stop(){
     document.getElementById("stop").style.display = "none";
     document.body.style.backgroundColor = "#222735";
     document.getElementById("select").disabled = false;
+    document.getElementById("id_box").disabled = false;
+}
+
+function getTgId(){
+    var id = document.getElementById("id_box").value;
+    if(id == ""){
+        window.alert("Nessun id è stato inserito!");
+        id = "err";
+    }
+    return id;
 }
 
 async function start(){
-    document.getElementById("select").disabled = true;
     playing = true;
-
     var map = get_Map(document.getElementById("select").value);
 
-    if(map != "err"){
+    var tg_id_no_err = true;
+    if(ios){
+        tg_id = getTgId();
+        if(tg_id == "err"){
+            tg_id_no_err = false;
+        }
+    }
+
+    if((map != "err") && tg_id_no_err){
+        document.getElementById("id_box").disabled = true;
+        document.getElementById("select").disabled = true;
         document.getElementById("start").style.display = "none";
         document.getElementById("stop").style.display = "block";
         while(playing){

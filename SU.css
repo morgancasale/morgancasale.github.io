@@ -6,6 +6,16 @@ h1{
    color:rgb(255, 255, 255); 
 }
 
+.id_box_label{
+    color:rgb(255, 255, 255); 
+    display: block;
+}
+
+.id_box{
+    color:rgb(255, 255, 255); 
+    display: block;
+}
+
 .stop{
     display: none;
 }
