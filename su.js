@@ -157,7 +157,7 @@ async function game(map){
         closeNotification(map.limits[2].description); //close red notification
         closeNotification(map.limits[1].description); //close orange notification
         deleteLastTgMsg();
-                
+
     } else if(!green && orange){
         red = false;
         document.body.style.backgroundColor = "#ff6f00";
@@ -176,13 +176,11 @@ async function game(map){
         document.body.style.backgroundColor = "#d50000";
         if(!red){ 
             red = true;
-            try{
-                red_not.close();
-            } catch(err){}
-            try{
-                orange_not.close();
-            } catch(err){}
             
+            closeNotification(map.limits[2].description); //close red notification
+            closeNotification(map.limits[1].description); //close orange notification
+            deleteLastTgMsg();
+
             sendNotification(map.limits[2].description); //sends red notification
             sendTgMsg(map.limits[2].description);
             await sleep(1000);
