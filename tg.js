@@ -1,6 +1,6 @@
 telegram_bot_id = "1887162285:AAFfWO8sf68mSLBCVVWuToZLq970FQeLZgc";
 chat_id = "@morgancasale"
-text = "prova";
+message = "prova";
 
 var settings = {
     "async": true,
