@@ -17,15 +17,18 @@
 
         <h1 class = "h1" href = "h1" id = "h1">Project FAUR</h1>
 
-        <select id = "select">
+        <label for="name_box" id="name_box_label" class="id_box_label">Nome:</label>
+        <input id="name_box" type="text" class="name_box">
+        <button onclick="setName()" id="set_name">OK</button>
+
+        <select id = "select" disabled>
             <option style = "display : none">
         </select>
         <label for="id_box" id="id_box_label" class="id_box_label">Telegram ID:</label>
-        <input id="id_box" type="text" class="id_box">
+        <input id="id_box" type="text" class="id_box" disabled>
 
-        <button onclick="start()" id="start">Start</button>
-        <button class="stop" onclick="stop()" id = "stop">Stop</button>
-        <button onclick="test2()" id="test" class="test">Test</button>
-        <div id = "a"></div>
+        <button onclick="start()" id="start" disabled>Start</button>
+        <button class="stop" onclick="stop()" id = "stop" disabled>Stop</button>
+        <button onclick="test2()" id="test" class="test" >Test</button>
     </body>
 </html>

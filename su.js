@@ -4,9 +4,26 @@ var pol;
 var playing = false;
 var ios = false;
 
+var player_name;
+
 var tg_id;
 
 var red = false;
+
+function setName(){
+    player_name = document.getElementById("name_box").value;
+    if(player_name == ""){
+        window.alert("Nessun nome è stato inserito!");
+        player_name = "err";
+    }else{
+        document.getElementById("name_box").disabled = true;
+        document.getElementById("set_name").disabled = true;
+        document.getElementById("select").disabled = false;
+        document.getElementById("id_box").disabled = false;
+        document.getElementById("start").disabled = false;
+        document.getElementById("stop").disabled = false;
+    }
+}
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -112,7 +129,6 @@ function init(){
         select.appendChild(opt);
     });
 
-    var { userAgent } = navigator;
     if(ios){
         document.getElementById("id_box").style.display = "block";
         document.getElementById("id_box_label").style.display = "block";
@@ -199,7 +215,8 @@ async function game(map){
             closeNotification(map.limits[1].description); //close orange notification
             deleteLastTgMsg();
             
-            //notifySqualified()
+            notifySqualified();
+
             playing = false;
             document.getElementById("h1").innerHTML = "SQUALIFICATO!!!";
             document.getElementById("select").disabled = true;
@@ -211,6 +228,8 @@ async function game(map){
 
 function stop(){
     playing = false;
+    document.getElementById("name_box").disabled = false;
+        document.getElementById("set_name").disabled = false;
     document.getElementById("start").style.display = "block";
     document.getElementById("stop").style.display = "none";
     document.body.style.backgroundColor = "#222735";
@@ -241,6 +260,7 @@ async function start(){
 
     if((map != "err") && tg_id_no_err){
         document.getElementById("id_box").disabled = true;
+        document.getElementById("set_name").disabled = true;
         document.getElementById("select").disabled = true;
         document.getElementById("start").style.display = "none";
         document.getElementById("stop").style.display = "block";

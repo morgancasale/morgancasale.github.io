@@ -18,4 +18,13 @@ function deleteLastTgMsg(){
     }
 }
 
+function notifySqualified(){
+    var xhttp = new XMLHttpRequest();
+    var ch_id = "@faur_channel";
+    var text = player_name + " è stato squalificato!";
+    url = "https://api.telegram.org/bot" + telegram_bot_id + "/sendMessage?chat_id=" + ch_id + "&text=" + text;
+    xhttp.open("POST", url, true);
+    xhttp.send();
+}
+
 var chat_id = "145276351";
