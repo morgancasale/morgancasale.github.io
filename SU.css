@@ -8,12 +8,11 @@ h1{
 
 .id_box_label{
     color:rgb(255, 255, 255); 
-    display: block;
+    display: none;
 }
 
 .id_box{
-    color:rgb(255, 255, 255); 
-    display: block;
+    display: none;
 }
 
 .stop{
