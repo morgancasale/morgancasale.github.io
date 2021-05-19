@@ -10,9 +10,9 @@ function sendTgMsg(msg){
 }
 
 function deleteLastTgMsg(){
-    if(ios){
+    if(false){
         var xhttp = new XMLHttpRequest();
-        url = "https://api.telegram.org/bot" + telegram_bot_id + "/deleteMessage?chat_id=" + tg_id;
+        url = "https://api.telegram.org/bot" + telegram_bot_id + "/deleteMessage?chat_id=" + tg_id+"&message_id=1,";
         xhttp.open("POST", url, true);
         xhttp.send();
     }
