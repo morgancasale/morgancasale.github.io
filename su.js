@@ -173,7 +173,7 @@ function in_Map(map, point){
 
 async function setDisqualified(){
     localStorage.setItem("disqualified", true);
-    document.getElementsId("h1").innerHTML = "SQUALIFICATO!!!";
+    document.getElementById("h1").innerHTML = "SQUALIFICATO!!!";
     document.getElementsByClassName("not_disqualified").style.display = "none";
 
 
