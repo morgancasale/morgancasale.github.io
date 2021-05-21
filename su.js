@@ -119,7 +119,7 @@ function askNotificationPermission() {
 
 function init(){
     
-    disqualified = localStorage.getItem("Disqualified");
+    disqualified = localStorage.getItem("disqualified");
 
     if(disqualified){
         setDisqualified();
@@ -172,6 +172,7 @@ function in_Map(map, point){
 }
 
 async function setDisqualified(){
+    disqualified = true;
     localStorage.setItem("disqualified", true);
     document.getElementById("h1").innerHTML = "SQUALIFICATO!!!";
 
