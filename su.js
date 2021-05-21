@@ -6,6 +6,8 @@ var ios = false;
 
 var player_name;
 
+var squalified = false;
+
 var tg_id;
 
 var red = false;
@@ -116,23 +118,30 @@ function askNotificationPermission() {
     
 
 function init(){
-    getLocation();
-    askNotificationPermission();
+    
+    squalified = localStorage.getItem("squalified");
 
-    locs = JSON.parse(data);
-    var select = document.getElementById("select");
+    if(squalified){
+        isSqualified();
+    } else{
+        getLocation();
+        askNotificationPermission();
 
-    locs.forEach( function(loc){
-        var opt = document.createElement("option");
-        opt.value = loc.name;
-        opt.innerHTML = loc.name;
-        select.appendChild(opt);
-    });
+        locs = JSON.parse(data);
+        var select = document.getElementById("select");
 
-    if(ios){
-        document.getElementById("id_box").style.display = "block";
-        document.getElementById("id_box_label").style.display = "block";
-        ios = true;
+        locs.forEach( function(loc){
+            var opt = document.createElement("option");
+            opt.value = loc.name;
+            opt.innerHTML = loc.name;
+            select.appendChild(opt);
+        });
+
+        if(ios){
+            document.getElementById("id_box").style.display = "block";
+            document.getElementById("id_box_label").style.display = "block";
+            ios = true;
+        }
     }
 }
 
@@ -160,6 +169,26 @@ function in_Map(map, point){
         result = false;
     }
     return result;
+}
+
+function isSqualified(){
+    sendNotification("SQUALIFICATO E SEGNALATO!");
+    sendTgMsg("SQUALIFICATO E SEGNALATO!");
+    await sleep(1000);
+    if(!ios){
+        navigator.vibrate(3000);
+    }
+    closeNotification(map.limits[2].description); //close red notification
+    closeNotification(map.limits[1].description); //close orange notification
+    deleteLastTgMsg();
+    
+    notifySqualified();
+
+    playing = false;
+    document.getElementById("h1").innerHTML = "SQUALIFICATO!!!";
+    document.getElementById("select").disabled = true;
+    document.getElementById("start").disabled = true;
+    document.getElementById("stop").disabled = true;
 }
 
 async function game(map){
@@ -205,23 +234,7 @@ async function game(map){
             }
             
         } else {
-            sendNotification("SQUALIFICATO E SEGNALATO!");
-            sendTgMsg("SQUALIFICATO E SEGNALATO!");
-            await sleep(1000);
-            if(!ios){
-                navigator.vibrate(3000);
-            }
-            closeNotification(map.limits[2].description); //close red notification
-            closeNotification(map.limits[1].description); //close orange notification
-            deleteLastTgMsg();
-            
-            notifySqualified();
-
-            playing = false;
-            document.getElementById("h1").innerHTML = "SQUALIFICATO!!!";
-            document.getElementById("select").disabled = true;
-            document.getElementById("start").disabled = true;
-            document.getElementById("stop").disabled = true;
+            isSqualified();
         }
     }
 }
