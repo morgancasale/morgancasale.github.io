@@ -6,7 +6,7 @@ var ios = false;
 var map;
 var player_name;
 
-var disqualified = false;
+var disqualified = "false";
 
 var tg_id;
 
@@ -121,7 +121,7 @@ function init(){
     
     disqualified = localStorage.getItem("disqualified");
 
-    if(disqualified){
+    if(disqualified == "true"){
         setDisqualified();
     } else{
         getLocation();
@@ -172,8 +172,8 @@ function in_Map(map, point){
 }
 
 async function setDisqualified(){
-    disqualified = true;
-    localStorage.setItem("disqualified", true);
+    disqualified = "true";
+    localStorage.setItem("disqualified", disqualified);
     document.body.style.backgroundColor = "#d50000";
     document.getElementById("h1").innerHTML = "SQUALIFICATO!!!";
 
@@ -201,8 +201,8 @@ async function setDisqualified(){
 
 function resetDisqualification(){
     if(document.getElementById("reset_box").value == "62699"){
-        disqualified = false;
-        localStorage.setItem("disqualified", false);
+        disqualified = "false";
+        localStorage.setItem("disqualified", "false");
         location.reload();
     } else{
         window.alert("Password Errata!");
