@@ -17,22 +17,23 @@
 
         <h1 class = "h1" href = "h1" id = "h1">Project FAUR</h1>
 
-        <label for="name_box" id="name_box_label" id="not_disqualified" class="name_box_label">Nome:</label>
-        <input id="name_box" type="text" id="not_disqualified" class="name_box">
-        <button onclick="setName()" id="not_disqualified" id="set_name">OK</button>
+        <label for="name_box" id="name_box_label" class="name_box_label not_disqualified">Nome:</label>
+        <input id="name_box" type="text" class="name_box not_disqualified">
+        <button onclick="setName()" id="set_name" class="set_name not_disqualified">OK</button>
 
-        <select id = "select" id="not_disqualified" disabled>
+        <select id = "select" class="select not_disqualified" disabled>
             <option style = "display : none">
         </select>
-        <label for="id_box" id="id_box_label" id="not_disqualified" class="id_box_label">Telegram ID:</label>
-        <input id="id_box" id="not_disqualified" type="text" class="id_box" disabled>
+        <label for="id_box" id="id_box_label" class="id_box_label not_disqualified">Telegram ID:</label>
+        <input id="id_box" type="text" class="id_box not_disqualified" disabled>
 
-        <button onclick="start()" id="not_disqualified" id="start" disabled>Start</button>
-        <button class="stop" id="not_disqualified" onclick="stop()" id = "stop" disabled>Stop</button>
+        <button onclick="start()" class="start not_disqualified" id="start" disabled>Start</button>
+        
+        <button class="stop" onclick="stop()" id = "stop" disabled>Stop</button>
         <button onclick="test2()" id="test" class="test" >Test</button>
 
-        <label for="reset_box" id="reset_box_label" id="disqualified" class="reset_box">Inserire il codice giusto per resettare lo stato di squalificato:</label>
-        <input id="reset_box" id="disqualified"  type="text" class="reset_box">
-        <button onclick="resetDisqualification()" id="disqualified"  id="reset">Reset</button>
+        <label for="reset_box" id="reset_box_label" class="reset_box disqualified">Inserire il codice giusto per resettare lo stato di squalificato:</label>
+        <input id="reset_box" type="text" class="reset_box disqualified">
+        <button onclick="resetDisqualification()" id="reset" class = "reset disqualified">Reset</button>
     </body>
 </html>

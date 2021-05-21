@@ -121,7 +121,7 @@ function init(){
     
     disqualified = localStorage.getItem("Disqualified");
 
-    if(Disqualified){
+    if(disqualified){
         setDisqualified();
     } else{
         getLocation();
@@ -173,11 +173,11 @@ function in_Map(map, point){
 
 async function setDisqualified(){
     localStorage.setItem("disqualified", true);
-    document.getElementById("h1").innerHTML = "SQUALIFICATO!!!";
-    document.getElementById("not_disqualified").style.display = "none";
+    document.getElementsId("h1").innerHTML = "SQUALIFICATO!!!";
+    document.getElementsByClassName("not_disqualified").style.display = "none";
 
 
-    document.getElementById("disqualified").style.display = "block";
+    document.getElementsByClassName("disqualified").style.display = "block";
 
     sendNotification("SQUALIFICATO E SEGNALATO!");
     sendTgMsg("SQUALIFICATO E SEGNALATO!");
@@ -199,7 +199,7 @@ function resetDisqualification(){
         disqualified = false;
         localStorage.setItem("disqualified", false);
 
-        document.getElementById("disqualified").style.display = "none";
+        document.getElementsByClassName("disqualified").style.display = "none";
 
         document.getElementById("name_box_label").style.display = "block";
         document.getElementById("name_box").style.display = "block";
