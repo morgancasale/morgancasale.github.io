@@ -26,3 +26,11 @@ label{
 .test{
     display: none;
 }
+
+.reset_box{
+    display: none;
+}
+
+.reset{
+    display: none;
+}

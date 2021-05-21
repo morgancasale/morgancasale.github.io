@@ -6,7 +6,7 @@ var ios = false;
 
 var player_name;
 
-var squalified = false;
+var disqualified = false;
 
 var tg_id;
 
@@ -119,10 +119,10 @@ function askNotificationPermission() {
 
 function init(){
     
-    squalified = localStorage.getItem("squalified");
+    disqualified = localStorage.getItem("Disqualified");
 
-    if(squalified){
-        isSqualified();
+    if(Disqualified){
+        setDisqualified();
     } else{
         getLocation();
         askNotificationPermission();
@@ -171,7 +171,14 @@ function in_Map(map, point){
     return result;
 }
 
-function isSqualified(){
+function setDisqualified(){
+    localStorage.setItem("disqualified", true);
+    document.getElementById("h1").innerHTML = "SQUALIFICATO!!!";
+    document.getElementById("not_disqualified").style.display = "none";
+
+
+    document.getElementById("disqualified").style.display = "block";
+
     sendNotification("SQUALIFICATO E SEGNALATO!");
     sendTgMsg("SQUALIFICATO E SEGNALATO!");
     await sleep(1000);
@@ -182,13 +189,33 @@ function isSqualified(){
     closeNotification(map.limits[1].description); //close orange notification
     deleteLastTgMsg();
     
-    notifySqualified();
+    notifyDisqualified();
 
-    playing = false;
-    document.getElementById("h1").innerHTML = "SQUALIFICATO!!!";
-    document.getElementById("select").disabled = true;
-    document.getElementById("start").disabled = true;
-    document.getElementById("stop").disabled = true;
+    playing = false; 
+}
+
+function resetDisqualification(){
+    if(document.getElementById("reset").value == "62699"){
+        disqualified = false;
+        localStorage.setItem("disqualified", false);
+
+        document.getElementById("disqualified").style.display = "none";
+
+        document.getElementById("name_box_label").style.display = "block";
+        document.getElementById("name_box").style.display = "block";
+        document.getElementById("set_name").style.display = "block";
+        
+        document.getElementById("select").style.display = "block";
+
+        document.getElementById("start").style.display = "block";
+
+        if(ios){
+            document.getElementById("id_box_label").style.display = "block";
+            document.getElementById("id_box").style.display = "block";
+        }
+    } else{
+        window.alert("Password Errata!");
+    }
 }
 
 async function game(map){
@@ -234,7 +261,7 @@ async function game(map){
             }
             
         } else {
-            isSqualified();
+            setDisqualified();
         }
     }
 }
@@ -242,7 +269,7 @@ async function game(map){
 function stop(){
     playing = false;
     document.getElementById("name_box").disabled = false;
-        document.getElementById("set_name").disabled = false;
+    document.getElementById("set_name").disabled = false;
     document.getElementById("start").style.display = "block";
     document.getElementById("stop").style.display = "none";
     document.body.style.backgroundColor = "#222735";

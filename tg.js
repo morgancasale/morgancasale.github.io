@@ -18,9 +18,9 @@ function deleteLastTgMsg(){
     }
 }
 
-function notifySqualified(){
+function notifydiSqualified(){
     var xhttp = new XMLHttpRequest();
-    localStorage.setItem("squalified", true);
+    localStorage.setItem("disqualified", true);
     var ch_id = "@faur_channel";
     var text = player_name + " è stato squalificato!\r\n";
     text += "Alle coordinate\r\n" + position;
