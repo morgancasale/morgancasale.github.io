@@ -3,7 +3,7 @@ var position;
 var pol;
 var playing = false;
 var ios = false;
-
+var map;
 var player_name;
 
 var disqualified = false;
@@ -174,11 +174,14 @@ function in_Map(map, point){
 async function setDisqualified(){
     localStorage.setItem("disqualified", true);
     document.getElementById("h1").innerHTML = "SQUALIFICATO!!!";
-    document.getElementsByClassName("not_disqualified").style.display = "none";
 
+    for(i=0; i<document.getElementsByClassName("not_disqualified").length; i++){
+        document.getElementsByClassName("not_disqualified")[i].style.display = "none";
+    }
 
-    document.getElementsByClassName("disqualified").style.display = "block";
-
+    for(i=0; i<document.getElementsByClassName("disqualified").length; i++){
+        document.getElementsByClassName("disqualified")[i].style.display = "block";
+    }
     sendNotification("SQUALIFICATO E SEGNALATO!");
     sendTgMsg("SQUALIFICATO E SEGNALATO!");
     await sleep(1000);
@@ -288,7 +291,7 @@ function getTgId(){
 
 async function start(){
     playing = true;
-    var map = get_Map(document.getElementById("select").value);
+    map = get_Map(document.getElementById("select").value);
 
     var tg_id_no_err = true;
     if(ios){
