@@ -174,6 +174,7 @@ function in_Map(map, point){
 async function setDisqualified(){
     disqualified = true;
     localStorage.setItem("disqualified", true);
+    document.body.style.backgroundColor = "#d50000";
     document.getElementById("h1").innerHTML = "SQUALIFICATO!!!";
 
     for(i=0; i<document.getElementsByClassName("not_disqualified").length; i++){
@@ -202,32 +203,7 @@ function resetDisqualification(){
     if(document.getElementById("reset_box").value == "62699"){
         disqualified = false;
         localStorage.setItem("disqualified", false);
-
-        for(i=0; i<document.getElementsByClassName("disqualified").length; i++){
-            document.getElementsByClassName("disqualified")[i].style.display = "none";
-        }
-
-        document.getElementById("name_box_label").style.display = "block";
-        document.getElementById("name_box").style.display = "block";
-        document.getElementById("set_name").style.display = "block";
-        
-        document.getElementById("select").style.display = "block";
-        document.getElementById("select").disabled = false;
-
-        document.getElementById("start").style.display = "block";
-
-        red = false;
-        document.body.style.backgroundColor = "#222735";
-
-        document.getElementById("h1").innerHTML = "Project FAUR";
-
-        closeNotification(map.limits[2].description); //close red notification
-        closeNotification(map.limits[1].description); //close orange notification
-
-        if(ios){
-            document.getElementById("id_box_label").style.display = "block";
-            document.getElementById("id_box").style.display = "block";
-        }
+        location.reload();
     } else{
         window.alert("Password Errata!");
     }
