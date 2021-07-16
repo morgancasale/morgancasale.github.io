@@ -4,34 +4,42 @@ body{
     font-family: consolas;
 }
 h1{
-   color:rgb(255, 255, 255); 
+   color:rgb(255, 255, 255);
+   font-family: consolas;
 }
 
 label{
     color:rgb(255, 255, 255);
+    font-family: consolas;
 }
 
 .id_box_label{
     color:rgb(255, 255, 255); 
     display: none;
+    font-family: consolas;
 }
 
 .id_box{
     display: none;
+    font-family: consolas;
 }
 
 .stop{
     display: none;
+    font-family: consolas;
 }
 
 .test{
     display: none;
+    font-family: consolas;
 }
 
 .reset_box{
     display: none;
+    font-family: consolas;
 }
 
 .reset{
     display: none;
+    font-family: consolas;
 }
