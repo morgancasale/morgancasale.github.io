@@ -2,17 +2,33 @@
 body{
     background-color: #222735;
     font-family: consolas;
+    margin: auto;
+}
+
+.title{
+    font-size: 400%;
+    text-align: center;
 }
 
 .all{
     margin: auto;
+    width: 40%;
 }
 
-h1{
+.table{
+    margin: auto;
+    width: 100%;
+}
+
+.row{
+    margin: auto;
+}
+.title{
    color:rgb(255, 255, 255);
+   margin: auto;
 }
 
-label{
+.label{
     color:rgb(255, 255, 255);
 }
 
@@ -39,4 +55,31 @@ label{
 
 .reset{
     display: none;
+}
+
+.name_box_label{
+    text-align: right;
+}
+
+.td{
+    text-align: center;
+}
+
+.name{
+    margin: auto;
+}
+
+.box{
+    border : 0px;
+    border-radius : 4px;
+    opacity: 76%;
+}
+
+.box:disabled{
+    opacity: 75%;
+}
+
+.but{
+    border : 0px;
+    border-radius : 4px;
 }
