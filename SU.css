@@ -1,7 +1,7 @@
 @charset "utf-8";
 body{
     background-color: #222735;
-    font-family: consolas;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 h1{
    color:rgb(255, 255, 255);
