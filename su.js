@@ -175,7 +175,7 @@ async function setDisqualified(){
     disqualified = "true";
     localStorage.setItem("disqualified", disqualified);
     document.body.style.backgroundColor = "#d50000";
-    document.getElementById("h1").innerHTML = "SQUALIFICATO!!!";
+    document.getElementById("title").innerHTML = "SQUALIFICATO!";
 
     for(i=0; i<document.getElementsByClassName("not_disqualified").length; i++){
         document.getElementsByClassName("not_disqualified")[i].style.display = "none";

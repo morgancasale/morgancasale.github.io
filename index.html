@@ -2,11 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8" />
+    
         <link rel="stylesheet" type="text/css" href="SU.css">
-
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
         <script src="su.js"></script>
         <script src="sw.js"></script>
         <script src="pnp.js"></script>
@@ -17,42 +14,52 @@
         <title>Project FAUR</title>
     </head>
     <body onload = "init();">
-        <div id = "all" class="container">
-            <div class = "row h1" href = "h1" id = "h1">Project FAUR</div>
-            <div class = "col">
-                <div class = "row name">
-                    <div class = "col">
-                        <label for="name_box" id="name_box_label" class="name_box_label not_disqualified">Nome:</label>
-                    </div>
-                    <div class = "col">
-                        <input id="name_box" type="text" class="name_box not_disqualified">
-                    </div>
-                    <div class = "col">
-                        <button onclick="setName()" id="set_name" class="set_name not_disqualified">OK</button>
-                    </div>
-                        
-                </div>
-                
-                <div class = "row tg">
-                    <label for="id_box" id="id_box_label" class="id_box_label not_disqualified">Telegram ID:</label>
-                    <input id="id_box" type="text" class="id_box not_disqualified" disabled>
-                </div>
+        <div id = "all" class="all">
+            <div class = "title" id = "title">Project FAUR</div>
 
-                <div class = "row map">
-                    <select id = "select" class="select not_disqualified" disabled>
-                        <option style = "display : none">
-                    </select>
-                    <button onclick="start()" class="start not_disqualified" id="start" disabled>Start</button>
-                    <button class="stop not_disqualified" onclick="stop()" id = "stop" disabled>Stop</button>
-                </div>
+            <table style="margin: auto">
+                <tr>
+                    <td style="text-align: center;">
+                        <div style="display: inline-block;">
+                        <label for="name_box" id="name_box_label" class="name_box_label not_disqualified label">Nome:</label>
+                        <input id="name_box" type="text" class="box name_box not_disqualified">
+                        <button onclick="setName()" id="set_name" class="set_name not_disqualified but">OK</button>
+                        </div>
+                    </td>
+                </tr>
 
-                <div class = "row reset">
-                    <label for="reset_box" id="reset_box_label" class="reset_box disqualified">Inserire il codice giusto per resettare lo stato di squalificato:</label>
-                    <input id="reset_box" type="text" class="reset_box disqualified">
-                    <button onclick="resetDisqualification()" id="reset" class = "reset disqualified">Reset</button>
-                </div>
+                <tr class = "tg">
+                    <td style="text-align: center;">
+                        <div style="margin: auto;">
+                        <label for="id_box" id="id_box_label" class="id_box_label not_disqualified label"> Telegram ID: </label>
+                        <input id="id_box" type="text" class="id_box not_disqualified box" disabled>
+                        </div>
+                    </td>
+                </tr>
 
-            </div>
+                <tr class = "map">
+                    <td style="text-align: center;">
+                        <label class = "label not_disqualified" id = "map_label">Map:</label>
+                        <select id = "select" class="select not_disqualified box" disabled>
+                            <option style = "display : none">
+                        </select>
+                        <button onclick="start()" class="start not_disqualified but" id="start" disabled>Start</button>
+                        <button class="stop not_disqualified but" onclick="stop()" id = "stop" disabled>Stop</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="reset_box" id="reset_box_label" class="reset_box disqualified label" style="text-align: center;">Inserire codice <br> per resettare:</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="reset_box" type="text" class="reset_box disqualified box">
+                        <button onclick="resetDisqualification()" id="reset" class = "reset disqualified but">Reset</button>
+                    </td>
+                </tr>
+            </table>
             
             <button onclick="test2()" id="test" class="test" >Test</button>
 
