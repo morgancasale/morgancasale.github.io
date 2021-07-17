@@ -14,17 +14,15 @@
         <title>Project FAUR</title>
     </head>
     <body onload = "init();">
-        <div id = "all" class="all">
-            <div class = "title" id = "title">Project FAUR</div>
-
-            <table style="margin: auto">
+        <div class = "title" id = "title">Project FAUR</div>
+        
+        <table style="margin: auto">
+            <tbody style="width: 100%;">
                 <tr>
                     <td style="text-align: center;">
-                        <div style="display: inline-block;">
                         <label for="name_box" id="name_box_label" class="name_box_label not_disqualified label">Nome:</label>
                         <input id="name_box" type="text" class="box name_box not_disqualified">
                         <button onclick="setName()" id="set_name" class="set_name not_disqualified but">OK</button>
-                        </div>
                     </td>
                 </tr>
 
@@ -59,10 +57,9 @@
                         <button onclick="resetDisqualification()" id="reset" class = "reset disqualified but">Reset</button>
                     </td>
                 </tr>
-            </table>
-            
-            <button onclick="test2()" id="test" class="test" >Test</button>
-
-        </div>
+            </tbody>
+        </table>
+        
+        <button onclick="test2()" id="test" class="test" >Test</button>
     </body>
 </html>

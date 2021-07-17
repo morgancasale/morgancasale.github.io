@@ -6,8 +6,14 @@ body{
 }
 
 .title{
-    font-size: 400%;
+    width: 100%;
+    font-size: calc(14vw);
     text-align: center;
+    margin: auto;
+}
+.title:after{
+    display: inline-block;
+    width: 100%;
 }
 
 .all{
@@ -63,6 +69,8 @@ body{
 
 .td{
     text-align: center;
+    height: 100%;
+    width: 100%;
 }
 
 .name{
