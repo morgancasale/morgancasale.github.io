@@ -114,7 +114,6 @@ function askNotificationPermission() {
             });
         }
     }
-    ios = true;
 }
     
 
