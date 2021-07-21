@@ -23,7 +23,7 @@ function notifyDisqualified(){
     localStorage.setItem("disqualified", true);
     var ch_id = "@faur_channel";
     var text = player_name + " è stato squalificato! \r\n ";
-    text += "Alle coordinate \r\n " + position;
+    text += "Alle coordinate \r\n " + position[1] + "," + position[0];
     url = "https://api.telegram.org/bot" + telegram_bot_id + "/sendMessage?chat_id=" + ch_id + "&text=" + text;
     xhttp.open("POST", url, true);
     xhttp.send();
