@@ -7,7 +7,7 @@ function init(){
     var profile = localStorage.getItem("profile");
     if(profile!=null){
         document.getElementById("signin").style.display = "none";
-        document.getElementsById("table").style.display = "block";
+        document.getElementById("table").style.display = "block";
     }
 }
 
