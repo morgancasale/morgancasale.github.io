@@ -12,10 +12,21 @@
 
         <title>Haulin</title>
     </head>
-    <body>
+    <body onload = "init();">
         <div class = "title" id = "title">Haulin</div>
         <div class="g-signin2" data-onsuccess="onSignIn" class="signin"></div>
-        <div id = "name">None</div>
+        <table style="margin: auto" class="table">
+            <tbody style="width: 100%;">
+                <tr>
+                    <td style="text-align: center;">
+                        <label id="code_label" class="code_label code label">Nome:</label>
+                        <input id="code_box" type="text" class="code_box code box">
+                        <button onclick="checkCode()" id="code_btn" class="code_btn code but">Send</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="label message" id="message">None</div>
        
     </body>
 </html>

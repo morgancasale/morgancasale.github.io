@@ -1,3 +1,11 @@
 .signin{
     margin: auto;
 }
+
+.table{
+    display: none;
+}
+
+.message{
+    display: none;
+}

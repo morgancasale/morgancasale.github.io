@@ -1,4 +1,20 @@
 function onSignIn(googleUser){
     var profile = googleUser.getBasicProfile();
-    document.getElementById("name").innerHTML = profile.getName();    
+    localStorage.setItem("profile", profile);  
+}
+
+function init(){
+    var profile = localStorage.getItem("profile");
+    if(profile){
+        document.getElementsByClassName("signin").style.display = "none";
+        document.getElementsByClassName("table").style.display = "block";
+    }
+}
+
+function checkCode(){
+    if(document.getElementById("code_box").value == "626"){
+        document.getElementsByClassName("code").style.display = "none";
+        document.getElementsByClassName("message").style.display = "block";
+        document.getElementById("message").innerHTML = "Đăng nhập thành công";
+    }
 }
