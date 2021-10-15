@@ -13,8 +13,8 @@ function init(){
 
 function checkCode(){
     if(document.getElementById("code_box").value == "626"){
-        document.getElementsById("table").style.display = "none";
-        document.getElementsById("message").style.display = "block";
+        document.getElementById("table").style.display = "none";
+        document.getElementById("message").style.display = "block";
         document.getElementById("message").innerHTML = "Đăng nhập thành công";
     }
 }
