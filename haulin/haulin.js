@@ -5,7 +5,7 @@ function onSignIn(googleUser){
 
 function init(){
     var profile = localStorage.getItem("profile");
-    if(profile){
+    if(profile!=null){
         document.getElementsByClassName("signin").style.display = "none";
         document.getElementsByClassName("table").style.display = "block";
     }
