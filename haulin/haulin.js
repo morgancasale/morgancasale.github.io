@@ -13,7 +13,7 @@ function init(){
 
 function checkCode(){
     var profile = localStorage.getItem("profile");
-    var message = searchMessage(document.getElementById("code").value, profile);
+    var message = searchMessage(document.getElementById("code_box").value, profile);
 
     document.getElementById("table").style.display = "none";
     document.getElementById("message").style.display = "block";
