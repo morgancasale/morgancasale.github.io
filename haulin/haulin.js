@@ -21,17 +21,15 @@ function checkCode(){
     document.getElementById("message").innerHTML = message;
 }
 
-var clue_global;
 function searchMessage(code, name){
     var message = "No clue found!";
     var clues = JSON.parse(clues_data);
     clues.forEach(function(clue){
-        clue_global = clue.message;
         if(clue.code == code){
             var names = clue.names;
             names.forEach(function(clue_name){
                 if(clue_name == name){
-                    message = clue_global;
+                    message = clue.message;
                 }
             })
         }
