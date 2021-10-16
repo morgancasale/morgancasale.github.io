@@ -49,9 +49,9 @@ navigator.serviceWorker.register("sw.js");
 
 function checkNotificationPromise() {
     try {
-      Notification.requestPermission().then();
+        Notification.requestPermission().then();
     } catch(e) {
-      return false;
+        return false;
     }
 
     return true;

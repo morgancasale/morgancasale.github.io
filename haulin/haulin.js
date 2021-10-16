@@ -1,6 +1,6 @@
 function onSignIn(googleUser){
     var profile = googleUser.getBasicProfile();
-    localStorage.setItem("profile", profile);  
+    localStorage.setItem("profile", profile.getName()); 
 }
 
 function init(){
@@ -12,9 +12,27 @@ function init(){
 }
 
 function checkCode(){
-    if(document.getElementById("code_box").value == "626"){
-        document.getElementById("table").style.display = "none";
-        document.getElementById("message").style.display = "block";
-        document.getElementById("message").innerHTML = "Đăng nhập thành công";
-    }
+    var profile = localStorage.getItem("profile");
+    var message = searchMessage(document.getElementById("code").value, profile);
+
+    document.getElementById("table").style.display = "none";
+    document.getElementById("message").style.display = "block";
+
+    document.getElementById("message").innerHTML = message;
+}
+
+function searchMessage(code, name){
+    message = "No clue found!";
+    clues = JSON.parse(clues_data);
+    clues.forEach(function(clue){
+        if(clue.code == code){
+            var names = clue.names;
+            names.forEach(function(clue_name){
+                if(clue_name == name){
+                    message = clue.message;
+                }
+            })
+        }
+    });
+    return message;
 }
