@@ -26,6 +26,7 @@ function searchMessage(code, name){
     var clues = JSON.parse(clues_data);
     clues.forEach(function(clue){
         if(clue.code == code){
+            message = "Access Denied!";
             var names = clue.names;
             names.forEach(function(clue_name){
                 if(clue_name == name){
