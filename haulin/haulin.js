@@ -1,6 +1,8 @@
 function onSignIn(googleUser){
     var profile = googleUser.getBasicProfile();
-    localStorage.setItem("profile", profile.getName()); 
+    localStorage.setItem("profile", profile.getName());
+    document.getElementById("signin").style.display = "none";
+    document.getElementById("table").style.display = "block";
 }
 
 function init(){
