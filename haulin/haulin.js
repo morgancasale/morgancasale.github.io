@@ -21,21 +21,42 @@ function checkCode(){
     document.getElementById("message").style.display = "block";
 
     document.getElementById("message").innerHTML = message;
+
+    document.getElementById("ans").style.display = "block";
 }
+
+var found_clue;
+var found_person;
 
 function searchMessage(code, name){
     var message = "No clue found!";
     var clues = JSON.parse(clues_data);
+    
     clues.forEach(function(clue){
-        if(clue.code == code){
-            message = "Access Denied!";
-            var names = clue.names;
-            names.forEach(function(clue_name){
-                if(clue_name == name){
-                    message = clue.message;
+        clue.people.forEach(function(person){
+            if(person.name == name){
+                if(person.code == code){
+                    found_person = person;
+                    found_clue = clue;
+                    message = clue.msg;
+                    break;
                 }
-            })
-        }
+            }
+        })
     });
+    
     return message;
+}
+
+function checkAnswer(){
+    var answer = document.getElementById("ans_box").value;
+    if(answer == found_person.answer){
+        document.getElementById("ans").style.display = "none";
+
+        document.getElementById("table").innerHTML = found_clue.gps+"\n"+found_clue.scs+"\n"+found_person.atxt;
+        document.getElementById("scs").style.display = "block";
+    } else{
+        document.getElementById("ans_box").placeholder = "Wrong answer!";
+        document.getElementById("ans_box").style.color= "red";
+    }
 }
