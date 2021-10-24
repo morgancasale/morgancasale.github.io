@@ -52,13 +52,14 @@ function searchMessage(code, name){
 
 function checkAnswer(){
     var answer = document.getElementById("ans_box").value;
-    if(answer == found_person.answer){
+    if(answer == found_clue.answer){
         document.getElementById("ans").style.display = "none";
+        document.getElementById("message").style.display = "none";
 
-        document.getElementById("table").innerHTML = found_clue.gps+"\n"+found_clue.scs+"\n"+found_person.atxt;
+        document.getElementById("scs").innerHTML = found_clue.gps+"\n"+found_clue.scs+"\n"+found_person.atxt;
         document.getElementById("scs").style.display = "block";
     } else{
-        document.getElementById("ans_box").placeholder = "Wrong answer!";
+        document.getElementById("ans_box").value = "Wrong answer!";
         document.getElementById("ans_box").style.color= "red";
     }
 }
