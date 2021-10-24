@@ -17,7 +17,7 @@ function checkCode(){
     var profile = localStorage.getItem("profile");
     var message = searchMessage(document.getElementById("code_box").value, profile);
 
-    document.getElementById("table").style.display = "none";
+    document.getElementById("code").style.display = "none";
     document.getElementById("message").style.display = "block";
 
     document.getElementById("message").innerHTML = message;
