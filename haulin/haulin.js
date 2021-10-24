@@ -21,12 +21,14 @@ function checkCode(){
     document.getElementById("message").style.display = "block";
 
     document.getElementById("message").innerHTML = message;
-
-    document.getElementById("ans").style.display = "block";
+    if(clue_found){
+        document.getElementById("ans").style.display = "block";
+    }
 }
 
 var found_clue;
 var found_person;
+var clue_found = false;
 
 function searchMessage(code, name){
     var message = "No clue found!";
@@ -39,7 +41,7 @@ function searchMessage(code, name){
                     found_person = person;
                     found_clue = clue;
                     message = clue.msg;
-                    break;
+                    clue_found = true;
                 }
             }
         })
