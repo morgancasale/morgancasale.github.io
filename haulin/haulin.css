@@ -1,3 +1,19 @@
+@font-face {
+    font-family: "FBI";
+    src: url("FBI.ttf");
+}
+
+body {
+    background-image: url("https://cdn-cfmok.nitrocdn.com/juJsjTwdTqWjkJBaBrLnvLeovPsDevAD/assets/static/optimized/rev-42d7533/wp-content/uploads/1588031136_130_Supreme-Illuminati-Wallpapers.jpg");
+    background-color: #cccccc;
+}
+
+.title{
+    font-family: "FBI";
+    width: 50%;
+    font-size: calc(25vw);
+}
+
 .g-signin2{
     margin: auto;
 }
