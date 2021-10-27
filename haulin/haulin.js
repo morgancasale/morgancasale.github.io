@@ -88,7 +88,7 @@ function checkAnswer(){
 
 function simString(str1, str2){
     var flag = false;
-    if(toLowerCase(str1)==toLowerCase(str2)){
+    if(str1.toLowerCase() == str2.toLowerCase()){
         flag = true;
     }
     return flag;
