@@ -8,7 +8,7 @@ clues_data = `[
             "scs" : "Trova la stanza dove una volta vivevano statue e specchi qui venimmo battezzati.",
             "people" : [
                 {
-                    "name" : "Alessandro Biral",
+                    "name" : "Amico di stas",
                     "code" : "9678752",
                     "atxt" : "L'assassino potrebbe essere Nada."
                 },
@@ -35,7 +35,7 @@ clues_data = `[
                 {
                     "name" : "Riccardo Gallarato",
                     "code" : "3325934",
-                    "atxt" : ""
+                    "atxt" : "Francesco nada, ancora bruciato per aver perso contro mattia alle elezioni, ha deciso di eliminare questo problema definitivamente... "
                 }
             ]
         },
@@ -48,8 +48,8 @@ clues_data = `[
             "scs" : "Al secondo piano dove gli artisti si cambiavano dietro pareti di vetro, ora rimangono solo più ricordi.",
             "people" : [
                 {
-                    "name" : "",
-                    "code" : "",
+                    "name" : "Lorenzo Callegari",
+                    "code" : "4657894",
                     "atxt" : ""
                 }
             ]
@@ -65,7 +65,7 @@ clues_data = `[
                 {
                     "name" : "Lorenzo Callegari",
                     "code" : "7636405",
-                    "atxt" : ""
+                    "atxt" : "Carlo ha deciso di eliminare quell'eterosessuale di Mattia."
                 }
             ]
         },
@@ -85,12 +85,12 @@ clues_data = `[
                 {
                     "name" : "Fabio Pistono",
                     "code" : "6895670",
-                    "atxt" : ""
+                    "atxt" : "Mattia non ha difeso stefano quando gli altri lo sfottevano per le dimissioni da purple angel, ora bisogna stare attenti a quel 2001."
                 },
                 {
-                    "name" : "Alessandro Lo Giacco",
+                    "name" : "Francesco Nada",
                     "code" : "6895670",
-                    "atxt" : ""
+                    "atxt" : "Alessandro Biral, dopo il meme di peppe fetish, ha deciso di barattare la vita di Mattia Di Girolamo per entrare a far parte di uno di noi."
                 },
                 {
                     "name" : "Lorenzo Callegari",
@@ -130,7 +130,7 @@ clues_data = `[
                 {
                     "name" : "Stanislav Likhatskiy",
                     "code" : "5634784",
-                    "atxt" : ""
+                    "atxt" : "Alessandro Biral, dopo il meme di peppe fetish, ha deciso di barattare la vita di Mattia Di Girolamo per entrare fra di noi."
                 }
             ]
         },
@@ -143,7 +143,7 @@ clues_data = `[
             "scs" : "Cercate quello che può sembrare il faro di questo luogo dimenticato.",
             "people" : [
                 {
-                    "name" : "Chiara Poggi",
+                    "name" : "Alessandro Lo Giacco",
                     "code" : "4665744",
                     "atxt" : ""
                 }
@@ -160,12 +160,12 @@ clues_data = `[
                 {
                     "name" : "Loris Giannini",
                     "code" : "2435434",
-                    "atxt" : ""
+                    "atxt" : "Stefano De Caria, noto 2001, messo ai margini degli zvc, non apprezzò il taglio fatto da digi quindi ha deciso di vendicarsi..."
                 },
                 {
                     "name" : "Carlo Tabasso",
                     "code" : "2435434",
-                    "atxt" : "Attenzione investigatore insider ci riportano informazioni che l'assassino potrebbe essere una ragazza del vostro gruppo, forse una silenziosa e insospettabile"
+                    "atxt" : ""
                 }
             ]
         },
@@ -178,24 +178,24 @@ clues_data = `[
             "scs" : "Ora è l'ora di emularli e rifocillarvi.",
             "people" : [
                 {
-                    "name" : "Chiara Poggi",
+                    "name" : "Alessandro Lo Giacco",
                     "code" : "4634523",
-                    "atxt" : "45.136471, 7.734862 Prossimo indizio: 4665744"
+                    "atxt" : "Un litigio sul set di 18 giorni ha portato uno della tua squadra a pensare di eliminare mattia.    45.136471, 7.734862 Prossimo indizio: 4665744"
                 },
                 {
                     "name" : "Adriano Briscese",
                     "code" : "3546235",
-                    "atxt" : "45.117345, 7.709703 Prossimo indizio: 4665744"
+                    "atxt" : "Non parlarne con nessuno... Loris è l'assassino.   45.117345, 7.709703 Prossimo indizio: 4665744"
                 },
                 {
                     "name" : "Paolo Moscogiuri",
                     "code" : "5349269",
-                    "atxt" : "45.112315, 7.644347 Prossimo indizio: 4665744"
+                    "atxt" : "Croce è l'assassino.   45.112315, 7.644347 Prossimo indizio: 4665744"
                 },
                 {
                     "name" : "Elena Ferrero",
                     "code" : "2345237",
-                    "atxt" : "45.094021, 7.633389 Prossimo indizio: 4665744"
+                    "atxt" : "La psycho ha richiesto un pegno di sangue, mattia è stato solo il primo che lui si è trovato a tiro.   45.094021, 7.633389 Prossimo indizio: 4665744"
                 },
                 {
                     "name" : "Valeria Piscopo",
@@ -213,9 +213,9 @@ clues_data = `[
             "scs" : "Avvicinatevi a questa misteriosa torre persa nella boscaglia e cercate per il prossimo indizio.",
             "people" : [
                 {
-                    "name" : "Amico di stas",
+                    "name" : "Alessandro Biral",
                     "code" : "3124696",
-                    "atxt" : ""
+                    "atxt" : "Mattia ha fatto la pipì nella sua piscina quindi ha deciso di disinfettarlo definivamente."
                 }
             ]
         },
@@ -230,7 +230,7 @@ clues_data = `[
                 {
                     "name" : "Stefano De Caria",
                     "code" : "9678752",
-                    "atxt" : ""
+                    "atxt" : "Mattia voleva scoparsi la mia Chiara Cristofaro, quindi andava eliminato."
                 }
             ]
         },
@@ -260,7 +260,7 @@ clues_data = `[
                 {
                     "name" : "Federico Croce",
                     "code" : "4527814",
-                    "atxt" : ""
+                    "atxt" : "Mattia ha fatto la pipì nella sua piscina quindi ha deciso di disinfettarlo definivamente."
                 }
             ]
         },
@@ -275,7 +275,7 @@ clues_data = `[
                 {
                     "name" : "Sofia Cerasi",
                     "code" : "4526190",
-                    "atxt" : ""
+                    "atxt" : "Non conosci Gallarato ma non dovreste incrociare la vostra strada con lui"
                 }
             ]
         },
@@ -290,7 +290,7 @@ clues_data = `[
                 {
                     "name" : "Vittorio Colli",
                     "code" : "5463764",
-                    "atxt" : ""
+                    "atxt" : "Anna potrebbe essere complice di Carlo..."
                 }
             ]
         },
@@ -305,12 +305,12 @@ clues_data = `[
                 {
                     "name" : "Stefano Lino",
                     "code" : "5475789",
-                    "atxt" : ""
+                    "atxt" : "Ma se invece l'assassino fosse tra uno di voi?"
                 },
                 {
                     "name" : "Joseph Laganà",
                     "code" : "5654673",
-                    "atxt" : ""
+                    "atxt" : "Non conosci Gallarato ma non dovreste incrociare la vostra strada con lui"
                 }
             ]
         },
@@ -340,7 +340,7 @@ clues_data = `[
                 {
                     "name" : "Valeria Piscopo",
                     "code" : "4665744",
-                    "atxt" : ""
+                    "atxt" : "Lucia sembra molto sospetta, chissà perchè conosceva parte dei piani."
                 }
             ]
         },
@@ -355,7 +355,7 @@ clues_data = `[
                 {
                     "name" : "Anna Ramella",
                     "code" : "4578954",
-                    "atxt" : ""
+                    "atxt" : "Vittorio non l'ha presa molto bene che mattia abbia invitato stanislav il distruttore di caraffe alla sua festa, per questo potrebbe meritarsi anche la morte."
                 }
             ]
         },
@@ -420,7 +420,7 @@ clues_data = `[
                 {
                     "name" : "Antonio Maria Pirozzi",
                     "code" : "5675622",
-                    "atxt" : ""
+                    "atxt" : "Mattia non ha difeso stefano quando gli altri volevano buttarlo fuori, quindi lui ha deciso di vendicarsi..."
                 },
                 {
                     "name" : "Lucia Crocetto",
@@ -440,7 +440,7 @@ clues_data = `[
                 {
                     "name" : "Francesco Nada",
                     "code" : "3478356",
-                    "atxt" : ""
+                    "atxt" : "Mattia ha rifiutato di accompagnare a casa Paolino una sera quindi ha deciso che si meritava di finire."
                 }
             ]
         }
