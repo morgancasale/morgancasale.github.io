@@ -15,8 +15,13 @@ function init(){
 
 function checkCode(){
     var profile = localStorage.getItem("profile");
-    var message = searchMessage(document.getElementById("code_box").value, profile);
-
+    var code = document.getElementById("code_box").value;
+    var message;
+    if(code == "0000"){
+        message = "Greetings, agent " + profile + ".";
+    } else{
+        message = searchMessage(code, profile);
+    }
     document.getElementById("code").style.display = "none";
     document.getElementById("message").style.display = "block";
 
