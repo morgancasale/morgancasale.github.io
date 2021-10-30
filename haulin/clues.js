@@ -80,7 +80,7 @@ clues_data = `[
                 {
                     "name" : "Antonio Maria Pirozzi",
                     "code" : "3445347",
-                    "atxt" : ""
+                    "atxt" : "Magari fin dall'inizio eri tu l'assassino."
                 },
                 {
                     "name" : "Fabio Pistono",
@@ -101,6 +101,11 @@ clues_data = `[
                     "name" : "Lucia Crocetto",
                     "code" : "4354577",
                     "atxt" : ""
+                },
+                {
+                    "name" : "Francesco Nada",
+                    "code" : "6895670",
+                    "atxt" : "Alessandro Biral, dopo il meme di peppe fetish, ha deciso di barattare la vita di Mattia Di Girolamo per entrare fra di noi."
                 }
             ]
         },
@@ -113,8 +118,8 @@ clues_data = `[
             "scs" : "Al piano di sopra dove su una poltrona un uomo avrà probabilmente tirato l'ultimo respiro.",
             "people" : [
                 {
-                    "name" : "",
-                    "code" : "",
+                    "name" : "Stefano De Caria",
+                    "code" : "4657894",
                     "atxt" : ""
                 }
             ]
@@ -180,7 +185,7 @@ clues_data = `[
                 {
                     "name" : "Alessandro Lo Giacco",
                     "code" : "4634523",
-                    "atxt" : "Un litigio sul set di 18 giorni ha portato uno della tua squadra a pensare di eliminare mattia.    45.136471, 7.734862 Prossimo indizio: 4665744"
+                    "atxt" : "45.136471, 7.734862 Prossimo indizio: 4665744. Un litigio sul set di 18 giorni ha portato uno della tua squadra a pensare di eliminare mattia."
                 },
                 {
                     "name" : "Adriano Briscese",
@@ -258,7 +263,7 @@ clues_data = `[
             "scs" : "Salite sulla torre più alta di quella villa nel bosco e godetevi la vista.",
             "people" : [
                 {
-                    "name" : "Federico Croce",
+                    "name" : "Luca Trabuio",
                     "code" : "4527814",
                     "atxt" : "Mattia ha fatto la pipì nella sua piscina quindi ha deciso di disinfettarlo definivamente."
                 }
@@ -426,6 +431,11 @@ clues_data = `[
                     "name" : "Lucia Crocetto",
                     "code" : "5675468",
                     "atxt" : ""
+                },
+                {
+                    "name" : "Lucia Crocetto",
+                    "code" : "5675468",
+                    "atxt" : ""
                 }
             ]
         },
@@ -438,7 +448,7 @@ clues_data = `[
             "scs" : "In questo teatro i bambini si divertivano a recitare prima che svanissero tutti nel nulla",
             "people" : [
                 {
-                    "name" : "Francesco Nada",
+                    "name" : "Mattia Agosto",
                     "code" : "3478356",
                     "atxt" : "Mattia ha rifiutato di accompagnare a casa Paolino una sera quindi ha deciso che si meritava di finire."
                 }
