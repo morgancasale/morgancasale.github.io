@@ -8,7 +8,7 @@ clues_data = `[
             "scs" : "Trova la stanza dove una volta vivevano statue e specchi qui venimmo battezzati.",
             "people" : [
                 {
-                    "name" : "Amico di stas",
+                    "name" : "Antonio Maria Pirozzi",
                     "code" : "9678752",
                     "atxt" : "L'assassino potrebbe essere Nada."
                 },
@@ -33,7 +33,7 @@ clues_data = `[
             "scs" : "Un dinosauro di legno ti indicherà la strada",
             "people" : [
                 {
-                    "name" : "Riccardo Gallarato",
+                    "name" : "Giulia Terzi",
                     "code" : "3325934",
                     "atxt" : "Francesco nada, ancora bruciato per aver perso contro mattia alle elezioni, ha deciso di eliminare questo problema definitivamente... "
                 }
@@ -48,7 +48,7 @@ clues_data = `[
             "scs" : "Al secondo piano dove gli artisti si cambiavano dietro pareti di vetro, ora rimangono solo più ricordi.",
             "people" : [
                 {
-                    "name" : "Lorenzo Callegari",
+                    "name" : "Sofia Cerasi",
                     "code" : "4657894",
                     "atxt" : ""
                 }
@@ -88,19 +88,19 @@ clues_data = `[
                     "atxt" : "Mattia non ha difeso stefano quando gli altri lo sfottevano per le dimissioni da purple angel, ora bisogna stare attenti a quel 2001."
                 },
                 {
-                    "name" : "Francesco Nada",
+                    "name" : "Giulia Spataro",
                     "code" : "6895670",
                     "atxt" : "Alessandro Biral, dopo il meme di peppe fetish, ha deciso di barattare la vita di Mattia Di Girolamo per entrare a far parte di uno di noi."
                 },
                 {
                     "name" : "Lorenzo Callegari",
                     "code" : "4354577",
-                    "atxt" : ""
+                    "atxt" : "Magari sei tu l'assassino..."
                 },
                 {
                     "name" : "Lucia Crocetto",
                     "code" : "4354577",
-                    "atxt" : ""
+                    "atxt" : "Abbiamo sentito voci che Sofia abbia chiesto ad un certo Andrea di eliminare Mattia."
                 },
                 {
                     "name" : "Francesco Nada",
@@ -170,6 +170,11 @@ clues_data = `[
                 {
                     "name" : "Carlo Tabasso",
                     "code" : "2435434",
+                    "atxt" : "Sofia, per avere la custodia di Ethan e Joshua, ha deciso di eliminare il suo ex compagno."
+                },
+                {
+                    "name" : "Alessandro Biral",
+                    "code" : "4657894",
                     "atxt" : ""
                 }
             ]
@@ -185,22 +190,22 @@ clues_data = `[
                 {
                     "name" : "Alessandro Lo Giacco",
                     "code" : "4634523",
-                    "atxt" : "45.136471, 7.734862 Prossimo indizio: 4665744. Un litigio sul set di 18 giorni ha portato uno della tua squadra a pensare di eliminare mattia."
+                    "atxt" : "45.136471, 7.734862 Prossimo indizio: 4665744.   Un litigio sul set di 18 giorni ha portato uno della tua squadra a pensare di eliminare mattia."
                 },
                 {
                     "name" : "Adriano Briscese",
                     "code" : "3546235",
-                    "atxt" : "Non parlarne con nessuno... Loris è l'assassino.   45.117345, 7.709703 Prossimo indizio: 4665744"
+                    "atxt" : "45.117345, 7.709703 Prossimo indizio: 4665744.   Non parlarne con nessuno... Loris è l'assassino."
                 },
                 {
                     "name" : "Paolo Moscogiuri",
                     "code" : "5349269",
-                    "atxt" : "Croce è l'assassino.   45.112315, 7.644347 Prossimo indizio: 4665744"
+                    "atxt" : "45.112315, 7.644347 Prossimo indizio: 4665744.   Croce è l'assassino."
                 },
                 {
                     "name" : "Elena Ferrero",
                     "code" : "2345237",
-                    "atxt" : "La psycho ha richiesto un pegno di sangue, mattia è stato solo il primo che lui si è trovato a tiro.   45.094021, 7.633389 Prossimo indizio: 4665744"
+                    "atxt" : "45.094021, 7.633389 Prossimo indizio: 4665744.   Lucia sembra tanto innocente ma stranamente sapeva più del dovuto."
                 },
                 {
                     "name" : "Valeria Piscopo",
@@ -248,8 +253,8 @@ clues_data = `[
             "scs" : "Cercate nei pressi del pozzo dove finirono molti dei nostri traditori.",
             "people" : [
                 {
-                    "name" : "",
-                    "code" : "",
+                    "name" : "Francesco Nada",
+                    "code" : "4657894",
                     "atxt" : ""
                 }
             ]
@@ -263,7 +268,7 @@ clues_data = `[
             "scs" : "Salite sulla torre più alta di quella villa nel bosco e godetevi la vista.",
             "people" : [
                 {
-                    "name" : "Luca Trabuio",
+                    "name" : "Francesco Nada",
                     "code" : "4527814",
                     "atxt" : "Mattia ha fatto la pipì nella sua piscina quindi ha deciso di disinfettarlo definivamente."
                 }
@@ -295,7 +300,7 @@ clues_data = `[
                 {
                     "name" : "Vittorio Colli",
                     "code" : "5463764",
-                    "atxt" : "Anna potrebbe essere complice di Carlo..."
+                    "atxt" : "Anna potrebbe essere complice di Carlo... chissà come se la passano i loro compagni..."
                 }
             ]
         },
@@ -313,7 +318,7 @@ clues_data = `[
                     "atxt" : "Ma se invece l'assassino fosse tra uno di voi?"
                 },
                 {
-                    "name" : "Joseph Laganà",
+                    "name" : "Carlo Tabasso",
                     "code" : "5654673",
                     "atxt" : "Non conosci Gallarato ma non dovreste incrociare la vostra strada con lui"
                 }
@@ -373,8 +378,8 @@ clues_data = `[
             "scs" : "Raggiungete la cima di questo luogo dove molti anziani trovarono la loro fine nella solitudine del bosco.",
             "people" : [
                 {
-                    "name" : "",
-                    "code" : "",
+                    "name" : "Anna Ramella",
+                    "code" : "4657894",
                     "atxt" : ""
                 }
             ]
@@ -425,12 +430,7 @@ clues_data = `[
                 {
                     "name" : "Stefano Lino",
                     "code" : "5675622",
-                    "atxt" : "Mattia non ha difeso stefano quando gli altri volevano buttarlo fuori, quindi lui ha deciso di vendicarsi..."
-                },
-                {
-                    "name" : "Lucia Crocetto",
-                    "code" : "5675468",
-                    "atxt" : ""
+                    "atxt" : "Mattia non ha difeso De Caria quando gli altri volevano buttarlo fuori, quindi lui ha deciso di vendicarsi..."
                 },
                 {
                     "name" : "Lucia Crocetto",
@@ -448,9 +448,9 @@ clues_data = `[
             "scs" : "In questo teatro i bambini si divertivano a recitare prima che svanissero tutti nel nulla",
             "people" : [
                 {
-                    "name" : "Mattia Agosto",
+                    "name" : "Federica Spataro",
                     "code" : "3478356",
-                    "atxt" : "Mattia ha rifiutato di accompagnare a casa Paolino una sera quindi ha deciso che si meritava di finire."
+                    "atxt" : "Mattia ha rifiutato di accompagnare a casa Paolino una fatidica sera quindi ha deciso che si meritava di finire."
                 }
             ]
         }
