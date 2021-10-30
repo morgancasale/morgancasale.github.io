@@ -78,7 +78,7 @@ clues_data = `[
             "scs" : "Portate la prova della vostra dedizione, i numeri sono tutto.",
             "people" : [
                 {
-                    "name" : "Stanislav Likhatskiy",
+                    "name" : "Antonio Maria Pirozzi",
                     "code" : "3445347",
                     "atxt" : ""
                 },
@@ -303,7 +303,7 @@ clues_data = `[
             "scs" : "Se imparerete a muovervi come volpi riuscirete a trovare il vostro indizio dietro una delle nostre chiese, buona fortuna.",
             "people" : [
                 {
-                    "name" : "Stefano Lino",
+                    "name" : "Vittorio Colli",
                     "code" : "5475789",
                     "atxt" : "Ma se invece l'assassino fosse tra uno di voi?"
                 },
@@ -418,7 +418,7 @@ clues_data = `[
             "scs" : "Un bagno nella piscina di questo luogo dimenticato ci riporta a tempi passati.",
             "people" : [
                 {
-                    "name" : "Antonio Maria Pirozzi",
+                    "name" : "Stefano Lino",
                     "code" : "5675622",
                     "atxt" : "Mattia non ha difeso stefano quando gli altri volevano buttarlo fuori, quindi lui ha deciso di vendicarsi..."
                 },
