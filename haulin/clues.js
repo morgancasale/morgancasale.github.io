@@ -198,7 +198,7 @@ clues_data = `[
                     "atxt" : "45.117345, 7.709703 Prossimo indizio: 4665744.   Perchè gli investigatori hanno chiamato così tante persone per investigare? Loris potrebbe saperne qualcosa"
                 },
                 {
-                    "name" : "Francesco Nada
+                    "name" : "Francesco Nada",
                     "code" : "5349269",
                     "atxt" : "45.112315, 7.644347 Prossimo indizio: 4665744.   Croce è l'assassino."
                 },
