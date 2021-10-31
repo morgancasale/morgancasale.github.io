@@ -70,11 +70,11 @@ clues_data = `[
             ]
         },
         {
-            "place" : "Ponte del diavolo",
+            "place" : "Lago dell'amiantiferia",
             "msg" : "In questo ponte una setta ha trovato il suo oscuro signore",
             "answer" : "Ponte del diavolo",
             "perc" : "",
-            "gps" : "45.268090, 7.481308",
+            "gps" : "45.299058, 7.501073",
             "scs" : "Portate la prova della vostra dedizione, i numeri sono tutto.",
             "people" : [
                 {
