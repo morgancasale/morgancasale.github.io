@@ -56,7 +56,7 @@ clues_data = `[
         },
         {
             "place" : "Palazzina di caccia di Stupinigi",
-            "msg" : "",
+            "msg" : "Qui i Savoia passavano il loro tempo libero a trucidare animaletti.",
             "answer" : "Palazzina di caccia di Stupinigi",
             "perc" : "",
             "gps" : "44.997381, 7.606905",
@@ -141,8 +141,8 @@ clues_data = `[
         },
         {
             "place" : "Ex acciaieria Lucchini",
-            "msg" : "Qui venivano costruite armi di morte per tutta Torino ora rimangono solo i ricordi di quei tempi oscuri",
-            "answer" : "Ex acciaieria Lucchini",
+            "msg" : "Fuori da Torino in questa struttura venivano costruite armi di morte per tutta la città ora rimangono solo i ricordi di quei tempi oscuri",
+            "answer" : "Acciaieria Lucchini",
             "perc" : "",
             "gps" : "45.146706, 7.749388",
             "scs" : "Cercate quello che può sembrare il faro di questo luogo dimenticato.",
@@ -291,8 +291,8 @@ clues_data = `[
         },
         {
             "place" : "Piazza Statuto",
-            "msg" : "",
-            "answer" : "",
+            "msg" : "Qui si dice si trovino le porte dell'inferno, ci ritroviamo lì ogni anno questa notte. ",
+            "answer" : "Piazza Statuto",
             "perc" : "",
             "gps" : "45.076293, 7.670672",
             "scs" : "Gli alberi indicheranno la via.",
@@ -371,8 +371,8 @@ clues_data = `[
         },
         {
             "place" : "Villa Chiara",
-            "msg" : "",
-            "answer" : "",
+            "msg" : "Chi è l'assassino del primo Scary movie?",
+            "answer" : "Doofy Gilmore",
             "perc" : "",
             "gps" : "45.026691, 7.732361",
             "scs" : "Raggiungete la cima di questo luogo dove molti anziani trovarono la loro fine nella solitudine del bosco.",
@@ -421,8 +421,8 @@ clues_data = `[
         },
         {
             "place" : "Ospedale abbandonato",
-            "msg" : "",
-            "answer" : "",
+            "msg" : "Chi è l'eroe che ha salvato Torino dalla conquista dei francesi?",
+            "answer" : "Pietro Micca",
             "perc" : "",
             "gps" : "45.031771, 7.710569",
             "scs" : "Un bagno nella piscina di questo luogo dimenticato ci riporta a tempi passati.",
@@ -441,8 +441,8 @@ clues_data = `[
         },
         {
             "place" : "Villa Moglia",
-            "msg" : "",
-            "answer" : "",
+            "msg" : "Un gruppo di caccia fantasmi del Musinè ha trovato e parlato in questa villa con i resti di una ragazza.",
+            "answer" : "Villa Moglia",
             "perc" : "",
             "gps" : "45.018574, 7.787314",
             "scs" : "Nel giardino di questa villa dimentica, oltre la cappella, si trovano delle scale che portano ad un bosco di mani.",
