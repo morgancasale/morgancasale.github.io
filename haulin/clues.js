@@ -30,7 +30,7 @@ clues_data = `[
             "answer" : "Superga",
             "perc" : "",
             "gps" : "45.080404, 7.767198",
-            "scs" : "Un dinosauro di legno ti indicherà la strada",
+            "scs" : "Sul retro di questa imponente basilica dove nessuno mai va, si trova l'ingresso del sentiero 65.",
             "people" : [
                 {
                     "name" : "Giulia Terzi",
@@ -125,12 +125,12 @@ clues_data = `[
             ]
         },
         {
-            "place" : "Albergo abbandonato di San Mauro",
+            "place" : "Torre del moncanino",
             "msg" : "Qui in piemonte le streghe vengono chiamate così",
             "answer" : "masche",
             "perc" : "",
-            "gps" : "45.084458, 7.751501",
-            "scs" : "Dopo aver salito quella lunga scalinata raggiungete la terrazza da cui potrete osservare la città immersa nella nebbia.",
+            "gps" : "45.100496, 7.779622",
+            "scs" : "Di fianco alla villa dove si narra conducano riti poco cristiani troverete un cancello da cui potrete osservare questa misteriosa torre",
             "people" : [
                 {
                     "name" : "Stanislav Likhatskiy",
@@ -232,7 +232,7 @@ clues_data = `[
         {
             "place" : "Galoppatoio abbandonato",
             "msg" : "Chi è il primo killer di Venerdì 13?",
-            "answer" : "",
+            "answer" : "Jason",
             "perc" : "",
             "gps" : "45.088216, 7.721847",
             "scs" : "Un cavallo gigante vi indicherà la via.",
@@ -295,7 +295,7 @@ clues_data = `[
             "answer" : "",
             "perc" : "",
             "gps" : "45.076293, 7.670672",
-            "scs" : "Placeholder",
+            "scs" : "Gli alberi indicheranno la via.",
             "people" : [
                 {
                     "name" : "Vittorio Colli",
@@ -306,8 +306,8 @@ clues_data = `[
         },
         {
             "place" : "San Biagio",
-            "msg" : "",
-            "answer" : "",
+            "msg" : "Quale famoso liquore venne creato da frati torinesi come medicinale?",
+            "answer" : "San Simone",
             "perc" : "",
             "gps" : "45.202852, 7.510330",
             "scs" : "Se imparerete a muovervi come volpi riuscirete a trovare il vostro indizio dietro una delle nostre chiese, buona fortuna.",
@@ -341,8 +341,8 @@ clues_data = `[
         },
         {
             "place" : "Torre della Vigna",
-            "msg" : "",
-            "answer" : "",
+            "msg" : "Quando ad ottobre si sono aperte le porte dell'inferno?",
+            "answer" : "20",
             "perc" : "",
             "gps" : "45.105980, 7.476528",
             "scs" : "Seguite la via degli occhi dei tagliafuoco per raggiungere una torre dimenticato nel bosco.",
@@ -356,8 +356,8 @@ clues_data = `[
         },
         {
             "place" : "Villa Romana di Bruere",
-            "msg" : "",
-            "answer" : "",
+            "msg" : "Qual'è l'animale prediletto dal signore oscuro?",
+            "answer" : "capra",
             "perc" : "",
             "gps" : "45.116339, 7.480388",
             "scs" : "Al centro di quella casa antica troverete la via.",
@@ -445,7 +445,7 @@ clues_data = `[
             "answer" : "",
             "perc" : "",
             "gps" : "45.018574, 7.787314",
-            "scs" : "In questo teatro i bambini si divertivano a recitare prima che svanissero tutti nel nulla",
+            "scs" : "Nel giardino di questa villa dimentica, oltre la cappella, si trovano delle scale che portano ad un bosco di mani.",
             "people" : [
                 {
                     "name" : "Federica Spataro",
