@@ -195,7 +195,7 @@ clues_data = `[
                 {
                     "name" : "Adriano Briscese",
                     "code" : "3546235",
-                    "atxt" : "45.117345, 7.709703 Prossimo indizio: 4665744.   Non parlarne con nessuno... Loris è l'assassino."
+                    "atxt" : "45.117345, 7.709703 Prossimo indizio: 4665744.   Perchè gli investigatori hanno chiamato così tante persone per investigare?"
                 },
                 {
                     "name" : "Paolo Moscogiuri",
@@ -225,7 +225,7 @@ clues_data = `[
                 {
                     "name" : "Alessandro Biral",
                     "code" : "3124696",
-                    "atxt" : "Mattia ha fatto la pipì nella sua piscina quindi ha deciso di disinfettarlo definivamente."
+                    "atxt" : "Gli investigatori sanno più di quello che vi hanno detto."
                 }
             ]
         },
@@ -270,7 +270,7 @@ clues_data = `[
                 {
                     "name" : "Francesco Nada",
                     "code" : "4527814",
-                    "atxt" : "Mattia ha fatto la pipì nella sua piscina quindi ha deciso di disinfettarlo definivamente."
+                    "atxt" : "Siamo sicuri che fossero veri investigatori?"
                 }
             ]
         },
@@ -285,7 +285,7 @@ clues_data = `[
                 {
                     "name" : "Sofia Cerasi",
                     "code" : "4526190",
-                    "atxt" : "Non conosci Gallarato ma non dovreste incrociare la vostra strada con lui"
+                    "atxt" : "Gli investigatori sanno più di quello che vi hanno detto."
                 }
             ]
         },
@@ -320,7 +320,7 @@ clues_data = `[
                 {
                     "name" : "Carlo Tabasso",
                     "code" : "5654673",
-                    "atxt" : "Non conosci Gallarato ma non dovreste incrociare la vostra strada con lui"
+                    "atxt" : "Perchè gli investigatori hanno chiamato così tante persone per investigare?"
                 }
             ]
         },
