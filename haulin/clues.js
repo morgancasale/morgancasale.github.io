@@ -13,7 +13,7 @@ clues_data = `[
                     "atxt" : "L'assassino potrebbe essere Nada."
                 },
                 {
-                    "name" : "Francesco Nada",
+                    "name" : "Federica Spataro",
                     "code" : "645",
                     "atxt" : "L'assassino potrebbe essere Biral."
                 },
@@ -35,7 +35,7 @@ clues_data = `[
                 {
                     "name" : "Federica Spataro",
                     "code" : "3325934",
-                    "atxt" : "Francesco nada, ancora bruciato per aver perso contro mattia alle elezioni, ha deciso di eliminare questo problema definitivamente... "
+                    "atxt" : "Federica Spataro, ancora bruciato per aver perso contro mattia alle elezioni, ha deciso di eliminare questo problema definitivamente... "
                 }
             ]
         },
@@ -103,7 +103,7 @@ clues_data = `[
                     "atxt" : "Abbiamo sentito voci che Sofia abbia chiesto ad un certo Andrea di eliminare Mattia."
                 },
                 {
-                    "name" : "Francesco Nada",
+                    "name" : "Federica Spataro",
                     "code" : "6895670",
                     "atxt" : "Alessandro Biral, dopo il meme di peppe fetish, ha deciso di barattare la vita di Mattia Di Girolamo per entrare fra di noi."
                 }
@@ -198,7 +198,7 @@ clues_data = `[
                     "atxt" : "45.117345, 7.709703 Prossimo indizio: 4665744.   Perchè gli investigatori hanno chiamato così tante persone per investigare? Loris potrebbe saperne qualcosa"
                 },
                 {
-                    "name" : "Francesco Nada",
+                    "name" : "Federica Spataro",
                     "code" : "5349269",
                     "atxt" : "45.112315, 7.644347 Prossimo indizio: 4665744.   Croce è l'assassino."
                 },
@@ -253,7 +253,7 @@ clues_data = `[
             "scs" : "Cercate nei pressi del pozzo dove finirono molti dei nostri traditori. e fateli una foto mandandola sul vostro gruppo",
             "people" : [
                 {
-                    "name" : "Francesco Nada",
+                    "name" : "Federica Spataro",
                     "code" : "4657894",
                     "atxt" : ""
                 }
@@ -268,7 +268,7 @@ clues_data = `[
             "scs" : "Salite sulla torre più alta di quella villa nel bosco e godetevi la vista.",
             "people" : [
                 {
-                    "name" : "Francesco Nada",
+                    "name" : "Federica Spataro",
                     "code" : "4527814",
                     "atxt" : "Siamo sicuri che fossero veri investigatori?"
                 }
@@ -413,7 +413,7 @@ clues_data = `[
                     "atxt" : ""
                 },
                 {
-                    "name" : "Francesco Nada",
+                    "name" : "Federica Spataro",
                     "code" : "4665744",
                     "atxt" : ""
                 }
