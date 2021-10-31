@@ -195,7 +195,7 @@ clues_data = `[
                 {
                     "name" : "Adriano Briscese",
                     "code" : "3546235",
-                    "atxt" : "45.117345, 7.709703 Prossimo indizio: 4665744.   Perchè gli investigatori hanno chiamato così tante persone per investigare?"
+                    "atxt" : "45.117345, 7.709703 Prossimo indizio: 4665744.   Perchè gli investigatori hanno chiamato così tante persone per investigare? Loris potrebbe saperne qualcosa"
                 },
                 {
                     "name" : "Paolo Moscogiuri",
