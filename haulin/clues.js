@@ -250,7 +250,7 @@ clues_data = `[
             "answer" : "Sleepy Hollow",
             "perc" : "",
             "gps" : "44.967304, 7.797260",
-            "scs" : "Cercate nei pressi del pozzo dove finirono molti dei nostri traditori.",
+            "scs" : "Cercate nei pressi del pozzo dove finirono molti dei nostri traditori. e fateli una foto mandandola sul vostro gruppo",
             "people" : [
                 {
                     "name" : "Francesco Nada",
@@ -298,7 +298,7 @@ clues_data = `[
             "scs" : "Gli alberi indicheranno la via.",
             "people" : [
                 {
-                    "name" : "Vittorio Colli",
+                    "name" : "Vittorio Kolly",
                     "code" : "5463764",
                     "atxt" : "Anna potrebbe essere complice di Carlo... chissà come se la passano i loro compagni..."
                 }
@@ -313,7 +313,7 @@ clues_data = `[
             "scs" : "Se imparerete a muovervi come volpi riuscirete a trovare il vostro indizio dietro una delle nostre chiese, buona fortuna.",
             "people" : [
                 {
-                    "name" : "Vittorio Colli",
+                    "name" : "Vittorio Kolly",
                     "code" : "5475789",
                     "atxt" : "Ma se invece l'assassino fosse tra uno di voi?"
                 },
@@ -375,7 +375,7 @@ clues_data = `[
             "answer" : "Doofy Gilmore",
             "perc" : "",
             "gps" : "45.026691, 7.732361",
-            "scs" : "Raggiungete la cima di questo luogo dove molti anziani trovarono la loro fine nella solitudine del bosco.",
+            "scs" : "Raggiungete la cima di questo luogo dove molti anziani trovarono la loro fine nella solitudine del bosco. e mandate una foto sul gruppo.",
             "people" : [
                 {
                     "name" : "Anna Ramella",
