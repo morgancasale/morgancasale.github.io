@@ -33,7 +33,7 @@ clues_data = `[
             "scs" : "Sul retro di questa imponente basilica dove nessuno mai va, si trova l'ingresso del sentiero 65.",
             "people" : [
                 {
-                    "name" : "Giulia Terzi",
+                    "name" : "Federica Spataro",
                     "code" : "3325934",
                     "atxt" : "Francesco nada, ancora bruciato per aver perso contro mattia alle elezioni, ha deciso di eliminare questo problema definitivamente... "
                 }
@@ -133,7 +133,7 @@ clues_data = `[
             "scs" : "Di fianco alla villa dove si narra conducano riti poco cristiani troverete un cancello da cui potrete osservare questa misteriosa torre",
             "people" : [
                 {
-                    "name" : "Stanislav Likhatskiy",
+                    "name" : "Stan_is_Love",
                     "code" : "5634784",
                     "atxt" : "Alessandro Biral, dopo il meme di peppe fetish, ha deciso di barattare la vita di Mattia Di Girolamo per entrare fra di noi."
                 }
