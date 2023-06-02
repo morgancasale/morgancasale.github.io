@@ -186,6 +186,9 @@ async function setDisqualified(){
     }
     sendNotification("SQUALIFICATO E SEGNALATO!");
     sendTgMsg("SQUALIFICATO E SEGNALATO!");
+    
+    notifyDisqualified();
+
     await sleep(1000);
     if(!ios){
         navigator.vibrate(3000);
@@ -194,8 +197,6 @@ async function setDisqualified(){
     closeNotification(map.limits[1].description); //close orange notification
     deleteLastTgMsg();
     
-    notifyDisqualified();
-
     playing = false; 
 }
 
