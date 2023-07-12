@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'seven_segment';
+    src: url('seven_segment-webfont.woff2') format('woff2'),
+         url('seven_segment-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@keyframes pulsate_green {
+    100% {
+        /* Larger blur radius */
+        text-shadow:
+        0 0 1px #b9fa20,
+        0 0 10px #b9fa20,
+        0 0 15px #b9fa20,
+        0 0 17px #b9fa20,
+        0 0 18px #b9fa20;
+    }
+    0% {
+        /* Smaller blur radius */
+        text-shadow:
+        0 0 1px #b9fa20,
+        0 0 8px #b9fa20,
+        0 0 10px #b9fa20,
+        0 0 12px #b9fa20,
+        0 0 15px #b9fa20;
+    }
+}
+
+@keyframes pulsate_orange {
+    100% {
+        /* Larger blur radius */
+        text-shadow:
+        0 0 1px #f86e1a,
+        0 0 10px #f86e1a,
+        0 0 15px #f86e1a,
+        0 0 17px #f86e1a,
+        0 0 18px #f86e1a;
+    }
+    0% {
+        /* Smaller blur radius */
+        text-shadow:
+        0 0 1px #f86e1a,
+        0 0 8px #f86e1a,
+        0 0 10px #f86e1a,
+        0 0 12px #f86e1a,
+        0 0 15px #f86e1a;
+    }
+}
+
+.background {
+    background-color: black;
+    width: 3840px;
+    height: 2160px;
+    display: flex;
+}
+
+.container{
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.text{
+    font-family: 'seven_segment';
+    font-size: 1000px;
+    text-align: center;
+    display: inline;
+}
+
+.one {
+    color: #f86e1a;    
+    padding-right: 145px;
+    animation: pulsate_orange 2s infinite alternate;
+}
+
+.num {
+    color: #f86e1a;
+    width: 380px;
+    display: flex;
+    justify-content: flex-end;
+    animation: pulsate_orange 2s infinite alternate;
+}
+
+.giorni{
+    color: #b9fa20;
+    padding-left: 220px;
+    
+    animation: pulsate_green 2s infinite alternate;
+}
+
