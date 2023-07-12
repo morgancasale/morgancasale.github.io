@@ -50,8 +50,6 @@
 
 .background {
     background-color: black;
-    width: 3840px;
-    height: 2160px;
     display: flex;
 }
 
