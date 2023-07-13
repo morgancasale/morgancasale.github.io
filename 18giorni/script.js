@@ -1,3 +1,9 @@
+function onload(){
+    width = window.outerWidth;
+    zoom = width / 3840;
+    document.getElementById("container").style.zoom = zoom;
+}
+
 function randInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
