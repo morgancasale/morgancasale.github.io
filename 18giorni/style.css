@@ -81,13 +81,13 @@
     width: 380px;
     display: flex;
     justify-content: flex-end;
-    animation: pulsate_orange 2s infinite alternate;
+    animation: pulsate_orange 3s infinite alternate;
 }
 
 .giorni{
     color: #b9fa20;
     padding-left: 220px;
     
-    animation: pulsate_green 2s infinite alternate;
+    animation: pulsate_green 3s infinite alternate;
 }
 
