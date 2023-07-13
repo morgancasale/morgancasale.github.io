@@ -1,6 +1,6 @@
 function onload(){
     width = window.outerWidth;
-    zoom = width / 3840 * 1.5;
+    zoom = width / 3840 * 2;
     document.getElementById("container").style.zoom = zoom;
 }
 
