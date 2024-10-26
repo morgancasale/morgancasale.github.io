@@ -115,6 +115,13 @@ class Main extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         this.fetchData();
+        this.reRender();
+    }
+
+    async reRender(){
+        await this.render();
+        await this.requestUpdate();
+        await new Promise(r => setTimeout(r, 1));
     }
 
     render() {
