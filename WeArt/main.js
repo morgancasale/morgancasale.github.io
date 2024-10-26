@@ -101,6 +101,7 @@ class Main extends LitElement {
             temp.map((material) => {
                 this.materials.push(material[""]);
             });
+            console.log(this.materials);
         })
         .catch((error) => {
             console.error("Error", error);
