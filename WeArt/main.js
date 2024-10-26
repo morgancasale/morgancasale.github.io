@@ -31,6 +31,7 @@ class Main extends LitElement {
         return html`
             <div class="container">
                 <img class="model" src="https://github.com/morgancasale/HLA_models_screens/blob/main/antlion.png?raw=true">
+                <el-button>Default</el-button>
             </div>
         `;
     }
