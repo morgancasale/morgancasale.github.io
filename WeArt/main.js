@@ -37,6 +37,12 @@ class Main extends LitElement {
                 display: flex;
                 
             }
+
+            button{
+                width: 200px;
+                height: 200px;
+                font-size: 35px;
+            }
             `
         ];
 
