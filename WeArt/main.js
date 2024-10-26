@@ -5,6 +5,7 @@ import {
 } from "https://unpkg.com/lit-element@2.4.0/lit-element.js?module";
 
 import { generalStyle } from "./general-style.js";
+import "./mat-button.js";
 
 
 class Main extends LitElement {
@@ -15,6 +16,8 @@ class Main extends LitElement {
         this.sheetName = "materials";
         this.query = "select A where A is not null offset 1";
         this.materials = [];
+        this.pic_name = "antlion";
+        this.pic_address = "https://github.com/morgancasale/HLA_models_screens/blob/main/"+this.pic_name+".png?raw=true";
 
     }
 
@@ -140,7 +143,7 @@ class Main extends LitElement {
                     <div class="btn_cont">
                         ${this.materials.map((material) => {
                             return html`
-                                <button>${material}</button>
+                                <mat-button .material=${material} .pic_name=${this.pic_name}></mat-button>
                             `;
                         })}
                     </div>
