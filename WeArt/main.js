@@ -13,6 +13,7 @@ class Main extends LitElement {
         super();
         this.sheetID = "1XZ1vGGTOhbiHAEu1_y0nLIKvzKmkNYa5DXyPHaD_pnE";
         this.sheetName = "materials";
+        this.query = "select A where A is not null offset 1";
         this.materials = [];
 
     }
@@ -91,7 +92,7 @@ class Main extends LitElement {
         const base = `https://docs.google.com/spreadsheets/d/${this.sheetID}/gviz/tq?`;
         const url = `${base}&sheet=${encodeURIComponent(
         this.sheetName
-        )}&tq=${encodeURIComponent(query)}`;
+        )}&tq=${encodeURIComponent(this.query)}`;
 
         fetch(url)
         .then((res) => res.text())
