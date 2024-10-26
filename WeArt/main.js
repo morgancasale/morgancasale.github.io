@@ -22,6 +22,7 @@ class Main extends LitElement {
 
             .img_cont{
                 width: 100%;
+                height: 50%;
                 display: flex;
                 justify-content: center;
             }
@@ -34,7 +35,7 @@ class Main extends LitElement {
 
             .model{
                 display: flex;
-                height: 50%;
+                
             }
             `
         ];
