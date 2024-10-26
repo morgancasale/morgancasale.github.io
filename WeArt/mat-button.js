@@ -40,7 +40,7 @@ class MatButton extends LitElement {
             "material" : this.material
         }
 
-        var url = "https://script.google.com/macros/s/AKfycbztD1VanzQJGJoQA75ebXHtVI9luGTRJ-f6qfsXBTBymw0GWnX8B1bZBS8IdrM1V2Mb/exec";
+        var url = "https://script.google.com/macros/s/AKfycbwC7vj9jC9VbNzKOI2eFl0wdVt--bYt5F80Dti9VzRS5BeBwM01rLs_Uy5UIe3DpDXv/exec";
         var request = {
             method: "POST",
             body: JSON.stringify(data)
