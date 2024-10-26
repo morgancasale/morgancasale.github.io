@@ -12,6 +12,7 @@ class Main extends LitElement {
     constructor() {
         super();
         this.sheetID = "1XZ1vGGTOhbiHAEu1_y0nLIKvzKmkNYa5DXyPHaD_pnE";
+        this.sheetName = "materials";
         this.materials = [];
 
     }
@@ -89,7 +90,7 @@ class Main extends LitElement {
     fetchMaterials(){
         const base = `https://docs.google.com/spreadsheets/d/${this.sheetID}/gviz/tq?`;
         const url = `${base}&sheet=${encodeURIComponent(
-        sheetName
+        this.sheetName
         )}&tq=${encodeURIComponent(query)}`;
 
         fetch(url)
