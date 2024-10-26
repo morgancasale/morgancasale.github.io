@@ -12,13 +12,13 @@ class Main extends LitElement {
         return [
             generalStyle,
             css`
-            main-element{
+            .container{
                 display: flex;
                 height: 100%;
                 justify-content: center;
             }
 
-            .model {
+            .model{
                 display: flex;
                 height: 50%;
             }
@@ -29,7 +29,9 @@ class Main extends LitElement {
 
     render() {
         return html`
-            <img class="model" src="https://github.com/morgancasale/HLA_models_screens/blob/main/antlion.png?raw=true">
+            <div class="container">
+                <img class="model" src="https://github.com/morgancasale/HLA_models_screens/blob/main/antlion.png?raw=true">
+            </div>
         `;
     }
 }
