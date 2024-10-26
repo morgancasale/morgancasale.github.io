@@ -8,6 +8,14 @@ import { generalStyle } from "./general-style.js";
 
 
 class Main extends LitElement {
+
+    constructor() {
+        super();
+        this.sheetID = "1XZ1vGGTOhbiHAEu1_y0nLIKvzKmkNYa5DXyPHaD_pnE";
+        this.materials = [];
+
+    }
+
     static get styles() {
         return [
             generalStyle,
@@ -48,18 +56,87 @@ class Main extends LitElement {
 
     }
 
+    tableToJson(res) {
+        // credit to Laurence Svekis https://www.udemy.com/course/sheet-data-ajax/
+        const jsData = JSON.parse(res.substring(47).slice(0, -2));
+        let data = [];
+        const columns = jsData.table.cols;
+        const rows = jsData.table.rows;
+        let rowObject;
+        let cellData;
+        let propName;
+        for (let r = 0, rowMax = rows.length; r < rowMax; r++) {
+          rowObject = {};
+          for (let c = 0, colMax = columns.length; c < colMax; c++) {
+            cellData = rows[r]["c"][c];
+            propName = columns[c].label;
+            if (cellData === null) {
+              rowObject[propName] = "";
+            } else if (
+              typeof cellData["v"] == "string" &&
+              cellData["v"].startsWith("Date")
+            ) {
+              rowObject[propName] = new Date(cellData["f"]);
+            } else {
+              rowObject[propName] = cellData["v"];
+            }
+          }
+          data.push(rowObject);
+        }
+        return data;
+    }
+
+    fetchMaterials(){
+        const base = `https://docs.google.com/spreadsheets/d/${this.sheetID}/gviz/tq?`;
+        const url = `${base}&sheet=${encodeURIComponent(
+        sheetName
+        )}&tq=${encodeURIComponent(query)}`;
+
+        fetch(url)
+        .then((res) => res.text())
+        .then((response) => {
+            let temp = this.tableToJson(response);
+            temp.map((material) => {
+                this.materials.push(material[""]);
+            });
+        })
+        .catch((error) => {
+            console.error("Error", error);
+        });
+    }
+
+    fetchData() {
+        this.fetchMaterials();
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this.fetchData();
+    }
+
     render() {
-        return html`
-            <div class="container">
-                <div class="img_cont"> 
-                    <img class="model" src="https://github.com/morgancasale/HLA_models_screens/blob/main/antlion.png?raw=true">
+        if(this.materials.length === 0){
+            return html`
+                <div>Loading...</div>
+            `;
+        } else {
+
+            return html`
+                <div class="container">
+                    <div class="img_cont"> 
+                        <img class="model" src="https://github.com/morgancasale/HLA_models_screens/blob/main/antlion.png?raw=true">
+                    </div>
+                    
+                    <div class="btn_cont">
+                        ${this.materials.map((material) => {
+                            return html`
+                                <button>${material.name}</button>
+                            `;
+                        })}
+                    </div>
                 </div>
-                
-                <div class="btn_cont">
-                    <button>Ciao</button>
-                </div>
-            </div>
-        `;
+            `;
+        }
     }
 }
 

@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       sheetID: "1XZ1vGGTOhbiHAEu1_y0nLIKvzKmkNYa5DXyPHaD_pnE",
       // sheetName is the name of the TAB in your spreadsheet (default is "Sheet1")
       sheetName: "materials",
-      query: "SELECT A offset 1",
+      query: "select A where A is not null offset 1",
       callback: sheetDataHandler,
     });
   });
