@@ -140,7 +140,7 @@ class Main extends LitElement {
                     <div class="btn_cont">
                         ${this.materials.map((material) => {
                             return html`
-                                <button>${material.name}</button>
+                                <button>${material}</button>
                             `;
                         })}
                     </div>
