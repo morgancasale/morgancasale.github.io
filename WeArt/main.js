@@ -11,13 +11,25 @@ class Main extends LitElement {
     static get styles() {
         return [
             generalStyle,
-            css``
+            css`
+            main-element{
+                display: flex;
+                height: 100%;
+                justify-content: center;
+            }
+
+            .model {
+                display: flex;
+                height: 50%;
+            }
+            `
         ];
+
     }
 
     render() {
         return html`
-            <h1>Hello, World!</h1>
+            <img class="model" src="https://github.com/morgancasale/HLA_models_screens/blob/main/antlion.png?raw=true">
         `;
     }
 }
