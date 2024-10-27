@@ -44,6 +44,7 @@ class Main extends LitElement {
                 display: flex;
                 width: 100%;
                 justify-content: center;
+                flex-wrap: wrap;
             }
 
             .model{

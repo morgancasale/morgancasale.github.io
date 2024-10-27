@@ -17,31 +17,25 @@ class MatButton extends LitElement {
     }
 
     static get styles() {
-        if (this.material == "Other") {
-            return [
-                generalStyle,
-                css`
-                button{
-                    width: 200px;
-                    height: 200px;
-                    font-size: 35px;
-                    background-color: #f44336;
-                    color: white;
-                }
-                `
-            ];
-        } else {
-            return [
-                generalStyle,
-                css`
-                button{
-                    width: 200px;
-                    height: 200px;
-                    font-size: 35px;
-                }
-                `
-            ];
-        }
+        return [
+            generalStyle,
+            css`
+            button{
+                width: 10vw;
+                aspect-ratio: 1;
+                margin: 0.5vw;
+                font-size: 35px;
+            }
+
+            .other-btn{
+                width: 10vw;
+                aspect-ratio: 1;
+                margin: 0.5vw;
+                background-color: #f44336;
+                color: white;
+            }
+            `
+        ];
     }
 
     set_material() {
@@ -64,9 +58,15 @@ class MatButton extends LitElement {
     }
 
     render() {
-        return html`
-            <button id="mat-btn" @click=${this.set_material}>${this.material}</button>
-        `;
+        if (this.material == "Other") {
+            return html`
+            <button id="mat-btn" class="other-btn" @click=${this.set_material}>${this.material}</button>
+            `;
+        } else {
+            return html`
+                <button id="mat-btn" @click=${this.set_material}>${this.material}</button>
+            `;
+        }
     }
 }
 
