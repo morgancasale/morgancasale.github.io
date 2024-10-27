@@ -113,7 +113,7 @@ class Main extends LitElement {
         });
 
         this.materials.push("Other");
-        this.materials.reverse();
+        this.materials = this.materials.reverse();
     }
 
     fetchData() {
