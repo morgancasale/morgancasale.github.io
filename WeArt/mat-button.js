@@ -24,13 +24,10 @@ class MatButton extends LitElement {
                 width: 10vw;
                 aspect-ratio: 1;
                 margin: 0.5vw;
-                font-size: 35px;
+                border: 0;
             }
 
             .other-btn{
-                width: 10vw;
-                aspect-ratio: 1;
-                margin: 0.5vw;
                 background-color: #f44336;
                 color: white;
             }
@@ -60,7 +57,7 @@ class MatButton extends LitElement {
     render() {
         if (this.material == "Other") {
             return html`
-            <button id="mat-btn" class="other-btn" @click=${this.set_material}>${this.material}</button>
+                <button id="mat-btn" class="other-btn" @click=${this.set_material}>${this.material}</button>
             `;
         } else {
             return html`
