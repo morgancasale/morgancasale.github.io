@@ -10,22 +10,38 @@ class MatButton extends LitElement {
 
     static get properties() {
         return {
+            sheetAPI : { type: String },
             material : { type: String },
             pic_name : { type: String }
         };
     }
 
     static get styles() {
-        return [
-            generalStyle,
-            css`
-            button{
-                width: 200px;
-                height: 200px;
-                font-size: 35px;
-            }
-            `
-        ];
+        if (this.material == "Other") {
+            return [
+                generalStyle,
+                css`
+                button{
+                    width: 200px;
+                    height: 200px;
+                    font-size: 35px;
+                    background-color: #f44336;
+                    color: white;
+                }
+                `
+            ];
+        } else {
+            return [
+                generalStyle,
+                css`
+                button{
+                    width: 200px;
+                    height: 200px;
+                    font-size: 35px;
+                }
+                `
+            ];
+        }
     }
 
     set_material() {
@@ -40,17 +56,16 @@ class MatButton extends LitElement {
             "material" : this.material
         }
 
-        var url = "https://script.google.com/macros/s/AKfycbwC7vj9jC9VbNzKOI2eFl0wdVt--bYt5F80Dti9VzRS5BeBwM01rLs_Uy5UIe3DpDXv/exec";
         var request = {
             method: "POST",
             body: JSON.stringify(data)
         }
-        fetch(url, request)
+        fetch(this.sheetAPI , request)
     }
 
     render() {
         return html`
-            <button @click=${this.set_material}>${this.material}</button>
+            <button id="mat-btn" @click=${this.set_material}>${this.material}</button>
         `;
     }
 }

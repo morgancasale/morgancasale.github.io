@@ -12,13 +12,13 @@ class Main extends LitElement {
 
     constructor() {
         super();
+        this.sheetAPI = "https://script.google.com/macros/s/AKfycbyqq3mBRzYzA5c4xtglts9utMQfooOCrpFEHPw0ASRdwXNEiHFaFLsmfpyEVumJ9dm0/exec"
         this.sheetID = "1XZ1vGGTOhbiHAEu1_y0nLIKvzKmkNYa5DXyPHaD_pnE";
         this.sheetName = "materials";
         this.query = "select A where A is not null offset 1";
         this.materials = [];
         this.pic_name = "antlion";
         this.pic_address = "https://github.com/morgancasale/HLA_models_screens/blob/main/"+this.pic_name+".png?raw=true";
-
     }
 
     static get styles() {
@@ -110,6 +110,8 @@ class Main extends LitElement {
         .catch((error) => {
             console.error("Error", error);
         });
+
+        this.materials.push("Other");
     }
 
     fetchData() {
@@ -143,10 +145,14 @@ class Main extends LitElement {
                     <div class="btn_cont">
                         ${this.materials.map((material) => {
                             return html`
-                                <mat-button .material=${material} .pic_name=${this.pic_name}></mat-button>
+                                <mat-button 
+                                    .sheetAPI=${this.sheetAPI} .material=${material} .pic_name=${this.pic_name}
+                                ></mat-button>
                             `;
                         })}
                     </div>
+                    <div class="other_cont">
+
                 </div>
             `;
         }
