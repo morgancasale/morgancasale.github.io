@@ -48,7 +48,7 @@ class Main extends LitElement {
 
             .model{
                 display: flex;
-                
+                flex-wrap: wrap;
             }
 
             button{
