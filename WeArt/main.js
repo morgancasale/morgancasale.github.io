@@ -115,7 +115,6 @@ class Main extends LitElement {
 
         this.materials.push("Other");
         this.materials = this.materials.reverse();
-        //this.reRender();
     }
 
     async getNextModel(){
@@ -167,7 +166,7 @@ class Main extends LitElement {
     }
 
     render() {
-        if(this.materials.length === 0 || this.pic_name === null){
+        if(this.materials.length === 0 | this.pic_name === null){
             return html`
                 <div>Loading...</div>
             `;
