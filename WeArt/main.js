@@ -163,7 +163,7 @@ class Main extends LitElement {
     }
 
     render() {
-        if(this.materials.length === 0){
+        if(this.materials.length === 0 || this.pic_name === null){
             return html`
                 <div>Loading...</div>
             `;
