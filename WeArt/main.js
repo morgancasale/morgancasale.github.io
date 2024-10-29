@@ -15,6 +15,7 @@ class Main extends LitElement {
         this.sheetAPI = "https://script.google.com/macros/s/AKfycbyqq3mBRzYzA5c4xtglts9utMQfooOCrpFEHPw0ASRdwXNEiHFaFLsmfpyEVumJ9dm0/exec"
         this.sheetID = "1XZ1vGGTOhbiHAEu1_y0nLIKvzKmkNYa5DXyPHaD_pnE";
         this.materials = [];
+        this.pic_name = null;
         this.pic_address = null;
     }
 
@@ -136,7 +137,7 @@ class Main extends LitElement {
             model_name = model_name[model_name.length-1]
             model_name = model_name.split(".")[0]
 
-            let pic_name = model_name;
+            this.pic_name = model_name;
             this.pic_address = "https://github.com/morgancasale/HLA_models_screens/blob/main/" + pic_name + ".png?raw=true";
             console.log(this.pic_address);
         })
@@ -176,6 +177,7 @@ class Main extends LitElement {
                 <div class="container">
                     <div class="img_cont"> 
                         <img class="model" src=${this.pic_address}>
+                        <div class="model_name">${this.pic_name}</div>
                     </div>
                     
                     <div class="btn_cont">
