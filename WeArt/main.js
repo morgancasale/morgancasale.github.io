@@ -1,8 +1,7 @@
 import {
     LitElement,
     html,
-    css,
-    ifDefined
+    css
 } from "https://unpkg.com/lit-element@2.4.0/lit-element.js?module";
 
 import { generalStyle } from "./general-style.js";
@@ -175,7 +174,7 @@ class Main extends LitElement {
             return html`
                 <div class="container">
                     <div class="img_cont"> 
-                        <img class="model" src=${ifDefined(this.pic_address)}>
+                        <img class="model" src=${this.pic_address}>
                     </div>
                     
                     <div class="btn_cont">
