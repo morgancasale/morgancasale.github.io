@@ -106,7 +106,7 @@ class Main extends LitElement {
                 this.materials.push(material[""]);
             });
             console.log(this.materials);
-            this.reRender();
+            //this.reRender();
         })
         .catch((error) => {
             console.error("Error", error);
