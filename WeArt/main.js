@@ -165,29 +165,23 @@ class Main extends LitElement {
     }
 
     render() {
-        if(this.materials.length === 0 || this.pic_name === null){
-            return html`
-                <div>Loading...</div>
-            `;
-        } else {
-            return html`
-                <div class="container">
-                    <div class="img_cont"> 
-                        <img class="model" src="https://github.com/morgancasale/HLA_models_screens/blob/main/antlion.png?raw=true">
-                    </div>
-                    
-                    <div class="btn_cont">
-                        ${this.materials.map((material) => {
-                            return html`
-                                <mat-button 
-                                    .sheetAPI=${this.sheetAPI} .material=${material} .pic_name=${this.pic_name}
-                                ></mat-button>
-                            `;
-                        })}
-                    </div>
+        return html`
+            <div class="container">
+                <div class="img_cont"> 
+                    <img class="model" src="https://github.com/morgancasale/HLA_models_screens/blob/main/antlion.png?raw=true">
                 </div>
-            `;
-        }
+                
+                <div class="btn_cont">
+                    ${this.materials.map((material) => {
+                        return html`
+                            <mat-button 
+                                .sheetAPI=${this.sheetAPI} .material=${material} .pic_name=${this.pic_name}
+                            ></mat-button>
+                        `;
+                    })}
+                </div>
+            </div>
+        `;
     }
 }
 
