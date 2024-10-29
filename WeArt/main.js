@@ -101,9 +101,11 @@ class Main extends LitElement {
         const sheetName = "materials";
 
         const base = `https://docs.google.com/spreadsheets/d/${this.sheetID}/gviz/tq?`;
-        const url = `${base}&sheet=${encodeURIComponent(
-        sheetName
-        )}&tq=${encodeURIComponent(query)}`;
+        const url = `${base}&sheet=${
+            encodeURIComponent(sheetName)
+        }&tq=${
+            encodeURIComponent(query)
+        }`;
 
         fetch(url)
         .then((res) => res.text())
@@ -129,9 +131,11 @@ class Main extends LitElement {
         const sheetName = "models";
 
         const base = `https://docs.google.com/spreadsheets/d/${this.sheetID}/gviz/tq?`;
-        const url = `${base}&sheet=${encodeURIComponent(
-        sheetName
-        )}&tq=${encodeURIComponent(query)}`;
+        const url = `${base}&sheet=${
+            encodeURIComponent(sheetName)
+        }&tq=${
+            encodeURIComponent(query)
+        }`;
 
         fetch(url)
         .then((res) => res.text())
@@ -145,7 +149,6 @@ class Main extends LitElement {
             this.pic_name = model_name;
             this.pic_address = "https://github.com/morgancasale/HLA_models_screens/blob/main/" + this.pic_name + ".png?raw=true";
             console.log(this.pic_address);
-            return this.pic_address;
         })
         .catch((error) => {
             console.error("Error", error);
@@ -153,9 +156,9 @@ class Main extends LitElement {
     }
 
     async fetchData() {
-        //await this.getNextModel();
+        await this.getNextModel();
         await this.fetchMaterials();
-        //await this.reRender();
+        await this.reRender();
         //await this.requestUpdate();
     }
 
@@ -179,7 +182,7 @@ class Main extends LitElement {
             return html`
                 <div class="container">
                     <div class="img_cont"> 
-                        <img class="model" src=${this.getNextModel()}>
+                        <img class="model" src=${this.pic_address}>
                     </div>
 
                     <div class="model_name">${this.pic_name}</div>
