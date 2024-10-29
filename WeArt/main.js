@@ -114,6 +114,7 @@ class Main extends LitElement {
 
         this.materials.push("Other");
         this.materials = this.materials.reverse();
+        this.reRender();
     }
 
     getNextModel(){
@@ -153,7 +154,7 @@ class Main extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         this.fetchData();
-        this.reRender();
+        //this.reRender();
     }
 
     async reRender(){
