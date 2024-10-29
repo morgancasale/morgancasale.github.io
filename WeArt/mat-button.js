@@ -52,6 +52,7 @@ class MatButton extends LitElement {
             body: JSON.stringify(data)
         }
         fetch(this.sheetAPI , request)
+        location.reload()
     }
 
     render() {
