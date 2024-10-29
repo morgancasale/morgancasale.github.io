@@ -15,7 +15,6 @@ class Main extends LitElement {
         this.sheetAPI = "https://script.google.com/macros/s/AKfycbyqq3mBRzYzA5c4xtglts9utMQfooOCrpFEHPw0ASRdwXNEiHFaFLsmfpyEVumJ9dm0/exec"
         this.sheetID = "1XZ1vGGTOhbiHAEu1_y0nLIKvzKmkNYa5DXyPHaD_pnE";
         this.materials = [];
-        this.pic_name = null;
         this.pic_address = null;
     }
 
@@ -166,7 +165,7 @@ class Main extends LitElement {
     }
 
     render() {
-        if(this.materials.length === 0 | this.pic_name === null){
+        if(this.materials.length === 0 | this.pic_address === null){
             return html`
                 <div>Loading...</div>
             `;
