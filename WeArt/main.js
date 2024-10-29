@@ -106,14 +106,13 @@ class Main extends LitElement {
                 this.materials.push(material[""]);
             });
             console.log(this.materials);
+            this.materials.push("Other");
+            this.materials = this.materials.reverse();
             this.reRender();
         })
         .catch((error) => {
             console.error("Error", error);
         });
-
-        this.materials.push("Other");
-        this.materials = this.materials.reverse();
     }
 
     async getNextModel(){
