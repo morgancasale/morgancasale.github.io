@@ -52,8 +52,8 @@ class MatButton extends LitElement {
             method: "POST",
             body: JSON.stringify(data)
         }
-        fetch(this.sheetAPI , request)
-        location.reload()
+        fetch(this.sheetAPI, request)
+        .then(location.reload())
     }
 
     render() {
