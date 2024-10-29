@@ -22,16 +22,13 @@ class Main extends LitElement {
         return [
             generalStyle,
             css`
-            body{
-                background-color: #131929
-            }
-
             .container{
                 display: flex;
                 height: 100%;
                 justify-content: center;
                 flex-wrap: wrap;
                 align-items: center;
+                background-color: #131929;
             }
 
             .img_cont{
