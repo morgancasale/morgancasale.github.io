@@ -149,6 +149,7 @@ class Main extends LitElement {
             this.pic_name = model_name;
             this.pic_address = "https://github.com/morgancasale/HLA_models_screens/blob/main/" + this.pic_name + ".png?raw=true";
             console.log(this.pic_address);
+            this.reRender();
         })
         .catch((error) => {
             console.error("Error", error);
