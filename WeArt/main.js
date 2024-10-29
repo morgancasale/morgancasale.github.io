@@ -1,7 +1,8 @@
 import {
     LitElement,
     html,
-    css
+    css,
+    ifDefined
 } from "https://unpkg.com/lit-element@2.4.0/lit-element.js?module";
 
 import { generalStyle } from "./general-style.js";
@@ -16,6 +17,7 @@ class Main extends LitElement {
         this.sheetID = "1XZ1vGGTOhbiHAEu1_y0nLIKvzKmkNYa5DXyPHaD_pnE";
         this.materials = [];
         this.pic_name = null;
+        this.pic_address = null;
     }
 
     static get styles() {
@@ -89,7 +91,7 @@ class Main extends LitElement {
         return data;
     }
 
-    async fetchMaterials(){
+    fetchMaterials(){
         const query = "select A where A is not null offset 1";
         const sheetName = "materials";
 
@@ -106,7 +108,7 @@ class Main extends LitElement {
                 this.materials.push(material[""]);
             });
             console.log(this.materials);
-            
+            this.reRender();
         })
         .catch((error) => {
             console.error("Error", error);
@@ -114,10 +116,10 @@ class Main extends LitElement {
 
         this.materials.push("Other");
         this.materials = this.materials.reverse();
-        
+        this.reRender();
     }
 
-    async getNextModel(){
+    getNextModel(){
         const query = "SELECT A WHERE C < 100 LIMIT 1";
         const sheetName = "models";
 
@@ -148,14 +150,14 @@ class Main extends LitElement {
     }
 
     async fetchData() {
-        await this.getNextModel();
-        await this.fetchMaterials();
+        this.getNextModel();
+        this.fetchMaterials();
     }
 
     connectedCallback() {
         super.connectedCallback();
         this.fetchData();
-        this.reRender();
+        //this.reRender();
     }
 
     async reRender(){
@@ -165,23 +167,29 @@ class Main extends LitElement {
     }
 
     render() {
-        return html`
-            <div class="container">
-                <div class="img_cont"> 
-                    <img class="model" src="https://github.com/morgancasale/HLA_models_screens/blob/main/antlion.png?raw=true">
+        if(this.materials.length === 0 || this.pic_name === null){
+            return html`
+                <div>Loading...</div>
+            `;
+        } else {
+            return html`
+                <div class="container">
+                    <div class="img_cont"> 
+                        <img class="model" src=${ifDefined(this.pic_address)}>
+                    </div>
+                    
+                    <div class="btn_cont">
+                        ${this.materials.map((material) => {
+                            return html`
+                                <mat-button 
+                                    .sheetAPI=${this.sheetAPI} .material=${material} .pic_name=${this.pic_name}
+                                ></mat-button>
+                            `;
+                        })}
+                    </div>
                 </div>
-                
-                <div class="btn_cont">
-                    ${this.materials.map((material) => {
-                        return html`
-                            <mat-button 
-                                .sheetAPI=${this.sheetAPI} .material=${material} .pic_name=${this.pic_name}
-                            ></mat-button>
-                        `;
-                    })}
-                </div>
-            </div>
-        `;
+            `;
+        }
     }
 }
 
