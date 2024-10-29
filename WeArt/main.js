@@ -39,6 +39,11 @@ class Main extends LitElement {
                 justify-content: center;
             }
 
+            .model_name{
+                color: white;
+                font-size: 5vw;
+            }
+
             .btn_cont{
                 display: flex;
                 width: 100%;
@@ -177,8 +182,9 @@ class Main extends LitElement {
                 <div class="container">
                     <div class="img_cont"> 
                         <img class="model" src=${this.pic_address}>
-                        <div class="model_name">${this.pic_name}</div>
                     </div>
+
+                    <div class="model_name">${this.pic_name}</div>
                     
                     <div class="btn_cont">
                         ${this.materials.map((material) => {
