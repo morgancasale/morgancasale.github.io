@@ -148,14 +148,14 @@ class Main extends LitElement {
     }
 
     async fetchData() {
-        this.getNextModel();
-        this.fetchMaterials();
+        await this.getNextModel();
+        await this.fetchMaterials();
     }
 
-    async connectedCallback() {
+    connectedCallback() {
         super.connectedCallback();
-        await this.fetchData();
-        await this.reRender();
+        this.fetchData();
+        this.reRender();
     }
 
     async reRender(){
@@ -164,27 +164,31 @@ class Main extends LitElement {
         await new Promise(r => setTimeout(r, 1));
     }
 
-    async render() {
-        await this.fetchData();
-        return html`
-            <div class="container">
-                <div class="img_cont"> 
-                    <img class="model" src="https://github.com/morgancasale/HLA_models_screens/blob/main/antlion.png?raw=true">
+    render() {
+        if(this.materials.length === 0 || this.pic_name === null){
+            return html`
+                <div>Loading...</div>
+            `;
+        } else {
+            return html`
+                <div class="container">
+                    <div class="img_cont"> 
+                        <img class="model" src="https://github.com/morgancasale/HLA_models_screens/blob/main/antlion.png?raw=true">
+                    </div>
+                    
+                    <div class="btn_cont">
+                        ${this.materials.map((material) => {
+                            return html`
+                                <mat-button 
+                                    .sheetAPI=${this.sheetAPI} .material=${material} .pic_name=${this.pic_name}
+                                ></mat-button>
+                            `;
+                        })}
+                    </div>
                 </div>
-                
-                <div class="btn_cont">
-                    ${this.materials.map((material) => {
-                        return html`
-                            <mat-button 
-                                .sheetAPI=${this.sheetAPI} .material=${material} .pic_name=${this.pic_name}
-                            ></mat-button>
-                        `;
-                    })}
-                </div>
-            </div>
-        `;
+            `;
+        }
     }
-        
 }
 
 customElements.define("main-element", Main);
