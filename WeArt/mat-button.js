@@ -36,6 +36,18 @@ class MatButton extends LitElement {
         ];
     }
 
+    async clean_and_reload() {
+        if ('caches' in window) {
+            caches.keys().then(names => {
+              for (let name of names) caches.delete(name);
+            }).then(() => {
+              console.log("Cache del sito corrente eliminata.");
+            });
+        }
+        await new Promise(r => setTimeout(r, 1));
+        location.reload()
+    }
+
     set_material() {
         var model_name = this.pic_name.split("/")
         model_name = model_name[model_name.length-1]
@@ -54,8 +66,7 @@ class MatButton extends LitElement {
         }
         fetch(this.sheetAPI, request)
         .then(async ()=> {
-            await new Promise(r => setTimeout(r, 1));
-            location.reload()
+            this.clean_and_reload()
         })
     }
 
