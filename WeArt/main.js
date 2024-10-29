@@ -14,11 +14,8 @@ class Main extends LitElement {
         super();
         this.sheetAPI = "https://script.google.com/macros/s/AKfycbyqq3mBRzYzA5c4xtglts9utMQfooOCrpFEHPw0ASRdwXNEiHFaFLsmfpyEVumJ9dm0/exec"
         this.sheetID = "1XZ1vGGTOhbiHAEu1_y0nLIKvzKmkNYa5DXyPHaD_pnE";
-        this.sheetName = "materials";
-        this.query = "select A where A is not null offset 1";
         this.materials = [];
-        this.pic_name = "antlion";
-        this.pic_address = "https://github.com/morgancasale/HLA_models_screens/blob/main/"+this.pic_name+".png?raw=true";
+        this.pic_name = null;
     }
 
     static get styles() {
@@ -94,10 +91,11 @@ class Main extends LitElement {
 
     fetchMaterials(){
         const query = "select A where A is not null offset 1";
+        const sheetName = "materials";
 
         const base = `https://docs.google.com/spreadsheets/d/${this.sheetID}/gviz/tq?`;
         const url = `${base}&sheet=${encodeURIComponent(
-        this.sheetName
+        sheetName
         )}&tq=${encodeURIComponent(query)}`;
 
         fetch(url)
@@ -119,22 +117,25 @@ class Main extends LitElement {
     }
 
     getNextModel(){
-        const query = "select A where A is not null offset 1";
+        const query = "SELECT A WHERE C < 100 LIMIT 1";
+        const sheetName = "models";
 
         const base = `https://docs.google.com/spreadsheets/d/${this.sheetID}/gviz/tq?`;
         const url = `${base}&sheet=${encodeURIComponent(
-        this.sheetName
+        sheetName
         )}&tq=${encodeURIComponent(query)}`;
 
         fetch(url)
         .then((res) => res.text())
         .then((response) => {
             let temp = this.tableToJson(response);
-            temp.map((material) => {
-                this.materials.push(material[""]);
-            });
-            console.log(this.materials);
-            this.reRender();
+            let model_name = temp[1][""];
+            model_name = model_name.split("/")
+            model_name = model_name[model_name.length-1]
+            model_name = model_name.split(".")[0]
+
+            let pic_name = model_name;
+            this.pic_address = "https://github.com/morgancasale/HLA_models_screens/blob/main/" + pic_name + ".png?raw=true";
         })
         .catch((error) => {
             console.error("Error", error);
@@ -145,13 +146,14 @@ class Main extends LitElement {
     }
 
     fetchData() {
-        //this.getNextModel();
+        this.getNextModel();
         this.fetchMaterials();
     }
 
     connectedCallback() {
         super.connectedCallback();
         this.fetchData();
+        this.reRender();
     }
 
     async reRender(){
@@ -182,8 +184,6 @@ class Main extends LitElement {
                             `;
                         })}
                     </div>
-                    <div class="other_cont">
-
                 </div>
             `;
         }
