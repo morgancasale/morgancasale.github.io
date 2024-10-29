@@ -16,7 +16,7 @@ class Main extends LitElement {
         super();
         this.sheetAPI = "https://script.google.com/macros/s/AKfycbyqq3mBRzYzA5c4xtglts9utMQfooOCrpFEHPw0ASRdwXNEiHFaFLsmfpyEVumJ9dm0/exec"
         this.sheetID = "1XZ1vGGTOhbiHAEu1_y0nLIKvzKmkNYa5DXyPHaD_pnE";
-        this.redrawProb = 10;
+        this.redrawProb = 6;
         
         this.materials = [];
         this.pic_name = null;
