@@ -1,4 +1,4 @@
-function tableToJson(res) {
+export function tableToJson(res) {
     // credit to Laurence Svekis https://www.udemy.com/course/sheet-data-ajax/
     const jsData = JSON.parse(res.substring(47).slice(0, -2));
     let data = [];
@@ -28,6 +28,6 @@ function tableToJson(res) {
     return data;
 }
 
-function randInt(min, max) {
+export function randInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
