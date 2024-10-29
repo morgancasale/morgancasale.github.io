@@ -151,7 +151,7 @@ class Main extends LitElement {
     async fetchData() {
         await this.getNextModel();
         await this.fetchMaterials();
-        this.reRender();
+        await this.reRender();
     }
 
     connectedCallback() {
