@@ -145,17 +145,15 @@ class Main extends LitElement {
             this.pic_name = model_name;
             this.pic_address = "https://github.com/morgancasale/HLA_models_screens/blob/main/" + this.pic_name + ".png?raw=true";
             console.log(this.pic_address);
+            return this.pic_address;
         })
         .catch((error) => {
             console.error("Error", error);
         });
-
-        this.materials.push("Other");
-        this.materials = this.materials.reverse();
     }
 
     async fetchData() {
-        await this.getNextModel();
+        //await this.getNextModel();
         await this.fetchMaterials();
         //await this.reRender();
         //await this.requestUpdate();
@@ -181,7 +179,7 @@ class Main extends LitElement {
             return html`
                 <div class="container">
                     <div class="img_cont"> 
-                        <img class="model" src=${this.pic_address}>
+                        <img class="model" src=${this.getNextModel()}>
                     </div>
 
                     <div class="model_name">${this.pic_name}</div>
