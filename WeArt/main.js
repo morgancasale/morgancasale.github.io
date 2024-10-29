@@ -129,7 +129,7 @@ class Main extends LitElement {
         .then((res) => res.text())
         .then((response) => {
             let temp = this.tableToJson(response);
-            let model_name = temp[1][""];
+            let model_name = temp[0].model;
             model_name = model_name.split("/")
             model_name = model_name[model_name.length-1]
             model_name = model_name.split(".")[0]
@@ -191,3 +191,4 @@ class Main extends LitElement {
 }
 
 customElements.define("main-element", Main);
+
