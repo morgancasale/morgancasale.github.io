@@ -100,7 +100,10 @@ class Main extends LitElement {
         const query = "select A where A is not null offset 1";
         const sheetName = "materials";
 
-        const base = `https://docs.google.com/spreadsheets/d/${this.sheetID}/gviz/tq?`;
+        const base = `https://docs.google.com/spreadsheets/d/${
+            this.sheetID
+        }/gviz/tq?`;
+
         const url = `${base}&sheet=${
             encodeURIComponent(sheetName)
         }&tq=${
@@ -126,11 +129,29 @@ class Main extends LitElement {
         });
     }
 
-    async getNextModel(){
-        const query = "SELECT A WHERE C < 100 LIMIT 1";
-        const sheetName = "models";
+    randInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
-        const base = `https://docs.google.com/spreadsheets/d/${this.sheetID}/gviz/tq?`;
+    async getNextModel(){
+        const redraw = this.randInt(1, 100);
+        this.isRedraw = false;
+
+        const sheetName = "models";
+        let query = "";
+
+
+        if(redraw <= 10){ // 10% chance to redraw a model already seen
+            query = "SELECT A WHERE C = 100";
+            this.isRedraw = true;
+        } else {
+            query = "SELECT A WHERE C < 100 LIMIT 1";
+        }
+
+        const base = `https://docs.google.com/spreadsheets/d/${
+            this.sheetID
+        }/gviz/tq?`;
+
         const url = `${base}&sheet=${
             encodeURIComponent(sheetName)
         }&tq=${
@@ -141,13 +162,17 @@ class Main extends LitElement {
         .then((res) => res.text())
         .then((response) => {
             let temp = this.tableToJson(response);
-            let model_name = temp[0].model;
+
+            const rand_index = this.randInt(0, temp.length-1);
+
+            let model_name = temp[rand_index].model; // select a random model
             model_name = model_name.split("/")
             model_name = model_name[model_name.length-1]
             model_name = model_name.split(".")[0]
 
             this.pic_name = model_name;
-            this.pic_address = "https://github.com/morgancasale/HLA_models_screens/blob/main/" + this.pic_name + ".png?raw=true";
+            this.pic_address = "https://github.com/morgancasale/HLA_models_screens/blob/main/" 
+            this.pic_address += (this.pic_name + ".png?raw=true");
             console.log(this.pic_address);
             this.reRender();
         })
@@ -186,13 +211,17 @@ class Main extends LitElement {
                         <img class="model" src=${this.pic_address}>
                     </div>
 
-                    <div class="model_name">${this.pic_name}</div>
+                    <div class="model_name">
+                        ${ (this.isRedraw ? "Redraw: " : "") + this.pic_name}
+                    </div>
                     
                     <div class="btn_cont">
                         ${this.materials.map((material) => {
                             return html`
                                 <mat-button 
-                                    .sheetAPI=${this.sheetAPI} .material=${material} .pic_name=${this.pic_name}
+                                    .sheetAPI=${this.sheetAPI} 
+                                    .material=${material} 
+                                    .pic_name=${this.pic_name}
                                 ></mat-button>
                             `;
                         })}
