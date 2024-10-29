@@ -106,7 +106,7 @@ class Main extends LitElement {
                 this.materials.push(material[""]);
             });
             console.log(this.materials);
-            //this.reRender();
+            this.reRender();
         })
         .catch((error) => {
             console.error("Error", error);
@@ -149,8 +149,8 @@ class Main extends LitElement {
     async fetchData() {
         await this.getNextModel();
         await this.fetchMaterials();
-        await this.reRender();
-        await this.requestUpdate();
+        //await this.reRender();
+        //await this.requestUpdate();
     }
 
     connectedCallback() {
