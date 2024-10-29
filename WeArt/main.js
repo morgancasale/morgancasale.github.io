@@ -93,10 +93,38 @@ class Main extends LitElement {
     }
 
     fetchMaterials(){
+        const query = "select A where A is not null offset 1";
+
         const base = `https://docs.google.com/spreadsheets/d/${this.sheetID}/gviz/tq?`;
         const url = `${base}&sheet=${encodeURIComponent(
         this.sheetName
-        )}&tq=${encodeURIComponent(this.query)}`;
+        )}&tq=${encodeURIComponent(query)}`;
+
+        fetch(url)
+        .then((res) => res.text())
+        .then((response) => {
+            let temp = this.tableToJson(response);
+            temp.map((material) => {
+                this.materials.push(material[""]);
+            });
+            console.log(this.materials);
+            this.reRender();
+        })
+        .catch((error) => {
+            console.error("Error", error);
+        });
+
+        this.materials.push("Other");
+        this.materials = this.materials.reverse();
+    }
+
+    getNextModel(){
+        const query = "select A where A is not null offset 1";
+
+        const base = `https://docs.google.com/spreadsheets/d/${this.sheetID}/gviz/tq?`;
+        const url = `${base}&sheet=${encodeURIComponent(
+        this.sheetName
+        )}&tq=${encodeURIComponent(query)}`;
 
         fetch(url)
         .then((res) => res.text())
@@ -117,6 +145,7 @@ class Main extends LitElement {
     }
 
     fetchData() {
+        //this.getNextModel();
         this.fetchMaterials();
     }
 
