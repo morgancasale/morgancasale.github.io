@@ -90,7 +90,7 @@ class Main extends LitElement {
         return data;
     }
 
-    fetchMaterials(){
+    async fetchMaterials(){
         const query = "select A where A is not null offset 1";
         const sheetName = "materials";
 
@@ -118,7 +118,7 @@ class Main extends LitElement {
         //this.reRender();
     }
 
-    getNextModel(){
+    async getNextModel(){
         const query = "SELECT A WHERE C < 100 LIMIT 1";
         const sheetName = "models";
 
@@ -148,9 +148,9 @@ class Main extends LitElement {
         this.materials = this.materials.reverse();
     }
 
-    fetchData() {
-        this.getNextModel();
-        this.fetchMaterials();
+    async fetchData() {
+        await this.getNextModel();
+        await this.fetchMaterials();
         this.reRender();
     }
 
