@@ -145,7 +145,7 @@ class Main extends LitElement {
             query = "SELECT A WHERE C = 100";
             this.isRedraw = true;
         } else {
-            query = "SELECT A WHERE C < 100 LIMIT 1";
+            query = "SELECT A WHERE C < 100";
         }
 
         const base = `https://docs.google.com/spreadsheets/d/${
