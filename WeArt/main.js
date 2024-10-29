@@ -148,7 +148,7 @@ class Main extends LitElement {
         this.materials = this.materials.reverse();
     }
 
-    async fetchData() {
+    fetchData() {
         this.getNextModel();
         this.fetchMaterials();
     }
