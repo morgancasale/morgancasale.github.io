@@ -25,6 +25,7 @@ class MatButton extends LitElement {
                 aspect-ratio: 1;
                 margin: 0.5vw;
                 border: 0;
+                font-size: 2vw;
             }
 
             .other-btn{

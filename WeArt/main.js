@@ -22,6 +22,10 @@ class Main extends LitElement {
         return [
             generalStyle,
             css`
+            body{
+                background-color: #131929
+            }
+
             .container{
                 display: flex;
                 height: 100%;
