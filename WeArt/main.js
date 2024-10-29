@@ -7,6 +7,7 @@ import {
 import { generalStyle } from "./general-style.js";
 import "./mat-button.js";
 
+import {tableToJson, randInt} from "./utils.js";
 
 class Main extends LitElement {
 
@@ -14,6 +15,8 @@ class Main extends LitElement {
         super();
         this.sheetAPI = "https://script.google.com/macros/s/AKfycbyqq3mBRzYzA5c4xtglts9utMQfooOCrpFEHPw0ASRdwXNEiHFaFLsmfpyEVumJ9dm0/exec"
         this.sheetID = "1XZ1vGGTOhbiHAEu1_y0nLIKvzKmkNYa5DXyPHaD_pnE";
+        this.redrawProb = 10;
+        
         this.materials = [];
         this.pic_name = null;
         this.pic_address = null;
@@ -66,36 +69,6 @@ class Main extends LitElement {
 
     }
 
-    tableToJson(res) {
-        // credit to Laurence Svekis https://www.udemy.com/course/sheet-data-ajax/
-        const jsData = JSON.parse(res.substring(47).slice(0, -2));
-        let data = [];
-        const columns = jsData.table.cols;
-        const rows = jsData.table.rows;
-        let rowObject;
-        let cellData;
-        let propName;
-        for (let r = 0, rowMax = rows.length; r < rowMax; r++) {
-          rowObject = {};
-          for (let c = 0, colMax = columns.length; c < colMax; c++) {
-            cellData = rows[r]["c"][c];
-            propName = columns[c].label;
-            if (cellData === null) {
-              rowObject[propName] = "";
-            } else if (
-              typeof cellData["v"] == "string" &&
-              cellData["v"].startsWith("Date")
-            ) {
-              rowObject[propName] = new Date(cellData["f"]);
-            } else {
-              rowObject[propName] = cellData["v"];
-            }
-          }
-          data.push(rowObject);
-        }
-        return data;
-    }
-
     async fetchMaterials(){
         const query = "select A where A is not null offset 1";
         const sheetName = "materials";
@@ -113,7 +86,7 @@ class Main extends LitElement {
         fetch(url)
         .then((res) => res.text())
         .then((response) => {
-            let temp = this.tableToJson(response);
+            let temp = tableToJson(response);
             temp.map((material) => {
                 this.materials.push(material[""]);
             });
@@ -129,19 +102,16 @@ class Main extends LitElement {
         });
     }
 
-    randInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+    
 
     async getNextModel(){
-        const redraw = this.randInt(1, 100);
+        const redraw = randInt(1, 100);
         this.isRedraw = false;
 
         const sheetName = "models";
         let query = "";
 
-
-        if(redraw <= 10){ // 10% chance to redraw a model already seen
+        if(redraw <= this.redrawProb){ // this.redrawProb % chance to redraw a model already seen
             query = "SELECT A WHERE C = 100";
             this.isRedraw = true;
         } else {
@@ -161,9 +131,9 @@ class Main extends LitElement {
         fetch(url)
         .then((res) => res.text())
         .then((response) => {
-            let temp = this.tableToJson(response);
+            let temp = tableToJson(response);
 
-            const rand_index = this.randInt(0, temp.length-1);
+            const rand_index = randInt(0, temp.length-1);
 
             let model_name = temp[rand_index].model; // select a random model
             model_name = model_name.split("/")
