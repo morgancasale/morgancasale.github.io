@@ -152,6 +152,7 @@ class Main extends LitElement {
         await this.getNextModel();
         await this.fetchMaterials();
         await this.reRender();
+        await this.requestUpdate();
     }
 
     connectedCallback() {
