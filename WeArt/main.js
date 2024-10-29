@@ -89,7 +89,7 @@ class Main extends LitElement {
         return data;
     }
 
-    fetchMaterials(){
+    async fetchMaterials(){
         const query = "select A where A is not null offset 1";
         const sheetName = "materials";
 
@@ -106,7 +106,7 @@ class Main extends LitElement {
                 this.materials.push(material[""]);
             });
             console.log(this.materials);
-            this.reRender();
+            
         })
         .catch((error) => {
             console.error("Error", error);
@@ -114,10 +114,10 @@ class Main extends LitElement {
 
         this.materials.push("Other");
         this.materials = this.materials.reverse();
-        this.reRender();
+        
     }
 
-    getNextModel(){
+    async getNextModel(){
         const query = "SELECT A WHERE C < 100 LIMIT 1";
         const sheetName = "models";
 
@@ -147,15 +147,15 @@ class Main extends LitElement {
         this.materials = this.materials.reverse();
     }
 
-    fetchData() {
+    async fetchData() {
         this.getNextModel();
         this.fetchMaterials();
     }
 
-    connectedCallback() {
+    async connectedCallback() {
         super.connectedCallback();
-        this.fetchData();
-        //this.reRender();
+        await this.fetchData();
+        await this.reRender();
     }
 
     async reRender(){
@@ -170,7 +170,6 @@ class Main extends LitElement {
                 <div>Loading...</div>
             `;
         } else {
-
             return html`
                 <div class="container">
                     <div class="img_cont"> 
