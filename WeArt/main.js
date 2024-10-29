@@ -117,7 +117,7 @@ class Main extends LitElement {
             console.log(this.materials);
             if(!this.materials.includes("Other")){
                 this.materials.push("Other");
-                this.materials = this.materials.reverse();
+                //this.materials = this.materials.reverse();
             }
             this.reRender();
         })
@@ -159,7 +159,7 @@ class Main extends LitElement {
     async fetchData() {
         await this.getNextModel();
         await this.fetchMaterials();
-        await this.reRender();
+        //await this.reRender();
         //await this.requestUpdate();
     }
 
