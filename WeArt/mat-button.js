@@ -25,6 +25,7 @@ class MatButton extends LitElement {
                 aspect-ratio: 1;
                 margin: 0.5vw;
                 border: 0;
+                font-size: 2vw;
             }
 
             .other-btn{
@@ -33,6 +34,18 @@ class MatButton extends LitElement {
             }
             `
         ];
+    }
+
+    async clean_and_reload() {
+        if ('caches' in window) {
+            caches.keys().then(names => {
+              for (let name of names) caches.delete(name);
+            }).then(() => {
+              console.log("Cache del sito corrente eliminata.");
+            });
+        }
+        await new Promise(r => setTimeout(r, 1));
+        location.reload()
     }
 
     set_material() {
@@ -51,7 +64,10 @@ class MatButton extends LitElement {
             method: "POST",
             body: JSON.stringify(data)
         }
-        fetch(this.sheetAPI , request)
+        fetch(this.sheetAPI, request)
+        .then(async ()=> {
+            this.clean_and_reload()
+        })
     }
 
     render() {

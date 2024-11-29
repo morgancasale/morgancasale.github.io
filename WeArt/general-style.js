@@ -4,4 +4,7 @@ export const generalStyle = css`
     body {
         background-color: darkblue;
     }
+    * {
+        font-family: sans-serif;
+    }
 `;   
