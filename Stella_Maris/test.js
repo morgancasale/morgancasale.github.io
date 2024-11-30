@@ -32,6 +32,14 @@ async function connectToDevicesUntilCancel() {
     }
 
     console.log("Final list of connected devices:", connectedDevices);
+    const deviceListDiv = document.getElementById('deviceList');
+    deviceListDiv.innerHTML = '';
+
+    connectedDevices.forEach(device => {
+        const deviceItem = document.createElement('div');
+        deviceItem.textContent = `Device Name: ${device.name}`;
+        deviceListDiv.appendChild(deviceItem);
+    });
 }
 
 // Start the process
