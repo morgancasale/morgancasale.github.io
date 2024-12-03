@@ -6,21 +6,29 @@ let connectedDevices = [];
 
 let selectedDevice = null;
 
-function ToggleElectroMagnet(){
+let server;
+
+function ToggleElectroMagnet(event){
+    console.log("Electromagnet toggled");
+    console.log("Received message:", event.target.value);
     sendToDevice(selectedDevice, 32);
 }
 
 async function addReceiveListener() {
-    // Access the desired service and characteristic
-    const service = await server.getPrimaryService('service_uuid'); // Replace with your service UUID
-    const characteristic = await service.getCharacteristic(fromDeviceMsgChar_uuid); // Replace with your characteristic UUID
+    const service = await server.getPrimaryService(service_uuid); 
+    const fromDeviceMsgChar = await service.getCharacteristic(fromDeviceMsgChar_uuid);
+    fromDeviceMsgChar.writeValue(Uint8Array.of(0));
+
+    //fromDeviceMsgChar.removeEventListener('characteristicvaluechanged', (event) => ToggleElectroMagnet(event));
+
+    //fromDeviceMsgChar.stopNotifications();
 
     // Start notifications
-    await characteristic.startNotifications();
+    fromDeviceMsgChar.startNotifications();
     console.log(`Started notifications listener`);
 
     // Add an event listener for received messages
-    characteristic.addEventListener('characteristicvaluechanged', (event) => ToggleElectroMagnet());
+    fromDeviceMsgChar.addEventListener('characteristicvaluechanged', (event) => ToggleElectroMagnet(event));
 }
 
 async function selectDevice(deviceName) {
@@ -31,7 +39,11 @@ async function selectDevice(deviceName) {
 
 
         if (!device) {
-            console.error("Device not found:", deviceName);
+            if(device == null){
+                console.error("No device connected!");
+            } else {
+                console.error("Device not found:", deviceName);
+            }
             return;
         }
 
@@ -65,7 +77,7 @@ async function connectToDevicesUntilCancel() {
             });
 
             // Connect to the selected device
-            const server = await device.gatt.connect();
+            server = await device.gatt.connect();
             console.log(`Connected to device: ${device.name}`);
 
             // Store the connected device
@@ -84,6 +96,9 @@ async function connectToDevicesUntilCancel() {
 
     //localStorage.setItem('connectedDevices', JSON.stringify(connectedDevices));
 
+    
+    await addReceiveListener();
+
     // Create a button for each connected device
     const deviceListDiv = document.getElementById('deviceList');
     deviceListDiv.innerHTML = "";
@@ -99,6 +114,15 @@ async function connectToDevicesUntilCancel() {
     });
 }
 
+function sendToSelectedDevice(message) {
+    if (!selectedDevice) {
+        console.error("No device selected.");
+        return;
+    }
+
+    sendToDevice(selectedDevice, message);
+}
+
 async function sendToDevice(deviceName, message){
     try {
         // Find the device with the given name
@@ -110,7 +134,7 @@ async function sendToDevice(deviceName, message){
         }
 
         // Connect to the device
-        const server = await device.gatt.connect();
+        server = await device.gatt.connect();
         console.log(`Connected to device: ${device.name}`);
 
         // Get the service
