@@ -1,8 +1,50 @@
 <head>
-    <script type="text/javascript" src="test.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+        {
+        "imports": {
+            "@material/web/": "https://esm.run/@material/web/"
+        }
+        }
+    </script>
+    <script type="module">
+        import '@material/web/all.js';
+        import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+        document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+
+    <script type="text/javascript" src="main.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="dark.css">
+
+    <style>
+        :root {
+            --md-outlined-md-outlined-button-container-shape: 0px;
+            --md-outlined-md-outlined-button-label-text-font: system-ui;
+        }
+
+        body{
+            background-color: var(--md-sys-color-background);
+        }
+
+        .deviceList{
+            display: flex;
+            margin: 5px;
+        }
+
+        .connectButton{
+            margin: 10px;
+        }
+
+        .deviceButton{
+            margin: 5px;
+        }
+
+    </style>    
 </head>
-<body>
-    <button onclick="connectToDevicesUntilCancel()">Connect</button>
-    <button onclick="sendToSelectedDevice(128)">Message</button>
-    <div id="deviceList"></div>
+<body onload="genTheme()">
+    <md-filled-button id="connectButton" class="connectButton" onclick="connectToDevicesUntilCancel()">Connect</md-filled-button>
+    <!-- <md-filled-button onclick="sendToSelectedDevice(128)">Message</md-filled-button> -->
+    <div id="deviceList" class="deviceList"></div>
 </body>

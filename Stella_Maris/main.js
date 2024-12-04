@@ -104,13 +104,15 @@ async function connectToDevicesUntilCancel() {
     deviceListDiv.innerHTML = "";
 
     connectedDevices.forEach(device => {
-        const sendButton = document.createElement('button');
-        sendButton.textContent = device.name;
-        //sendButton.onclick = () => sendToDevices(device.name, 128);
-        sendButton.id = device.name;
-        sendButton.onclick = () => selectDevice(device.name);
+        const deviceButton = document.createElement('md-filled-button');
+
+        deviceButton.textContent = device.name;
+        deviceButton.id = device.name;
+        deviceButton.className = "deviceButton";
+
+        deviceButton.onclick = () => selectDevice(device.name);
         
-        deviceListDiv.appendChild(sendButton);
+        deviceListDiv.appendChild(deviceButton);
     });
 }
 
