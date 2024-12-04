@@ -14,6 +14,13 @@ function ToggleElectroMagnet(event){
     sendToDevice(selectedDevice, 32);
 }
 
+// function adaptPage(){
+//     const page_width = window.innerWidth;
+//     const button_height = document.getElementById('connectButton').offsetWidth;
+
+//     let zoom = page_width / 1920;
+// }
+
 async function addReceiveListener() {
     const service = await server.getPrimaryService(service_uuid); 
     const fromDeviceMsgChar = await service.getCharacteristic(fromDeviceMsgChar_uuid);
