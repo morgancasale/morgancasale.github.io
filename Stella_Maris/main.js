@@ -26,10 +26,6 @@ async function addReceiveListener() {
     const fromDeviceMsgChar = await service.getCharacteristic(fromDeviceMsgChar_uuid);
     fromDeviceMsgChar.writeValue(Uint8Array.of(0));
 
-    //fromDeviceMsgChar.removeEventListener('characteristicvaluechanged', (event) => ToggleElectroMagnet(event));
-
-    //fromDeviceMsgChar.stopNotifications();
-
     // Start notifications
     fromDeviceMsgChar.startNotifications();
     console.log(`Started notifications listener`);
@@ -38,12 +34,28 @@ async function addReceiveListener() {
     fromDeviceMsgChar.addEventListener('characteristicvaluechanged', (event) => ToggleElectroMagnet(event));
 }
 
+function onDeviceDisconnected(event) {
+    const device = event.target;
+
+    console.log(`Device disconnected: ${device.name}`);
+
+    // Remove the device from the list of connected devices
+    connectedDevices = connectedDevices.filter(connectedDevice => connectedDevice !== device);
+
+    // Remove the device's button
+    const deviceButton = document.getElementById(device.name);
+    deviceButton.remove();
+
+    // If the disconnected device was the selected device, clear the selected device
+    if (selectedDevice === device.name) {
+        selectedDevice = null;
+    }
+}
+
 async function selectDevice(deviceName) {
     try {
         // Find the device with the given name
         const device = connectedDevices.find(device => device.name === deviceName);
-
-
 
         if (!device) {
             if(device == null){
@@ -82,6 +94,9 @@ async function connectToDevicesUntilCancel() {
                     services: [service_uuid]
                 }]
             });
+            
+            // Set up event listener for when device gets disconnected.
+            device.addEventListener('gattserverdisconnected', onDeviceDisconnected);
 
             // Connect to the selected device
             server = await device.gatt.connect();
