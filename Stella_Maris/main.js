@@ -69,12 +69,12 @@ async function selectDevice(deviceName) {
         // Enable all devices' buttons
         const deviceListDiv = document.getElementById('deviceList');
         deviceListDiv.childNodes.forEach(button => {
-            button.disabled = false;
+            button.shadowRoot.querySelector("#"+button.id).disabled = false;
         });
 
         // Disable the selected device's button
         const selectedButton = document.getElementById(deviceName);
-        selectedButton.disabled = true;
+        selectedButton.shadowRoot.querySelector("#"+selectedButton.id).disabled = true;
 
         selectedDevice = deviceName;
         console.log(`Selected device: ${deviceName}`);
