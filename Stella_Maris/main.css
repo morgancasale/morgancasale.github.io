@@ -1,0 +1,47 @@
+:root {
+    --md-outlined-md-outlined-button-container-shape: 0px;
+    --md-outlined-md-outlined-button-label-text-font: system-ui;
+}
+
+body{
+    background-color: var(--md-sys-color-background);
+}
+
+.container{
+    zoom: calc(5000*100%/1920);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.deviceList{
+    display: flex;
+    margin-top: 5px;
+    flex-wrap: wrap;
+}
+
+.stngsButtons{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.connectButton{
+    margin-left: 10px;
+    margin-right: 5px;
+    width: max-content;
+    height: 2em;
+}
+
+.deselectButton{
+    margin-left: 5px;
+    width: max-content;
+    height: 2em;
+}
+
+.deviceButton{
+    margin: 5px;
+}
+
+.optsButton{
+    display: flex;
+}

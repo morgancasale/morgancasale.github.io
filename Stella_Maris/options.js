@@ -8,10 +8,6 @@ class Opts extends HTMLElement{
         const deviceName = this.getAttribute("deviceName");
         const shadow = this.attachShadow({ mode: "open" });
 
-        const opt_container = document.createElement('div');
-        opt_container.className = "opt_container";
-        opt_container.id = "opt_container";
-
         const options = document.createElement("md-menu");
         options.className = "options";
         options.id = "options_" + deviceName;
@@ -21,13 +17,13 @@ class Opts extends HTMLElement{
         options.anchorElement = anchorEl;
 
         options.innerHTML = `
-            <md-menu-item>
-                <div style="display: inline-flex">Name</div>
+            <md-menu-item style="">
+                <div style="float: left;">Name</div>
                 <md-outlined-text-field
                     id="em_input"
                     class="em_input"
                     style="
-                        display: inline-flex;
+                        float: left;
                         resize: none;
                         width: 200px;
                         margin-left: 5px;
@@ -39,12 +35,12 @@ class Opts extends HTMLElement{
                 </md-outlined-text-field>
             </md-menu-item>
             <md-menu-item>
-                <div style="display: inline-flex">EM</div>
+                <div style="float: left;">EM</div>
                 <md-outlined-text-field
                     id="em_input"
                     class="em_input"
                     style="
-                        display: inline-flex;
+                        float: left;
                         resize: none;
                         width: 102px;
                         margin-left: 5px;
@@ -76,12 +72,7 @@ class Opts extends HTMLElement{
             }
         `;
 
-        shadow.appendChild(opt_container);
-        opt_container.appendChild(options);
-
-        // Fire an event when this component is rendered
-        const event = new CustomEvent('opts-rendered', { bubbles: true, composed: true });
-        this.dispatchEvent(event);
+        shadow.appendChild(options);
 
         // Fire an event when the menu is closed
         const observer = new MutationObserver((mutationsList) => {
@@ -109,6 +100,10 @@ class Opts extends HTMLElement{
         em_input.addEventListener('mousedown', (event) => {
             event.stopPropagation();
         });
+
+        // Fire an event when this component is rendered
+        const event = new CustomEvent('opts-rendered', { bubbles: true, composed: true });
+        this.dispatchEvent(event);
     }
 
     

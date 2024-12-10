@@ -17,7 +17,9 @@ class ExpBtn extends HTMLElement{
         deviceButton.textContent = deviceName;
         deviceButton.id = deviceName;
         deviceButton.className = "deviceButton";
-        deviceButton.onclick = () => selectDevice(deviceName);
+        if(deviceName != "Controller"){
+            deviceButton.onclick = () => selectDevice(deviceName);
+        }
 
         const optsButton = document.createElement('md-filled-icon-button');
         optsButton.setAttribute("open", "false");
@@ -47,7 +49,8 @@ class ExpBtn extends HTMLElement{
             .btn_container{
                 margin: 10px;
                 width: max-content;
-                height: 2em;
+                /*height: 2em;*/
+                /*position: relative;*/
             }
             .deviceButton{
                 margin-right: 2.5px;
@@ -61,11 +64,18 @@ class ExpBtn extends HTMLElement{
         btn_container.appendChild(options);
 
         this.addEventListener('opts-rendered', (event) => {
-            optsButton.addEventListener("click", () => {
-                const optsEl = options.shadowRoot.querySelector("#options_" + deviceName);
-                optsEl.open = !optsEl.open;
-            });
+            console.log("Options rendered");
+
+            // optsButton.addEventListener("click", () => {
+            //     const optsEl = options.shadowRoot.querySelector("#options_" + deviceName);
+            //     optsEl.open = !optsEl.open;
+            // });
         });
+
+        optsButton.onclick = () => {
+            const optsEl = options.shadowRoot.querySelector("#options_" + deviceName);
+            optsEl.open = !optsEl.open;
+        }
 
         // this.addEventListener("close-menu", (event) => {
         //     optsButton.selected = !optsButton.selected;

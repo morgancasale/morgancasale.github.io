@@ -72,6 +72,11 @@ async function selectDevice(deviceName) {
             button.shadowRoot.querySelector("#"+button.id).disabled = false;
         });
 
+        // Turn off all devices' electromagnets
+        // connectedDevices.forEach(device => {
+        //     sendToDevice(device.name, 0);
+        // });
+
         // Disable the selected device's button
         const selectedButton = document.getElementById(deviceName);
         selectedButton.shadowRoot.querySelector("#"+selectedButton.id).disabled = true;
@@ -81,6 +86,23 @@ async function selectDevice(deviceName) {
     } catch (error) {
         console.error("An error occurred:", error);
     }
+}
+
+function deselectDevice() {
+    selectedDevice = null;
+    
+    // Enable all devices' buttons
+    const deviceListDiv = document.getElementById('deviceList');
+    deviceListDiv.childNodes.forEach(button => {
+        button.shadowRoot.querySelector("#"+button.id).disabled = false;
+
+        // Turn off all devices' electromagnets
+        //sendToDevice(button.id, 0);
+    });
+
+    // Turn off the selected device's electromagnet
+
+    console.log("Device deselected");
 }
 
 async function connectToDevicesUntilCancel() {
