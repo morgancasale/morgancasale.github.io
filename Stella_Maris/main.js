@@ -46,6 +46,9 @@ function onDeviceDisconnected(event) {
     const deviceButton = document.getElementById(device.name);
     deviceButton.remove();
 
+    // Turn off disconnected device's electromagnet
+    sendToDevice(device.name, 0);
+
     // If the disconnected device was the selected device, clear the selected device
     if (selectedDevice === device.name) {
         selectedDevice = null;
@@ -73,9 +76,9 @@ async function selectDevice(deviceName) {
         });
 
         // Turn off all devices' electromagnets
-        // connectedDevices.forEach(device => {
-        //     sendToDevice(device.name, 0);
-        // });
+        connectedDevices.forEach(device => {
+            sendToDevice(device.name, 0);
+        });
 
         // Disable the selected device's button
         const selectedButton = document.getElementById(deviceName);
@@ -96,8 +99,9 @@ function deselectDevice() {
     deviceListDiv.childNodes.forEach(button => {
         button.shadowRoot.querySelector("#"+button.id).disabled = false;
 
-        // Turn off all devices' electromagnets
-        //sendToDevice(button.id, 0);
+        let deviceName = button.id;
+        // Turn off selected device's electromagnet
+        sendToDevice(deviceName, 0);
     });
 
     // Turn off the selected device's electromagnet
