@@ -108,9 +108,7 @@ async function connectToDevicesUntilCancel() {
             
             // Request a device through the pairing interface
             server = await connectDevice([{services: [service_uuid]}]);
-            document.getElementById('body').click();
-            // delay(400);
-
+            
             // localStorage.setItem('connectedDevices', connectedDevices);
         // }
     } catch (error) {
