@@ -6,25 +6,16 @@ let connectedDevices = [];
 
 let selectedDevice = null;
 
-let server;
-
 function ToggleElectroMagnet(event){
     console.log("Electromagnet toggled");
     console.log("Received message:", event.target.value);
     sendToDevice(selectedDevice, 32);
 }
 
-// function adaptPage(){
-//     const page_width = window.innerWidth;
-//     const button_height = document.getElementById('connectButton').offsetWidth;
-
-//     let zoom = page_width / 1920;
-// }
-
-async function addReceiveListener() {
+async function addReceiveListener(server) {
     const service = await server.getPrimaryService(service_uuid); 
     const fromDeviceMsgChar = await service.getCharacteristic(fromDeviceMsgChar_uuid);
-    fromDeviceMsgChar.writeValue(Uint8Array.of(0));
+    //fromDeviceMsgChar.writeValue(Uint8Array.of(0));
 
     // Start notifications
     fromDeviceMsgChar.startNotifications();
@@ -47,7 +38,7 @@ function onDeviceDisconnected(event) {
     deviceButton.remove();
 
     // Turn off disconnected device's electromagnet
-    sendToDevice(device.name, 0);
+    // sendToDevice(device.name, 0);
 
     // If the disconnected device was the selected device, clear the selected device
     if (selectedDevice === device.name) {
@@ -110,42 +101,33 @@ function deselectDevice() {
 }
 
 async function connectToDevicesUntilCancel() {
+    let server;
     try {
-        while (true) {
+        // while (true) {
             console.log("Opening pairing menu...");
             
             // Request a device through the pairing interface
-            const device = await navigator.bluetooth.requestDevice({
-                filters: [{
-                    services: [service_uuid]
-                }]
-            });
-            
-            // Set up event listener for when device gets disconnected.
-            device.addEventListener('gattserverdisconnected', onDeviceDisconnected);
+            server = await connectDevice([{services: [service_uuid]}]);
+            document.getElementById('body').click();
+            // delay(400);
 
-            // Connect to the selected device
-            server = await device.gatt.connect();
-            console.log(`Connected to device: ${device.name}`);
-
-            // Store the connected device
-            connectedDevices.push(device);
-        }
+            // localStorage.setItem('connectedDevices', connectedDevices);
+        // }
     } catch (error) {
         if (error.name === "NotFoundError") {
             // Pairing menu was canceled by the user
             console.log("Pairing menu canceled. Stopping device connection.");
+            return;
+        } else if (error.name === "SecurityError") {
+            return;
         } else {
             console.error("An error occurred:", error);
         }
     }
 
     console.log("Final list of connected devices:", connectedDevices);
-
-    //localStorage.setItem('connectedDevices', JSON.stringify(connectedDevices));
-
     
-    await addReceiveListener();
+    await addReceiveListener(server);
 
     // Create a button for each connected device
     const deviceListDiv = document.getElementById('deviceList');
@@ -181,7 +163,7 @@ async function sendToDevice(deviceName, message){
         }
 
         // Connect to the device
-        server = await device.gatt.connect();
+        const server = await device.gatt.connect();
         console.log(`Connected to device: ${device.name}`);
 
         // Get the service
@@ -197,3 +179,47 @@ async function sendToDevice(deviceName, message){
         console.error("An error occurred:", error);
     }
 }
+
+async function connectDevice(filters){
+    let device;
+    try{
+        device = await navigator.bluetooth.requestDevice({
+            filters: filters
+        });
+    } catch (error) {
+        if (error.name === "SecurityError") {
+            console.log("Security error: User gesture required.");
+            throw error;
+        } else {
+            console.error("An error occurred:", error);
+        }
+    }
+
+    // Connect to the selected device
+
+    const server = await device.gatt.connect();
+    console.log(`Connected to device: ${device.name}`);
+
+    // Set up event listener for when device gets disconnected.
+    device.addEventListener('gattserverdisconnected', onDeviceDisconnected);
+
+    // Store the connected device
+    if (!connectedDevices.includes(device)) {
+        connectedDevices.push(device);
+    }
+
+    // localStorage.setItem('connectedDevices', connectedDevices);
+
+    return server;
+}
+
+// async function connectPairedDevs(){
+//     const pairedDevices = // localStorage.getItem('connectedDevices');
+//     console.log("Paired devices:", pairedDevices);
+    
+//     pairedDevices.forEach(deviceName => async () => {
+//             await connectDevice([{name: deviceName}])
+//         }
+//     );
+    
+// }
