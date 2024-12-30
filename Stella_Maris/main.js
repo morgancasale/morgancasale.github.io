@@ -1,28 +1,77 @@
-let service_uuid = '19b10000-e8f2-537e-4f6c-d104768a1214';
-let toDeviceMsgChar_uuid = '19b10001-e8f2-537e-4f6c-d104768a1214';
-let fromDeviceMsgChar_uuid = '19b10003-e8f2-537e-4f6c-d104768a1214';
-
 let connectedDevices = [];
 
 let selectedDevice = null;
 
-function ToggleElectroMagnet(event){
+async function ToggleElectroMagnet(event){
     console.log("Electromagnet toggled");
     console.log("Received message:", event.target.value);
-    sendToDevice(selectedDevice, 32);
+    await sendToDevice(selectedDevice, 32);
 }
 
-async function addReceiveListener(server) {
+async function powerButton(){
+    const powerButton = document.querySelector("#actionButton");
+    let classes = powerButton.classList;
+
+    if(selectedDevice == null){
+        console.error("No device connected!");
+
+        powerButton.innerHTML = "No device!" + power_icon;
+        await new Promise(resolve => setTimeout(resolve, button_alert_time));
+        if(classes.contains("power_on")){
+            powerButton.innerHTML = "Turn On" + power_icon;
+        } else {
+            powerButton.innerHTML = "Turn Off" + power_icon;
+        }
+    } else {
+        if(classes.contains("power_on")){
+            await sendToDevice(selectedDevice, 32);
+            classes.remove("power_on");
+            classes.add("power_off");
+            powerButton.innerHTML = "Turn Off" + power_icon;
+        } else {
+            await sendToDevice(selectedDevice, 0);
+            classes.remove("power_off");
+            classes.add("power_on");
+            powerButton.innerHTML = "Turn On" + power_icon;
+        }
+    }
+}
+
+function changeDevEMState(event){
+    const decoder = new TextDecoder('utf-8'); // Assuming the data is UTF-8 encoded
+    const stringValue = decoder.decode(event.target.value);
+    const jsonData = JSON.parse(stringValue);
+
+    console.log("Received message:", jsonData);
+
+    document.querySelector("#" + jsonData.device_name).updateEMState(JSON.parse(jsonData.EM_state));
+}
+
+async function addCmdListener(server) {
     const service = await server.getPrimaryService(service_uuid); 
-    const fromDeviceMsgChar = await service.getCharacteristic(fromDeviceMsgChar_uuid);
+    const deviceCmdChar = await service.getCharacteristic(deviceCmdChar_uuid);
     //fromDeviceMsgChar.writeValue(Uint8Array.of(0));
 
     // Start notifications
-    fromDeviceMsgChar.startNotifications();
+    deviceCmdChar.startNotifications();
     console.log(`Started notifications listener`);
 
     // Add an event listener for received messages
-    fromDeviceMsgChar.addEventListener('characteristicvaluechanged', (event) => ToggleElectroMagnet(event));
+    deviceCmdChar.addEventListener('characteristicvaluechanged', (event) => ToggleElectroMagnet(event));
+}
+
+async function addStateListener(server) {
+    const service = await server.getPrimaryService(service_uuid);
+    const deviceStateChar = await service.getCharacteristic(deviceStateChar_uuid);
+
+    // Start notifications
+    deviceStateChar.startNotifications();
+    console.log(`Started state notifications listener`);
+
+    // Add an event listener for received messages
+    deviceStateChar.addEventListener('characteristicvaluechanged', (event) => changeDevEMState(event));
+
+    // console.log("State listener added");
 }
 
 function onDeviceDisconnected(event) {
@@ -37,13 +86,29 @@ function onDeviceDisconnected(event) {
     const deviceButton = document.getElementById(device.name);
     deviceButton.remove();
 
-    // Turn off disconnected device's electromagnet
-    // sendToDevice(device.name, 0);
-
     // If the disconnected device was the selected device, clear the selected device
     if (selectedDevice === device.name) {
         selectedDevice = null;
     }
+}
+
+async function onDeviceConnected(server, device) {
+    const deviceListDiv = document.getElementById('deviceList');
+    if (! connectedDevices.length) {
+        // Create a button for each connected device
+        deviceListDiv.innerHTML = "";
+    }
+
+    await addCmdListener(server);
+    await addStateListener(server);
+
+    const deviceButton = document.createElement('exp-btn');
+
+    deviceButton.setAttribute("deviceName", device.name);
+    deviceButton.id = device.name;
+    
+    deviceListDiv.appendChild(deviceButton);
+
 }
 
 async function selectDevice(deviceName) {
@@ -67,9 +132,9 @@ async function selectDevice(deviceName) {
         });
 
         // Turn off all devices' electromagnets
-        connectedDevices.forEach(device => {
-            sendToDevice(device.name, 0);
-        });
+        for (let device of connectedDevices) {
+            await sendToDevice(device.name, 0);
+        }
 
         // Disable the selected device's button
         const selectedButton = document.getElementById(deviceName);
@@ -82,32 +147,38 @@ async function selectDevice(deviceName) {
     }
 }
 
-function deselectDevice() {
+async function deselectDevice() {
     selectedDevice = null;
     
     // Enable all devices' buttons
     const deviceListDiv = document.getElementById('deviceList');
-    deviceListDiv.childNodes.forEach(button => {
+
+    for(let button of deviceListDiv.childNodes){
         button.shadowRoot.querySelector("#"+button.id).disabled = false;
 
         let deviceName = button.id;
         // Turn off selected device's electromagnet
-        sendToDevice(deviceName, 0);
-    });
-
-    // Turn off the selected device's electromagnet
+        await sendToDevice(deviceName, 0);
+        console.log(`Em off for dev: ${deviceName}`);
+    };
 
     console.log("Device deselected");
 }
 
-async function connectToDevicesUntilCancel() {
-    let server;
+async function promptDeviceConnection() {
     try {
         // while (true) {
             console.log("Opening pairing menu...");
+
+            let connectButton = document.querySelector("#connectButton");
+            connectButton.disabled = true;
+            connectButton.innerHTML = connect_icon + "Connecting...";
             
             // Request a device through the pairing interface
-            server = await connectDevice([{services: [service_uuid]}]);
+            await connectDevice([{services: [service_uuid]}]);
+
+            connectButton.disabled = false;
+            connectButton.innerHTML = connect_icon + "Connect";
             
             // localStorage.setItem('connectedDevices', connectedDevices);
         // }
@@ -123,31 +194,7 @@ async function connectToDevicesUntilCancel() {
         }
     }
 
-    console.log("Final list of connected devices:", connectedDevices);
-    
-    await addReceiveListener(server);
-
-    // Create a button for each connected device
-    const deviceListDiv = document.getElementById('deviceList');
-    deviceListDiv.innerHTML = "";
-
-    connectedDevices.forEach(device => {
-        const deviceButton = document.createElement('exp-btn');
-
-        deviceButton.setAttribute("deviceName", device.name);
-        deviceButton.id = device.name;
-        
-        deviceListDiv.appendChild(deviceButton);
-    });
-}
-
-function sendToSelectedDevice(message) {
-    if (!selectedDevice) {
-        console.error("No device selected.");
-        return;
-    }
-
-    sendToDevice(selectedDevice, message);
+    console.log("List of connected devices:", connectedDevices);
 }
 
 async function sendToDevice(deviceName, message){
@@ -162,7 +209,7 @@ async function sendToDevice(deviceName, message){
 
         // Connect to the device
         const server = await device.gatt.connect();
-        console.log(`Connected to device: ${device.name}`);
+        // console.log(`Connected to device: ${device.name}`);
 
         // Get the service
         const service = await server.getPrimaryService(service_uuid);
@@ -184,40 +231,49 @@ async function connectDevice(filters){
         device = await navigator.bluetooth.requestDevice({
             filters: filters
         });
+
+        if (!connectedDevices.includes(device)) {
+            let server;
+            // Connect to the selected device
+            let done = true;
+            do{
+                try {
+                    server = await device.gatt.connect();
+                    done = true;
+                } catch (error) {
+                    done = false;
+                }
+            } while(!done);
+                
+            console.log(`Connected to device: ${device.name}`);
+
+            // Set up event listener for when device gets connected and disconnected.
+            onDeviceConnected(server, device);
+            device.addEventListener('gattserverdisconnected', onDeviceDisconnected);
+
+            // Store the connected device
+            connectedDevices.push(device);
+        } else {
+            console.log(`Device already connected: ${device.name}`);
+
+            const connectButton = document.querySelector("#connectButton");
+            connectButton.innerHTML = connect_icon + "Already connected!";
+            await new Promise(resolve => setTimeout(resolve, button_alert_time));
+            connectButton.innerHTML = connect_icon + "Connect";
+        }
+
     } catch (error) {
+        const connectButton = document.querySelector("#connectButton");
+        connectButton.innerHTML = connect_icon + "Error!";
+        await new Promise(resolve => setTimeout(resolve, button_alert_time));
+        connectButton.innerHTML = connect_icon + "Connect";
+        connectButton.disabled = false;
         if (error.name === "SecurityError") {
             console.log("Security error: User gesture required.");
             throw error;
         } else {
-            console.error("An error occurred:", error);
+            console.log("An error occurred:");
+            console.log(error);
         }
     }
-
-    // Connect to the selected device
-
-    const server = await device.gatt.connect();
-    console.log(`Connected to device: ${device.name}`);
-
-    // Set up event listener for when device gets disconnected.
-    device.addEventListener('gattserverdisconnected', onDeviceDisconnected);
-
-    // Store the connected device
-    if (!connectedDevices.includes(device)) {
-        connectedDevices.push(device);
-    }
-
-    // localStorage.setItem('connectedDevices', connectedDevices);
-
-    return server;
 }
-
-// async function connectPairedDevs(){
-//     const pairedDevices = // localStorage.getItem('connectedDevices');
-//     console.log("Paired devices:", pairedDevices);
-    
-//     pairedDevices.forEach(deviceName => async () => {
-//             await connectDevice([{name: deviceName}])
-//         }
-//     );
-    
-// }
