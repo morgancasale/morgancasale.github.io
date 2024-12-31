@@ -11,6 +11,12 @@ const connect_icon = `
     </svg>
 `;
 
+const disconnect_icon = `
+    <svg slot="icon" width="24px" height="24px" viewBox="-3.5 0 19 19">
+        <path d="M11.383 13.644A1.03 1.03 0 0 1 9.928 15.1L6 11.172 2.072 15.1a1.03 1.03 0 1 1-1.455-1.456l3.928-3.928L.617 5.79a1.03 1.03 0 1 1 1.455-1.456L6 8.261l3.928-3.928a1.03 1.03 0 0 1 1.455 1.456L7.455 9.716z"/>
+    </svg>
+`;
+
 const warning_icon = `
     <svg slot="icon" viewBox="0 0 24 24" >
         <path d="M12,5.99L19.53,19H4.47L12,5.99 M12,2L1,21h22L12,2L12,2z"/>

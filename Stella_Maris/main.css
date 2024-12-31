@@ -20,34 +20,13 @@ body{
     flex-wrap: wrap;
 }
 
-.stngsButtons{
+.stngsButtons_cont{
     display: flex;
     flex-wrap: wrap;
 }
 
-.connectButton{
-    margin-left: 10px;
-    margin-right: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width: max-content;
-    height: 2em;
-}
-
-.deselectButton{
-    margin-left: 5px;
-    margin-right: 0px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width: max-content;
-    height: 2em;
-}
-
-.actionButton{
-    margin-left: 10px;
-    margin-right: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.stngsButton{
+    margin: 5px 0 5px 10px;
     width: max-content;
     height: 2em;
 }
