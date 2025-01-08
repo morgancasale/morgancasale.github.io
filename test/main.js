@@ -4,8 +4,6 @@ let debug_data = null;
 
 let selectedDevice = null;
 
-const msg_worker = new Worker('msg_worker.js');
-
 async function ToggleElectroMagnet(event){
     console.log("Electromagnet toggled");
     console.log("Received message:", event.target.value);
