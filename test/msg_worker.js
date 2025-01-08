@@ -6,10 +6,10 @@ async function processMsgQueue() {
   if (isProcessing || queue.length === 0) return;
 
   isProcessing = true;
-  const { deviceName, message } = queue.shift(); // Get the next task
+  const { deviceName, message } = queue.shift(); // Get the next message to send
 
   try {
-    const result = await sendToDevice(deviceName, message); // Execute the task
+    const result = await sendToDevice(deviceName, message); // Send the message
     self.postMessage({ id, status: 'fulfilled', result });
 
     await new Promise(r => setTimeout(r, ble_msg_cooldown)); // Cooldown period
@@ -18,7 +18,7 @@ async function processMsgQueue() {
     console.error('An error occurred while processing queue:', error);
   } finally {
     isProcessing = false;
-    processQueue(); // Process the next task
+    procesMsgQueue(); // Process the next message
   }
 }
 

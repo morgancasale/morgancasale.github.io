@@ -10,7 +10,7 @@ async function ToggleElectroMagnet(event){
     console.log("Electromagnet toggled");
     console.log("Received message:", event.target.value);
     //await sendToDevice(selectedDevice, 2);
-
+    msg_worker.postMessage({deviceName: selectedDevice, message: 2});
 
 }
 
