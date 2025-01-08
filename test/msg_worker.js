@@ -18,7 +18,7 @@ async function processMsgQueue() {
     console.error('An error occurred while processing queue:', error);
   } finally {
     isProcessing = false;
-    procesMsgQueue(); // Process the next message
+    processMsgQueue(); // Process the next message
   }
 }
 
