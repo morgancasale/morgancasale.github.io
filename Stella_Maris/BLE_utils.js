@@ -1,3 +1,5 @@
+let error_flag = false;
+
 async function connectDevice(filters){
     let device;
     try{
@@ -13,7 +15,7 @@ async function connectDevice(filters){
                 try {
                     server = await device.gatt.connect();
                     // Wait to ensure the connection is established
-                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    await new Promise(resolve => setTimeout(resolve, ble_connection_cooldown));
 
                     debug_data = server.connected;
                     if(server != null && server.connected){
@@ -102,12 +104,17 @@ async function onDeviceDisconnected(event) {
 
     connectButton.disabled = true;
     connectButton.innerHTML = connect_icon + "Disconnected!";
+
     if(deviceButton != null){
         const int_btn_el = deviceButton.shadowRoot.querySelector("#"+device.name);
         const opt_btn_el = deviceButton.shadowRoot.querySelector("#optsButton_" + device.name);
         int_btn_el.disabled = true;
         opt_btn_el.disabled = true;
-        int_btn_el.innerHTML = deviceButton.dev_icon + "Disconnected!";
+
+        const msg = deviceButton.dev_icon + (error_flag ? "Error!" : "Disconnected!");
+        error_flag = false;
+
+        int_btn_el.innerHTML = msg;
     }
 
     await new Promise(resolve => setTimeout(resolve, button_alert_time));
@@ -132,8 +139,8 @@ async function onDeviceConnected(server, device) {
             deviceListDiv.innerHTML = "";
         }
 
-        await addCmdListener(server);
-        await addStateListener(server);
+        await addCmdListener(device, server);
+        await addStateListener(device, server);
 
         const deviceButton = document.createElement('exp-btn');
 
@@ -146,10 +153,10 @@ async function onDeviceConnected(server, device) {
     }
 }
 
-async function addCmdListener(server) {
+async function addCmdListener(device, server) {
     try{
         if(server.connected){
-            const service = await withTimeout(server.getPrimaryService(service_uuid), 2000); 
+            const service = await withTimeout(server.getPrimaryService(service_uuid), ble_operation_timeout); 
             // TODO: Sometimes getPrimaryService hangs up indefinitely and gets the device stuck, aka, the device cannot be connected to again until page refresh.
             
             const deviceCmdChar = await service.getCharacteristic(deviceCmdChar_uuid);
@@ -166,13 +173,17 @@ async function addCmdListener(server) {
         }
     } catch (error) {
         console.error("An error occurred:", error);
+        if(error.message === "Operation timed out"){
+            error_flag = true;
+            await device.gatt.disconnect();
+        }
     }
 }
 
-async function addStateListener(server) {
+async function addStateListener(device, server) {
     try{
         if(server.connected){
-            const service = await server.getPrimaryService(service_uuid);
+            const service = await withTimeout(server.getPrimaryService(service_uuid), ble_operation_timeout); 
             const deviceStateChar = await service.getCharacteristic(deviceStateChar_uuid);
 
             // Start notifications
@@ -186,6 +197,10 @@ async function addStateListener(server) {
         }
     } catch (error) {
         console.error("An error occurred:", error);
+        if(error.message === "Operation timed out"){
+            error_flag = true;
+            await device.gatt.disconnect();
+        }
     }
 }
 

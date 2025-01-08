@@ -25,17 +25,19 @@ async function powerButton(){
             powerButton.innerHTML = "Turn Off" + power_icon;
         }
     } else {
+        let msg;
         if(classes.contains("power_on")){
-            await sendToDevice(selectedDevice, 32);
+            msg = 1;
             classes.remove("power_on");
             classes.add("power_off");
             powerButton.innerHTML = "Turn Off" + power_icon;
         } else {
-            await sendToDevice(selectedDevice, 0);
+            msg = 0;
             classes.remove("power_off");
             classes.add("power_on");
             powerButton.innerHTML = "Turn On" + power_icon;
         }
+        await sendToDevice(selectedDevice, msg);
     }
 }
 
