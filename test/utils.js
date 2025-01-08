@@ -7,9 +7,9 @@ async function withTimeout(promise, timeout) {
     ]);
 }
 
-async function waitWorker(msg){
+async function waitWorker(worker, msg){
     return new Promise(resolve => {
-        msg_worker.onmessage = function(event){
+        worker.onmessage = function(event){
             resolve(event);
         };
 

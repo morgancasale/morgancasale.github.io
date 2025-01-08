@@ -118,7 +118,7 @@ async function promptDeviceConnection() {
             connectButton.innerHTML = connect_icon + "Connecting...";
             
             // Request a device through the pairing interface
-            await waitWorker({cmd: 'connectDevice', filters: [{services: [service_uuid]}]});
+            await waitWorker(worker, {cmd: 'connectDevice', filters: [{services: [service_uuid]}]});
 
             connectButton.disabled = false;
             connectButton.innerHTML = connect_icon + "Connect";
