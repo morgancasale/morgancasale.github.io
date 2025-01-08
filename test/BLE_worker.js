@@ -14,10 +14,20 @@ let isProcessing = false;
 let connectedDevices = [];
 
 self.onmessage = function (event) {
-    const { deviceName, message } = event.data;
-
-    msgQueue.push({deviceName, message});
-    processMsgQueue();
+    switch(event.data.cmd){
+        case "connectDevice":
+            connectDevice(event.data.filters);
+            break;
+        case "disconnectAllDevices":
+            disconnectAllDevices();
+            break;
+        case "sendToDevice":
+            msgQueue.push(event.data);
+            processMsgQueue();
+            break;
+        default:
+            console.error("Unknown message received from main thread: ", event.data);
+    }
 };
 
 // Function to process the next item in the msgQueue

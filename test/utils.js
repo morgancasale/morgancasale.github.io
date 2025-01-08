@@ -6,4 +6,13 @@ async function withTimeout(promise, timeout) {
         ),
     ]);
 }
-  
+
+async function waitWorker(msg){
+    return new Promise(resolve => {
+        msg_worker.onmessage = function(event){
+            resolve(event);
+        };
+
+        worker.postMessage(msg);
+    });
+}

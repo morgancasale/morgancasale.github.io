@@ -7,9 +7,7 @@ let selectedDevice = null;
 async function ToggleElectroMagnet(event){
     console.log("Electromagnet toggled");
     console.log("Received message:", event.target.value);
-    //await sendToDevice(selectedDevice, 2);
     msg_worker.postMessage({deviceName: selectedDevice, message: 2});
-
 }
 
 async function powerButton(){
@@ -39,7 +37,6 @@ async function powerButton(){
             classes.add("power_on");
             powerButton.innerHTML = "Turn On" + power_icon;
         }
-        // await sendToDevice(selectedDevice, msg)
 
         // Using the worker to queue messages with a cooldown time 
         // as to not overload the device in case of rapid button presses
@@ -79,7 +76,7 @@ async function selectDevice(deviceName) {
 
         // Turn off all devices' electromagnets
         for (let device of connectedDevices) {
-            await sendToDevice(device.name, 0);
+            msg_worker.postMessage({deviceName: device.name, message: 0});
         }
 
         // Disable the selected device's button
@@ -104,7 +101,7 @@ async function deselectDevice() {
 
         let deviceName = button.id;
         // Turn off selected device's electromagnet
-        await sendToDevice(deviceName, 0);
+        msg_worker.postMessage({deviceName: deviceName, message: 0});
         console.log(`Em off for dev: ${deviceName}`);
     };
 
@@ -122,6 +119,8 @@ async function promptDeviceConnection() {
             
             // Request a device through the pairing interface
             await connectDevice([{services: [service_uuid]}]);
+
+            await waitWorker({cmd: 'connectDevice', filters: [{services: [service_uuid]}]});
 
             connectButton.disabled = false;
             connectButton.innerHTML = connect_icon + "Connect";
@@ -143,3 +142,6 @@ async function promptDeviceConnection() {
     console.log("List of connected devices:", connectedDevices);
 }
 
+function disconnectAllDevices(){
+    worker.postMessage({cmd: 'disconnectAllDevices'});
+}
