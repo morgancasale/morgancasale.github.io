@@ -4,6 +4,7 @@ const deviceCmdChar_uuid = '19b10003-e8f2-537e-4f6c-d104768a1214';
 const deviceStateChar_uuid = '19b10004-e8f2-537e-4f6c-d104768a1214';
 
 const button_alert_time = 2500;
+const ble_msg_cooldown = 100;
 
 const connect_icon = `
     <svg slot="icon" viewBox="0 0 24 24">

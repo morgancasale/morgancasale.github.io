@@ -149,7 +149,9 @@ async function onDeviceConnected(server, device) {
 async function addCmdListener(server) {
     try{
         if(server.connected){
-            const service = await withTimeout(server.getPrimaryService(service_uuid), 2000); // TODO: Sometimes getPrimaryService hangs up indefinitely
+            const service = await withTimeout(server.getPrimaryService(service_uuid), 2000); 
+            // TODO: Sometimes getPrimaryService hangs up indefinitely and gets the device stuck, aka, the device cannot be connected to again until page refresh.
+            
             const deviceCmdChar = await service.getCharacteristic(deviceCmdChar_uuid);
             //fromDeviceMsgChar.writeValue(Uint8Array.of(0));
 
