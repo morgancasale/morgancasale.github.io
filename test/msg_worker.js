@@ -10,11 +10,11 @@ async function processMsgQueue() {
 
   try {
     const result = await sendToDevice(deviceName, message); // Send the message
-    self.postMessage({ id, status: 'fulfilled', result });
+    // self.postMessage({ id, status: 'fulfilled', result });
 
     await new Promise(r => setTimeout(r, ble_msg_cooldown)); // Cooldown period
   } catch (error) {
-    self.postMessage({ id, status: 'rejected', error: error.message });
+    // self.postMessage({ id, status: 'rejected', error: error.message });
     console.error('An error occurred while processing queue:', error);
   } finally {
     isProcessing = false;
