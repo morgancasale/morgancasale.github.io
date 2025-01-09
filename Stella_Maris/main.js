@@ -7,7 +7,13 @@ let selectedDevice = null;
 async function ToggleElectroMagnet(event){
     console.log("Electromagnet toggled");
     console.log("Received message:", event.target.value);
-    await sendToDevice(selectedDevice, 32);
+    //await sendToDevice(selectedDevice, 2);
+
+    document.dispatchEvent(
+        new CustomEvent("newMessage", {
+            detail: {deviceName: selectedDevice, message: 2}
+        })
+    );
 }
 
 async function powerButton(){
@@ -37,7 +43,15 @@ async function powerButton(){
             classes.add("power_on");
             powerButton.innerHTML = "Turn On" + power_icon;
         }
-        await sendToDevice(selectedDevice, msg);
+
+        // Add the message to the msg queue
+        document.dispatchEvent(
+            new CustomEvent("newMessage", {
+                detail: {deviceName: selectedDevice, message: msg}
+            })
+        );
+
+        //await sendToDevice(selectedDevice, msg);
     }
 }
 
@@ -73,7 +87,12 @@ async function selectDevice(deviceName) {
 
         // Turn off all devices' electromagnets
         for (let device of connectedDevices) {
-            await sendToDevice(device.name, 0);
+            // await sendToDevice(device.name, 0);
+            document.dispatchEvent(
+                new CustomEvent("newMessage", {
+                    detail: {deviceName: selectedDevice, message: 0}
+                })
+            );
         }
 
         // Disable the selected device's button
@@ -98,7 +117,13 @@ async function deselectDevice() {
 
         let deviceName = button.id;
         // Turn off selected device's electromagnet
-        await sendToDevice(deviceName, 0);
+        //await sendToDevice(deviceName, 0);
+        document.dispatchEvent(
+            new CustomEvent("newMessage", {
+                detail: {deviceName: selectedDevice, message: 0}
+            })
+        );
+
         console.log(`Em off for dev: ${deviceName}`);
     };
 

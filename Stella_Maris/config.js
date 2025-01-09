@@ -8,7 +8,7 @@ const button_alert_time = 2500;
 const ble_connection_cooldown = 250;
 const ble_operation_timeout = 3000;
 
-const ble_msg_cooldown = 100;
+const ble_msg_cooldown = 200;
 
 const connect_icon = `
     <svg slot="icon" viewBox="0 0 24 24">
