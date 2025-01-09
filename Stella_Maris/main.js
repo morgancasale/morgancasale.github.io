@@ -62,7 +62,24 @@ function changeDevEMState(event){
 
     console.log("Received message:", jsonData);
 
-    document.querySelector("#" + jsonData.device_name).updateEMState(JSON.parse(jsonData.EM_state));
+    const deviceButton = document.querySelector("#" + jsonData.device_name);
+    let EM_state = JSON.parse(jsonData.EM_state);
+    deviceButton.updateEMState(EM_state);
+
+    // Update the power button state 
+    const powerButton = document.querySelector("#actionButton");
+    let classes = powerButton.classList;
+    if(EM_state){
+        classes.remove("power_on");
+        classes.add("power_off");
+        powerButton.innerHTML = "Turn Off" + power_icon;
+    } else {
+        classes.remove("power_off");
+        classes.add("power_on");
+        powerButton.innerHTML = "Turn On" + power_icon;
+    }
+        
+
 }
 
 async function selectDevice(deviceName) {

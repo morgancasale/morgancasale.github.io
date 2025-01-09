@@ -105,6 +105,7 @@ const icon_map = {
     "orange": orange_icon,
     "lemon": lemon_icon,
     "apple": apple_icon,
+    "banana": banana_icon,
     "cube": cube_icon,
     "cylinder": cylinder_icon
 };
