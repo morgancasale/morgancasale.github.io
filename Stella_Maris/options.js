@@ -17,7 +17,7 @@ class Opts extends HTMLElement{
         options.anchorElement = anchorEl;
 
         options.innerHTML = `
-            <md-menu-item style="">
+            <!-- <md-menu-item style="">
                 <div style="float: left;">Name</div>
                 <md-outlined-text-field
                     id="em_input"
@@ -50,9 +50,9 @@ class Opts extends HTMLElement{
                     rows= "1"
                 >
                 </md-outlined-text-field>
-            </md-menu-item>
+            </md-menu-item> -->
             <md-menu-item>
-                <div slot="headline">Banana</div>
+                <div slot="headline" onclick="disconnectDevice('` + deviceName + `')">Disconnect</div>
             </md-menu-item>
         `;
 
@@ -92,14 +92,14 @@ class Opts extends HTMLElement{
         observer.observe(options, { attributes: true });
 
         // Prevent the input from closing the menu
-        const em_input = this.shadowRoot.querySelector("#em_input");
+        // const em_input = this.shadowRoot.querySelector("#em_input");
 
-        em_input.addEventListener('click', (event) => {
-            event.stopPropagation();
-        });
-        em_input.addEventListener('mousedown', (event) => {
-            event.stopPropagation();
-        });
+        // em_input.addEventListener('click', (event) => {
+        //     event.stopPropagation();
+        // });
+        // em_input.addEventListener('mousedown', (event) => {
+        //     event.stopPropagation();
+        // });
 
         // Fire an event when this component is rendered
         const event = new CustomEvent('opts-rendered', { bubbles: true, composed: true });

@@ -66,6 +66,35 @@ async function connectDevice(filters){
     }
 }
 
+async function disconnectDevice(deviceName) {
+    const device = connectedDevices.find(device => device.name === deviceName);
+
+    if (!device) {
+        console.error("Device not found:", deviceName);
+        return;
+    }
+
+    // Disconnect from the device
+    await device.gatt.disconnect();
+    console.log('Disconnected from:', device.name);
+
+    await new Promise(resolve => setTimeout(resolve, button_alert_time));
+
+    // Remove the device from the list of connected devices
+    connectedDevices = connectedDevices.filter(connectedDevice => connectedDevice !== device);
+
+    // Remove the device's button
+    const deviceButton = document.getElementById(device.name);
+    if(deviceButton != null){
+        deviceButton.remove();
+    }
+
+    // If the disconnected device was the selected device, clear the selected device
+    if (selectedDevice === device.name) {
+        selectedDevice = null;
+    }
+}
+
 async function disconnectAllDevices() {
     const disconnectButton = document.querySelector("#disconnectButton");
     disconnectButton.disabled = true;

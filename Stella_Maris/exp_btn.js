@@ -9,7 +9,7 @@ class ExpBtn extends HTMLElement{
             </svg>
         `;
 
-        // this.dev_icon = cube_icon;
+        //this.dev_icon = zucchini_icon;
     }
 
     connectedCallback(){
@@ -157,7 +157,6 @@ class ExpBtn extends HTMLElement{
             this.deviceButton.innerHTML = this.deviceName + this.dev_icon;
             this.deviceButton.className = "deviceButton";
         }
-
     }
 
     static get observedAttributes() {
