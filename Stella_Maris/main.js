@@ -62,7 +62,7 @@ function changeDevEMState(event){
 
     console.log("Received message:", jsonData);
 
-    const deviceButton = document.querySelector("#" + jsonData.device_name);
+    const deviceButton = document.querySelector("#" + fix_dev_name(jsonData.device_name));
     let EM_state = JSON.parse(jsonData.EM_state);
     deviceButton.updateEMState(EM_state);
 
@@ -85,7 +85,7 @@ function changeDevEMState(event){
 async function selectDevice(deviceName) {
     try {
         // Find the device with the given name
-        const device = connectedDevices.find(device => device.name === deviceName);
+        const device = connectedDevices.find(device => device.name === unfix_dev_name(deviceName));
 
         if (!device) {
             if(device == null){
@@ -104,12 +104,14 @@ async function selectDevice(deviceName) {
 
         // Turn off all devices' electromagnets
         for (let device of connectedDevices) {
-            // await sendToDevice(device.name, 0);
-            document.dispatchEvent(
-                new CustomEvent("newMessage", {
-                    detail: {deviceName: selectedDevice, message: 0}
-                })
-            );
+            if(device.name != deviceName && device.name != null){
+                // await sendToDevice(device.name, 0);
+                document.dispatchEvent(
+                    new CustomEvent("newMessage", {
+                        detail: {deviceName: device.name, message: 0}
+                    })
+                );
+            }
         }
 
         // Disable the selected device's button
