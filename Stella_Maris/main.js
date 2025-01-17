@@ -26,9 +26,9 @@ async function powerButton(){
         powerButton.innerHTML = "No device!" + power_icon;
         await new Promise(resolve => setTimeout(resolve, button_alert_time));
         if(classes.contains("power_on")){
-            powerButton.innerHTML = "Turn On" + power_icon;
+            powerButton.innerHTML = "Turn On EM" + power_icon;
         } else {
-            powerButton.innerHTML = "Turn Off" + power_icon;
+            powerButton.innerHTML = "Turn Off EM" + power_icon;
         }
     } else {
         let msg;
@@ -36,12 +36,12 @@ async function powerButton(){
             msg = 1;
             classes.remove("power_on");
             classes.add("power_off");
-            powerButton.innerHTML = "Turn Off" + power_icon;
+            powerButton.innerHTML = "Turn Off EM" + power_icon;
         } else {
             msg = 0;
             classes.remove("power_off");
             classes.add("power_on");
-            powerButton.innerHTML = "Turn On" + power_icon;
+            powerButton.innerHTML = "Turn On EM" + power_icon;
         }
 
         // Add the message to the msg queue
@@ -62,21 +62,26 @@ function changeDevEMState(event){
 
     console.log("Received message:", jsonData);
 
-    const deviceButton = document.querySelector("#" + fix_dev_name(jsonData.device_name));
+    //const deviceButton = document.querySelector("#" + fix_dev_name(jsonData.device_name));
+    const deviceButton = document.querySelector("#" + jsonData.device_name);
     let EM_state = JSON.parse(jsonData.EM_state);
     deviceButton.updateEMState(EM_state);
 
     // Update the power button state 
     const powerButton = document.querySelector("#actionButton");
     let classes = powerButton.classList;
+    const warningEl = document.querySelector("#info");
+
     if(EM_state){
         classes.remove("power_on");
         classes.add("power_off");
-        powerButton.innerHTML = "Turn Off" + power_icon;
+        powerButton.innerHTML = "Turn Off EM" + power_icon;
+        warningEl.style.display = "block"; // Show the warning message
     } else {
         classes.remove("power_off");
         classes.add("power_on");
-        powerButton.innerHTML = "Turn On" + power_icon;
+        powerButton.innerHTML = "Turn On EM" + power_icon;
+        warningEl.style.display = "none"; // Hide the warning message
     }
         
 
@@ -85,8 +90,8 @@ function changeDevEMState(event){
 async function selectDevice(deviceName) {
     try {
         // Find the device with the given name
-        const device = connectedDevices.find(device => device.name === unfix_dev_name(deviceName));
-
+        //const device = connectedDevices.find(device => device.name === unfix_dev_name(deviceName));
+        const device = connectedDevices.find(device => device.name === deviceName);
         if (!device) {
             if(device == null){
                 console.error("No device connected!");
@@ -102,7 +107,7 @@ async function selectDevice(deviceName) {
             button.shadowRoot.querySelector("#"+button.id).disabled = false;
         });
 
-        // Turn off all devices' electromagnets
+        // Turn Off EM all devices' electromagnets
         for (let device of connectedDevices) {
             if(device.name != deviceName && device.name != null){
                 // await sendToDevice(device.name, 0);
@@ -126,27 +131,28 @@ async function selectDevice(deviceName) {
 }
 
 async function deselectDevice() {
-    selectedDevice = null;
-    
     // Enable all devices' buttons
     const deviceListDiv = document.getElementById('deviceList');
+    
+    if (deviceListDiv.childNodes.length > 0 && selectedDevice != null) {
+        for(let button of deviceListDiv.childNodes){
+            button.shadowRoot.querySelector("#"+button.id).disabled = false;
 
-    for(let button of deviceListDiv.childNodes){
-        button.shadowRoot.querySelector("#"+button.id).disabled = false;
+            let deviceName = button.id;
+            // Turn Off EM selected device's electromagnet
+            //await sendToDevice(deviceName, 0);
+            document.dispatchEvent(
+                new CustomEvent("newMessage", {
+                    detail: {deviceName: selectedDevice, message: 0}
+                })
+            );
 
-        let deviceName = button.id;
-        // Turn off selected device's electromagnet
-        //await sendToDevice(deviceName, 0);
-        document.dispatchEvent(
-            new CustomEvent("newMessage", {
-                detail: {deviceName: selectedDevice, message: 0}
-            })
-        );
+            console.log(`Em off for dev: ${deviceName}`);
+        };
 
-        console.log(`Em off for dev: ${deviceName}`);
-    };
-
-    console.log("Device deselected");
+        console.log("Device deselected");
+        selectedDevice = null;
+    }
 }
 
 async function promptDeviceConnection() {
