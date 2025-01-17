@@ -9,8 +9,8 @@ async function processMsgQueue() {
   const { deviceName, message } = queue.shift(); // Get the next message to send
 
   try {
-    //const result = await sendToDevice(unfix_dev_name(deviceName), message); // Send the message
-    const result = await sendToDevice(deviceName, message); // Send the message
+    const result = await sendToDevice(unfix_dev_name(deviceName), message); // Send the message
+    // const result = await sendToDevice(deviceName, message); // Send the message
     // self.postMessage({ id, status: 'fulfilled', result });
 
     await new Promise(r => setTimeout(r, ble_msg_cooldown)); // Cooldown period

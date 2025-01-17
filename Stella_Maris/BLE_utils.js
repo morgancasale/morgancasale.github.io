@@ -67,8 +67,8 @@ async function connectDevice(filters){
 }
 
 async function disconnectDevice(deviceName) {
-    //const device = connectedDevices.find(device => device.name === unfix_dev_name(deviceName));
-    const device = connectedDevices.find(device => device.name === deviceName);
+    const device = connectedDevices.find(device => device.name === unfix_dev_name(deviceName));
+    //const device = connectedDevices.find(device => device.name === deviceName);
 
     if (!device) {
         console.error("Device not found:", deviceName);
@@ -85,8 +85,8 @@ async function disconnectDevice(deviceName) {
     connectedDevices = connectedDevices.filter(connectedDevice => connectedDevice !== device);
 
     // Remove the device's button
-    //const deviceButton = document.getElementById(fix_dev_name(device.name));
-    const deviceButton = document.getElementById(device.name);
+    const deviceButton = document.getElementById(fix_dev_name(device.name));
+    //const deviceButton = document.getElementById(device.name);
     if(deviceButton != null){
         deviceButton.remove();
     }
@@ -131,17 +131,17 @@ async function onDeviceDisconnected(event) {
 
     // Remove the device's button
     let connectButton = document.querySelector("#connectButton");
-    //const deviceButton = document.getElementById(fix_dev_name(device.name));
-    const deviceButton = document.getElementById(device.name);
+    const deviceButton = document.getElementById(fix_dev_name(device.name));
+    //const deviceButton = document.getElementById(device.name);
 
     connectButton.disabled = true;
     connectButton.innerHTML = connect_icon + "Disconnected!";
 
     if(deviceButton != null){
-        // const int_btn_el = deviceButton.shadowRoot.querySelector("#" + fix_dev_name(device.name));
-        // const opt_btn_el = deviceButton.shadowRoot.querySelector("#optsButton_" + fix_dev_name(device.name));
-        const int_btn_el = deviceButton.shadowRoot.querySelector("#" + device.name);
-        const opt_btn_el = deviceButton.shadowRoot.querySelector("#optsButton_" + device.name);
+        const int_btn_el = deviceButton.shadowRoot.querySelector("#" + fix_dev_name(device.name));
+        const opt_btn_el = deviceButton.shadowRoot.querySelector("#optsButton_" + fix_dev_name(device.name));
+        // const int_btn_el = deviceButton.shadowRoot.querySelector("#" + device.name);
+        // const opt_btn_el = deviceButton.shadowRoot.querySelector("#optsButton_" + device.name);
         int_btn_el.disabled = true;
         opt_btn_el.disabled = true;
 
@@ -178,11 +178,11 @@ async function onDeviceConnected(server, device) {
 
         const deviceButton = document.createElement('exp-btn');
 
-        // deviceButton.setAttribute("deviceName", fix_dev_name(device.name));
-        // deviceButton.id = fix_dev_name(device.name);
+        deviceButton.setAttribute("deviceName", fix_dev_name(device.name));
+        deviceButton.id = fix_dev_name(device.name);
         
-        deviceButton.setAttribute("deviceName", device.name);
-        deviceButton.id = device.name;
+        // deviceButton.setAttribute("deviceName", device.name);
+        // deviceButton.id = device.name;
 
         deviceListDiv.appendChild(deviceButton);
     } else {

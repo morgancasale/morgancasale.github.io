@@ -62,8 +62,8 @@ function changeDevEMState(event){
 
     console.log("Received message:", jsonData);
 
-    //const deviceButton = document.querySelector("#" + fix_dev_name(jsonData.device_name));
-    const deviceButton = document.querySelector("#" + jsonData.device_name);
+    const deviceButton = document.querySelector("#" + fix_dev_name(jsonData.device_name));
+    // const deviceButton = document.querySelector("#" + jsonData.device_name);
     let EM_state = JSON.parse(jsonData.EM_state);
     deviceButton.updateEMState(EM_state);
 
@@ -90,8 +90,8 @@ function changeDevEMState(event){
 async function selectDevice(deviceName) {
     try {
         // Find the device with the given name
-        //const device = connectedDevices.find(device => device.name === unfix_dev_name(deviceName));
-        const device = connectedDevices.find(device => device.name === deviceName);
+        const device = connectedDevices.find(device => device.name === unfix_dev_name(deviceName));
+        //const device = connectedDevices.find(device => device.name === deviceName);
         if (!device) {
             if(device == null){
                 console.error("No device connected!");
