@@ -1,3 +1,8 @@
+@font-face {
+	font-family: 'Comic Sans MS';
+	src: url("comic-sans-ms/comici.ttf");
+}
+
 body {
 	background-image: url("background.png");
 	background-size: 100%;
@@ -40,12 +45,12 @@ body {
 
 .card .text-container #head {
 	font-family: "Comic Sans MS", "Comic Sans", cursive;
-	font-size: 1.5em;
+	font-size: 2.8em;
 	margin: 60px auto 60px auto;
 }
 
 .card p {
-	font-size: 1.1em;
+	font-size: 2.1em;
 	line-height: 1.4;
 	font-family: "Comic Sans MS", "Comic Sans", cursive;
 	color: #331717;
