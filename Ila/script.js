@@ -10,7 +10,7 @@ soundEffect.autoplay = true;
 // let audio = new Audio("pitbull.mp3");
 
 function play() {
-    soundEffect.currentTime = 134;
+    //soundEffect.currentTime = 134;
     soundEffect.src = music;
 }
 
