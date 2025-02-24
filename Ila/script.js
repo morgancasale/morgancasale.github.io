@@ -1,18 +1,21 @@
+const soundEffect = new Audio();
 
-let audioCtx;
-let source;
-let filter;
-let bitCrusher;
-let audio = new Audio("pitbull.mp3");
-let isEffectApplied = false;
+let empty = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
+let music = "pitbull.mp3";
+
+soundEffect.src = empty;
+
+soundEffect.autoplay = true;
+
+// let audio = new Audio("pitbull.mp3");
 
 function play() {
-    audio.currentTime = 134;
-    audio.play();
+    soundEffect.currentTime = 134;
+    soundEffect.src = music;
 }
 
 function pause() {
-    audio.pause();
+    soundEffect.src = empty;
 }
 
 function setupAudio() {
