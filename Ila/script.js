@@ -18,29 +18,9 @@ function pause() {
     soundEffect.src = empty;
 }
 
-function setupAudio() {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    source = audioCtx.createMediaElementSource(audio);
-
-    // Low-pass filter (removes high frequencies)
-    filter = audioCtx.createBiquadFilter();
-    filter.type = "lowpass";
-    filter.frequency.value = 3000; // Adjust for more/less muffling
-
-    // Bit crusher (reduces audio bit depth)
-    bitCrusher = audioCtx.createWaveShaper();
-    function createBitCrusherCurve(bits = 4) {
-        const curve = new Float32Array(256);
-        const step = Math.pow(0.5, bits);
-        for (let i = 0; i < 256; i++) {
-            curve[i] = Math.floor(i * step) / 256;
-        }
-        return curve;
+document.addEventListener("click", function(event) {
+    let element = document.getElementById("card"); // Replace with your element's ID
+    if (!element.contains(event.target)) {
+        pause();
     }
-    bitCrusher.curve = createBitCrusherCurve(3);
-
-    // Connect nodes: Source → Filter → BitCrusher → Output
-    source.connect(filter);
-    filter.connect(bitCrusher);
-    bitCrusher.connect(audioCtx.destination);
-}
+});
